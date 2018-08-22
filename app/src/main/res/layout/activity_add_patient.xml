@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.shaimaaderbaz.orthoclinic.activities.AddPatientActivity"
+    android:background="@drawable/bg"
+    android:weightSum="10"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:background="@drawable/edittextstyl"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+
+
+            <EditText
+                android:id="@+id/etPatientId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Patient ID"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:layout_weight="9"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:background="@drawable/edittextstyl"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <EditText
+                android:id="@+id/etPatientName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Patient Name"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:layout_weight="9"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:background="@drawable/edittextstyl"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <EditText
+                android:id="@+id/etPatientAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Patient Age"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:layout_weight="9"
+                android:inputType="number"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:background="@drawable/edittextstyl"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <EditText
+                android:id="@+id/etOccupation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Occupation"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:layout_weight="9"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:background="@drawable/edittextstyl"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <EditText
+                android:id="@+id/etPatientWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Weight"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:layout_weight="9"
+                android:inputType="number"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:background="@drawable/edittextstyl"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <EditText
+                android:id="@+id/etPatientInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Information"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="#fff"
+                android:layout_weight="9"
+                android:layout_margin="16dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnCreateProfile"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/button_background"
+                android:text="Create Profile"
+                android:textSize="20sp"
+                android:textColor="#ffff"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+            </Button>
+
+        </LinearLayout>
+
+
+
+
+</LinearLayout>

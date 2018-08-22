@@ -1,0 +1,1397 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:weightSum="10"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.shaimaaderbaz.orthoclinic.fragments.InvestigationFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=" Lap :"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/chemistry_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Chemistry"
+                android:textColor="@color/colorGray"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/chemisty_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="chemisty info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/chemisty_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="chemisty info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/chemisty_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="chemisty info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/chemisty_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="chemisty info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:id="@+id/linear_select_image_ch"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/button_background"
+                android:id="@+id/select_image_button_ch"
+                android:text="select images"
+                android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:id="@+id/linear_select_vedio_ch"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            >
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/button_background"
+                android:id="@+id/select_video_button_ch"
+                android:text="select Videos"
+                android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cls_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="C.L.S"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cls_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.L.S info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cls_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.L.S info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cls_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.L.S info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cls_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.L.S info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_cls"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_cls"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_cls"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_cls"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/cutology_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Cytology"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cutology_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Cytology info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cutology_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Cytology info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cutology_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Cytology info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/cutology_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Cytology info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_cut"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_cut"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_cut"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_cut"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=" RAD :"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/xray_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="X-Ray"
+                android:textColor="@color/colorGray"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/xray_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="X-Ray info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/xray_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="X-Ray info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/xray_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="X-Ray info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/xray_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="X-Ray info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_xray"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_xray"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_xray"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_xray"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/scanogram_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Scanogram"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/scanogram_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Scanogram info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/scanogram_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Scanogram info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/scanogram_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Scanogram info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/scanogram_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Scanogram info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_scan"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_scan"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_scan"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_scan"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/ct_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="C.T"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/ct_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.T info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/ct_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.T info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/ct_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.T info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/ct_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="C.T info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_ct"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_ct"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_ct"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_ct"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/mrt_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="M.R.I"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/mrt_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="M.R.I info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/mrt_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="M.R.I info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/mrt_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="M.R.I info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/mrt_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="M.R.I info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_mrt"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_mrt"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_mrt"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_mrt"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/dexa_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="DEXA"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/dexa_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="DEXA info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/dexa_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="DEXA info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/dexa_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="DEXA info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/dexa_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="DEXA info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_dexa"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_dexa"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_dexa"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_dexa"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/bone_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Bone Scan"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/bone_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Bone Scan info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/bone_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Bone Scan info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/bone_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Bone Scan info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/bone_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Bone Scan info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_bone"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_bone"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_bone"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_bone"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnAddInv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_background"
+        android:text="Add Invistigation"
+        android:textSize="20sp"
+        android:textColor="#ffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+    </Button>
+
+
+
+</LinearLayout>

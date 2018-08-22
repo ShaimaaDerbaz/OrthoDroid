@@ -1,0 +1,1228 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:weightSum="10"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.shaimaaderbaz.orthoclinic.fragments.ExaminationFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/trauma_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Trauma"
+                android:textColor="@color/colorGray"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/trauma_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="trauma info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/trauma_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="trauma info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/trauma_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="trauma info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/trauma_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="trauma info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_ch"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_ch"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_ch"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_ch"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text=" Disease :"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/knee_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Knee"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/knee_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="knee info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/knee_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="knee info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/knee_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="knee info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/knee_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="knee info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_knee"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_knee"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_knee"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_knee"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/shoulder_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Shoulder"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/shoulder_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="shoulder info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/shoulder_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="shoulder info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/shoulder_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="shoulder info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/shoulder_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="shoulder info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_shoulder"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_shoulder"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_shoulder"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_shoulder"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/sqine_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="sQine"
+                android:textColor="@color/colorGray"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/sqine_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="sQine info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/sqine_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="sQine info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/sqine_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="sQine info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/sqine_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="sQine info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_sqine"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_sqine"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_sqine"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_sqine"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/pelvis_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Pelvis"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/pelvis_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="pelvis info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/pelvis_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="pelvis info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/pelvis_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="pelvis info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/pelvis_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="pelvis info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_pelvis"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_pelvis"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_pelvis"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_pelvis"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/anke_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Anke foot"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/anke_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="anke foot info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/anke_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="anke foot info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/anke_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="anke foot info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/anke_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="anke foot info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_anke"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_anke"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_anke"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_anke"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/elbow_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Elbow"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/elbow_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="elbow info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/elbow_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="elbow info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/elbow_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="elbow info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/elbow_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="elbow info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_elbow"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_elbow"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_elbow"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_elbow"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/wrist_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Wrist"
+                android:textColor="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/wrist_text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="wrist info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/wrist_text2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="wrist info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/wrist_text3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="wrist info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/edittextstyl"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/wrist_text4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="wrist info."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorGray"
+                    android:background="#fff"
+                    android:layout_weight="9"
+                    android:layout_margin="16dp"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_image_wrist"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_image_button_wrist"
+                    android:text="select images"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/linear_select_vedio_wrist"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:paddingLeft="5dp"
+                >
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:id="@+id/select_video_button_wrist"
+                    android:text="select Videos"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnAddEx"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_background"
+        android:text="Add Examination"
+        android:textSize="20sp"
+        android:textColor="#ffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+    </Button>
+
+
+</LinearLayout>
