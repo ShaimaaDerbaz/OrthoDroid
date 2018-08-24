@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/selector"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="15dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/trauma_text_item"
+                        android:text="Trauma "
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorGray" />
+
+
+                <TextView
+                        android:id="@+id/knee_text_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:layout_margin="3dp"
+                        android:gravity="center"
+                        android:text="Knee "
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorGray" />
+
+
+                    <TextView
+                        android:id="@+id/shoulder_text_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Shoulder"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/sqine_text_item"
+                        android:text="sQine. "
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorGray" />
+
+
+                <TextView
+                        android:id="@+id/pelvis_text_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:layout_margin="3dp"
+                        android:gravity="center"
+                        android:text="Pelvis"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorGray" />
+
+
+                    <TextView
+                        android:id="@+id/anke_text_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Anke foot"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/elbow_text_item"
+                        android:layout_marginRight="5dp"
+                        android:text="Elbow "
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@color/colorGray" />
+
+
+                    <TextView
+                        android:id="@+id/wrist_text_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Wrist"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+</LinearLayout>
