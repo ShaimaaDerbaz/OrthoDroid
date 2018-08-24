@@ -31,100 +31,47 @@ public class InvestigationFragment extends Fragment implements InvestigationView
     AppCompatCheckBox chemistry_check;
     @BindView(R.id.chemisty_text1)
     EditText chemisty_text1;
-    @BindView(R.id.chemisty_text2)
-    EditText chemisty_text2;
-    @BindView(R.id.chemisty_text3)
-    EditText chemisty_text3;
-    @BindView(R.id.chemisty_text4)
-    EditText chemisty_text4;
 
     @BindView(R.id.cls_check)
     AppCompatCheckBox cls_check;
     @BindView(R.id.cls_text1)
     EditText cls_text1;
-    @BindView(R.id.cls_text2)
-    EditText cls_text2;
-    @BindView(R.id.cls_text3)
-    EditText cls_text3;
-    @BindView(R.id.cls_text4)
-    EditText cls_text4;
 
     @BindView(R.id.cutology_check)
     AppCompatCheckBox cytology_check;
     @BindView(R.id.cutology_text1)
     EditText cytology_text1;
-    @BindView(R.id.cutology_text2)
-    EditText cytology_text2;
-    @BindView(R.id.cutology_text3)
-    EditText cytology_text3;
-    @BindView(R.id.cutology_text4)
-    EditText cytology_text4;
 
     @BindView(R.id.xray_check)
     AppCompatCheckBox xray_check;
     @BindView(R.id.xray_text1)
     EditText xray_text1;
-    @BindView(R.id.xray_text2)
-    EditText xray_text2;
-    @BindView(R.id.xray_text3)
-    EditText xray_text3;
-    @BindView(R.id.xray_text4)
-    EditText xray_text4;
 
     @BindView(R.id.scanogram_check)
     AppCompatCheckBox scanogram_check;
     @BindView(R.id.scanogram_text1)
     EditText scanogram_text1;
-    @BindView(R.id.scanogram_text2)
-    EditText scanogram_text2;
-    @BindView(R.id.scanogram_text3)
-    EditText scanogram_text3;
-    @BindView(R.id.scanogram_text4)
-    EditText scanogram_text4;
 
     @BindView(R.id.ct_check)
     AppCompatCheckBox ct_check;
     @BindView(R.id.ct_text1)
     EditText ct_text1;
-    @BindView(R.id.ct_text2)
-    EditText ct_text2;
-    @BindView(R.id.ct_text3)
-    EditText ct_text3;
-    @BindView(R.id.ct_text4)
-    EditText ct_text4;
 
     @BindView(R.id.mrt_check)
     AppCompatCheckBox mri_check;
     @BindView(R.id.mrt_text1)
     EditText mri_text1;
-    @BindView(R.id.mrt_text2)
-    EditText mri_text2;
-    @BindView(R.id.mrt_text3)
-    EditText mri_text3;
-    @BindView(R.id.mrt_text4)
-    EditText mri_text4;
 
     @BindView(R.id.dexa_check)
     AppCompatCheckBox dexa_check;
     @BindView(R.id.dexa_text1)
     EditText dexa_text1;
-    @BindView(R.id.dexa_text2)
-    EditText dexa_text2;
-    @BindView(R.id.dexa_text3)
-    EditText dexa_text3;
-    @BindView(R.id.dexa_text4)
-    EditText dexa_text4;
 
     @BindView(R.id.bone_check)
     AppCompatCheckBox bone_check;
     @BindView(R.id.bone_text1)
     EditText bone_text1;
-    @BindView(R.id.bone_text2)
-    EditText bone_text2;
-    @BindView(R.id.bone_text3)
-    EditText bone_text3;
-    @BindView(R.id.bone_text4)
-    EditText bone_text4;
+
     @BindView(R.id.btnAddInv)
     Button btnAddInv;
 
@@ -153,58 +100,30 @@ public class InvestigationFragment extends Fragment implements InvestigationView
 
                 Info chemistryInfo=new Info();
                 chemistryInfo.setInfo1(chemisty_text1.getText().toString());
-                chemistryInfo.setInfo2(chemisty_text2.getText().toString());
-                chemistryInfo.setInfo3(chemisty_text3.getText().toString());
-                chemistryInfo.setInfo4(chemisty_text4.getText().toString());
 
                 Info clsInfo=new Info();
                 clsInfo.setInfo1(cls_text1.getText().toString());
-                clsInfo.setInfo2(cls_text2.getText().toString());
-                clsInfo.setInfo3(cls_text3.getText().toString());
-                clsInfo.setInfo4(cls_text4.getText().toString());
 
                 Info cytologyInfo=new Info();
                 cytologyInfo.setInfo1(cytology_text1.getText().toString());
-                cytologyInfo.setInfo2(cytology_text2.getText().toString());
-                cytologyInfo.setInfo3(cytology_text3.getText().toString());
-                cytologyInfo.setInfo4(cytology_text4.getText().toString());
 
                 Info xrayInfo=new Info();
                 xrayInfo.setInfo1(xray_text1.getText().toString());
-                xrayInfo.setInfo2(xray_text2.getText().toString());
-                xrayInfo.setInfo3(xray_text3.getText().toString());
-                xrayInfo.setInfo4(xray_text4.getText().toString());
 
                 Info scanogramInfo=new Info();
                 scanogramInfo.setInfo1(scanogram_text1.getText().toString());
-                scanogramInfo.setInfo2(scanogram_text2.getText().toString());
-                scanogramInfo.setInfo3(scanogram_text3.getText().toString());
-                scanogramInfo.setInfo4(scanogram_text4.getText().toString());
 
                 Info ctInfo=new Info();
                 ctInfo.setInfo1(ct_text1.getText().toString());
-                ctInfo.setInfo2(ct_text2.getText().toString());
-                ctInfo.setInfo3(ct_text3.getText().toString());
-                ctInfo.setInfo4(ct_text4.getText().toString());
 
                 Info mriInfo=new Info();
                 mriInfo.setInfo1(mri_text1.getText().toString());
-                mriInfo.setInfo2(mri_text2.getText().toString());
-                mriInfo.setInfo3(mri_text3.getText().toString());
-                mriInfo.setInfo4(mri_text4.getText().toString());
 
                 Info dexaInfo=new Info();
                 dexaInfo.setInfo1(dexa_text1.getText().toString());
-                dexaInfo.setInfo2(dexa_text2.getText().toString());
-                dexaInfo.setInfo3(dexa_text3.getText().toString());
-                dexaInfo.setInfo4(dexa_text4.getText().toString());
 
                 Info boneInfo=new Info();
                 boneInfo.setInfo1(bone_text1.getText().toString());
-                boneInfo.setInfo2(bone_text2.getText().toString());
-                boneInfo.setInfo3(bone_text3.getText().toString());
-                boneInfo.setInfo4(bone_text4.getText().toString());
-
 
                 investigationItem.setChemistry(chemistry);
                 investigationItem.setChemistryInfo(chemistryInfo);
