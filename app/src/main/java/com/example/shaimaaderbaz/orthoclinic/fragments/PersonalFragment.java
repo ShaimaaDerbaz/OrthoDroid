@@ -19,6 +19,7 @@ import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapt
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
+import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +39,8 @@ public  class PersonalFragment extends Fragment {
     @BindView(R.id.recyclerViewItemExamination)
     RecyclerView examinationRecyclerview;
 
-    List<HistoryItem> allHistory;
-    List<ExaminationItem> allExaminations;
+    List<PersonalItem> allHistory;
+    List<PersonalItem> allExaminations;
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
     PatientProfileExaminationAdapter patientProfileExaminationAdapter;
     public PersonalFragment() {
@@ -60,23 +61,14 @@ public  class PersonalFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_patient_profile_personal, container, false);
         ButterKnife.bind(this,view);
         allHistory = new ArrayList<>();
-        HistoryItem historyItem =new HistoryItem() ;
-        historyItem.setCh(true);
-        historyItem.setGastritis(false);
-        historyItem.setSmoking(true);
-        historyItem.setPregnecy(true);
-        historyItem.setLactation(false);
+        PersonalItem historyItem =new PersonalItem() ;
+        historyItem.setStatusName("Lactation");
+        historyItem.setInfo("test");
 
         allExaminations = new ArrayList<>();
-        ExaminationItem examinationItem =new ExaminationItem() ;
-        examinationItem.setTrauma(true);
-        examinationItem.setShoulder(false);
-        examinationItem.setKnee(true);
-        examinationItem.setSqine(true);
-        examinationItem.setPelvis(true);
-        examinationItem.setAnkefoot(false);
-        examinationItem.setElbow(true);
-        examinationItem.setWrist(false);
+        PersonalItem examinationItem =new PersonalItem() ;
+        examinationItem.setStatusName("Knee");
+        examinationItem.setInfo("test");
 
         for (int i=0;i<3;i++)
         {

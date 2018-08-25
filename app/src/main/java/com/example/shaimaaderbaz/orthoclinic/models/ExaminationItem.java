@@ -7,6 +7,7 @@ package com.example.shaimaaderbaz.orthoclinic.models;
 public class ExaminationItem {
     Boolean trauma,knee,shoulder,sqine,pelvis,ankefoot,elbow,wrist;
     Info traumaInfo,kneeInfo,shoulderInfo,sqineInfo,pelvisInfo,ankefootInfo,elbowInfo,wristInfo;
+    String traumaS,kneeS,shoulderS,sqineS,pelvisS,ankefootS,elbowS,wristS;
 
     public ExaminationItem() {
     }
@@ -156,5 +157,69 @@ public class ExaminationItem {
 
     public void setWristInfo(Info wristInfo) {
         this.wristInfo = wristInfo;
+    }
+
+    public String getTraumaS() {
+        return traumaS;
+    }
+
+    public void setTraumaS(String traumaS) {
+        this.traumaS = traumaS;
+    }
+
+    public String getKneeS() {
+        return kneeS;
+    }
+
+    public void setKneeS(String kneeS) {
+        this.kneeS = kneeS;
+    }
+
+    public String getShoulderS() {
+        return shoulderS;
+    }
+
+    public void setShoulderS(String shoulderS) {
+        this.shoulderS = shoulderS;
+    }
+
+    public String getSqineS() {
+        return sqineS;
+    }
+
+    public void setSqineS(String sqineS) {
+        this.sqineS = sqineS;
+    }
+
+    public String getPelvisS() {
+        return pelvisS;
+    }
+
+    public void setPelvisS(String pelvisS) {
+        this.pelvisS = pelvisS;
+    }
+
+    public String getAnkefootS() {
+        return ankefootS;
+    }
+
+    public void setAnkefootS(String ankefootS) {
+        this.ankefootS = ankefootS;
+    }
+
+    public String getElbowS() {
+        return elbowS;
+    }
+
+    public void setElbowS(String elbowS) {
+        this.elbowS = elbowS;
+    }
+
+    public String getWristS() {
+        return wristS;
+    }
+
+    public void setWristS(String wristS) {
+        this.wristS = wristS;
     }
 }

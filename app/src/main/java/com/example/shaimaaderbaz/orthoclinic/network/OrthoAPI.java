@@ -11,6 +11,6 @@ import retrofit2.http.POST;
 
 public interface OrthoAPI {
 
-    @POST("movie/popular")
-    Call<BaseResponse<HistoryItem>> saveHistory(@Field("page") int page, @Field("api_key") String apiKey);
+  //  @POST("movie/popular")
+  //  Call<BaseResponse<HistoryItem>> saveHistory(@Field("page") int page, @Field("api_key") String apiKey);
 }

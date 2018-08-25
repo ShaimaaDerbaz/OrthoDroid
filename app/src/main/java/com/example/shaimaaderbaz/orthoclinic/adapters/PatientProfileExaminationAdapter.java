@@ -6,11 +6,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
+import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,11 +30,11 @@ import static android.content.ContentValues.TAG;
 
 public class PatientProfileExaminationAdapter extends RecyclerView.Adapter<PatientProfileExaminationAdapter.ViewHolder> {
 
-private List<ExaminationItem> DataSet;
+private List<PersonalItem> DataSet;
 private static Context context;
 
 
-    public PatientProfileExaminationAdapter(Context cont, List<ExaminationItem> dataSet)
+    public PatientProfileExaminationAdapter(Context cont, List<PersonalItem> dataSet)
     {
         context=cont;
         DataSet = dataSet;
@@ -38,16 +43,12 @@ private static Context context;
 
     public  class ViewHolder extends RecyclerView.ViewHolder
     {
-        @BindView(R.id.trauma_text_item)TextView trauma_text_item;
-        @BindView(R.id.knee_text_item)TextView knee_text_item;
-        @BindView(R.id.shoulder_text_item)TextView shoulder_text_item;
-        @BindView(R.id.sqine_text_item)TextView sqine_text_item;
-        @BindView(R.id.pelvis_text_item)TextView pelvis_text_item;
-        @BindView(R.id.anke_text_item)TextView anke_text_item;
-        @BindView(R.id.elbow_text_item)TextView elbow_text_item;
-        @BindView(R.id.wrist_text_item)TextView wrist_text_item;
-
-
+        @BindView(R.id.status_ex_text_item)TextView status_ex_text_item;
+        @BindView(R.id.info_ex_text_item)TextView info_ex_text_item;
+        @BindView(R.id.images_examination_linear)LinearLayout images_examination_linear;
+        @BindView(R.id.vedios_examination_linear)TextView vedios_examination_linear;
+      //  @BindView(R.id.iv_image)ImageView iv_image;
+      //  @BindView(R.id.iv_video)VideoView iv_video;
 
         public ViewHolder(View v)
         {
@@ -66,68 +67,36 @@ private static Context context;
 
         }
 
-        public TextView getTrauma_text_item() {
-            return trauma_text_item;
+        public TextView getStatus_ex_text_item() {
+            return status_ex_text_item;
         }
 
-        public void setTrauma_text_item(TextView trauma_text_item) {
-            this.trauma_text_item = trauma_text_item;
+        public void setStatus_ex_text_item(TextView status_ex_text_item) {
+            this.status_ex_text_item = status_ex_text_item;
         }
 
-        public TextView getKnee_text_item() {
-            return knee_text_item;
+        public TextView getInfo_ex_text_item() {
+            return info_ex_text_item;
         }
 
-        public void setKnee_text_item(TextView knee_text_item) {
-            this.knee_text_item = knee_text_item;
+        public void setInfo_ex_text_item(TextView info_ex_text_item) {
+            this.info_ex_text_item = info_ex_text_item;
         }
 
-        public TextView getShoulder_text_item() {
-            return shoulder_text_item;
+        public LinearLayout getImages_examination_linear() {
+            return images_examination_linear;
         }
 
-        public void setShoulder_text_item(TextView shoulder_text_item) {
-            this.shoulder_text_item = shoulder_text_item;
+        public void setImages_examination_linear(LinearLayout images_examination_linear) {
+            this.images_examination_linear = images_examination_linear;
         }
 
-        public TextView getSqine_text_item() {
-            return sqine_text_item;
+        public TextView getVedios_examination_linear() {
+            return vedios_examination_linear;
         }
 
-        public void setSqine_text_item(TextView sqine_text_item) {
-            this.sqine_text_item = sqine_text_item;
-        }
-
-        public TextView getPelvis_text_item() {
-            return pelvis_text_item;
-        }
-
-        public void setPelvis_text_item(TextView pelvis_text_item) {
-            this.pelvis_text_item = pelvis_text_item;
-        }
-
-        public TextView getAnke_text_item() {
-            return anke_text_item;
-        }
-
-        public void setAnke_text_item(TextView anke_text_item) {
-            this.anke_text_item = anke_text_item;
-        }
-
-        public TextView getElbow_text_item() {
-            return elbow_text_item;
-        }
-
-        public void setElbow_text_item(TextView elbow_text_item) {
-            this.elbow_text_item = elbow_text_item;
-        }
-
-        public TextView getWrist_text_item() {
-            return wrist_text_item;
-        }
-
-        public void setWrist_text_item(TextView wrist_text_item) {
-            this.wrist_text_item = wrist_text_item;
+        public void setVedios_examination_linear(TextView vedios_examination_linear) {
+            this.vedios_examination_linear = vedios_examination_linear;
         }
     }
 
@@ -146,50 +115,21 @@ private static Context context;
     {
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
-            if(DataSet.get(position).getTrauma())
-            {
-                holder.getTrauma_text_item().setText("Trauma");
-                holder.getTrauma_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
+            holder.getStatus_ex_text_item().setText(DataSet.get(position).getStatusName());
+            holder.getInfo_ex_text_item().setText(DataSet.get(position).getInfo());
+           /* for(int i=0;i<DataSet.get(position).getImages().size();i++) {
+                //ExaminationItem item = DataSet.get(position);
+                ImageView imageViewPoster = holder.iv_image;
+               // String imagePoster=""+item.getPoster_path();
+                String imagePoster=""+"";
+                Picasso.with(context).load(imagePoster).resize(600,900).into(imageViewPoster);
+              //  ImageView imageView = new ImageView(holder.images_examination_linear.getContext());
+                holder.images_examination_linear.addView(imageViewPoster);
+               // holder.getImages_examination_linear().addView(DataSet.get(position).getImages().get(i)., 0, 0);
             }
-            if(DataSet.get(position).getKnee())
-            {
-                holder.getKnee_text_item().setText("Knee");
-                holder.getKnee_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).getShoulder())
-            {
-                holder.getShoulder_text_item().setText("Shoulder");
-                holder.getShoulder_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).getSqine())
-            {
-                holder.getSqine_text_item().setText("sQine");
-                holder.getSqine_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).getPelvis())
-            {
-                holder.getPelvis_text_item().setText("Pelvis");
-                holder.getPelvis_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).getAnkefoot())
-            {
-                holder.getAnke_text_item().setText("Ankefoot");
-                holder.getAnke_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).getElbow())
-            {
-                holder.getElbow_text_item().setText("Elbow");
-                holder.getElbow_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).getWrist())
-            {
-                holder.getWrist_text_item().setText("Wrist");
-                holder.getWrist_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-
-
-
-
+            for(int i=0;i<DataSet.get(position).getVideos().size();i++) {
+               // holder.getImages_examination_linear().addView(DataSet.get(position).getImages().get(i)., 0, 0);
+            }*/
         }
     }
 
@@ -198,7 +138,7 @@ private static Context context;
         return DataSet.size();
     }
 
-    public void filterList(List<ExaminationItem> filterdNames) {
+    public void filterList(List<PersonalItem> filterdNames) {
         this.DataSet = filterdNames;
         notifyDataSetChanged();
     }

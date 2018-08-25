@@ -6,11 +6,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientProfile;
+import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,11 +30,11 @@ import static android.content.ContentValues.TAG;
 
 public class PatientProfileHistoryAdapter extends RecyclerView.Adapter<PatientProfileHistoryAdapter.ViewHolder> {
 
-private List<HistoryItem> DataSet;
+private List<PersonalItem> DataSet;
 private static Context context;
 
 
-    public PatientProfileHistoryAdapter(Context cont, List<HistoryItem> dataSet)
+    public PatientProfileHistoryAdapter(Context cont, List<PersonalItem> dataSet)
     {
         context=cont;
         DataSet = dataSet;
@@ -38,11 +43,12 @@ private static Context context;
 
     public  class ViewHolder extends RecyclerView.ViewHolder
     {
-        @BindView(R.id.ch_text_item)TextView ch_text_item;
-        @BindView(R.id.gastritis_text_item)TextView gastritis_text_item;
-        @BindView(R.id.smoking_text_item)TextView smoking_text_item;
-        @BindView(R.id.pregnacy_text_item)TextView pregnacy_text_item;
-        @BindView(R.id.lactation_text_item)TextView lactation_text_item;
+        @BindView(R.id.status_history_text_item)TextView status_history_text_item;
+        @BindView(R.id.info_history_text_item)TextView info_history_text_item;
+        @BindView(R.id.images_history_linear)LinearLayout images_history_linear;
+        @BindView(R.id.vedios_history_linear)TextView vedios_history_linear;
+       // @BindView(R.id.iv_image)ImageView iv_image;
+       // @BindView(R.id.iv_video)VideoView iv_video;
 
 
         public ViewHolder(View v)
@@ -62,45 +68,53 @@ private static Context context;
 
         }
 
-        public TextView getCh_text_item() {
-            return ch_text_item;
+        public TextView getStatus_history_text_item() {
+            return status_history_text_item;
         }
 
-        public void setCh_text_item(TextView ch_text_item) {
-            this.ch_text_item = ch_text_item;
+        public void setStatus_history_text_item(TextView status_history_text_item) {
+            this.status_history_text_item = status_history_text_item;
         }
 
-        public TextView getGastritis_text_item() {
-            return gastritis_text_item;
+        public TextView getInfo_history_text_item() {
+            return info_history_text_item;
         }
 
-        public void setGastritis_text_item(TextView gastritis_text_item) {
-            this.gastritis_text_item = gastritis_text_item;
+        public void setInfo_history_text_item(TextView info_history_text_item) {
+            this.info_history_text_item = info_history_text_item;
         }
 
-        public TextView getSmoking_text_item() {
-            return smoking_text_item;
+        public LinearLayout getImages_history_linear() {
+            return images_history_linear;
         }
 
-        public void setSmoking_text_item(TextView smoking_text_item) {
-            this.smoking_text_item = smoking_text_item;
+        public void setImages_history_linear(LinearLayout images_history_linear) {
+            this.images_history_linear = images_history_linear;
         }
 
-        public TextView getPregnacy_text_item() {
-            return pregnacy_text_item;
+        public TextView getVedios_history_linear() {
+            return vedios_history_linear;
         }
 
-        public void setPregnacy_text_item(TextView pregnacy_text_item) {
-            this.pregnacy_text_item = pregnacy_text_item;
+        public void setVedios_history_linear(TextView vedios_history_linear) {
+            this.vedios_history_linear = vedios_history_linear;
         }
 
-        public TextView getLactation_text_item() {
-            return lactation_text_item;
+   /*     public ImageView getIv_image() {
+            return iv_image;
         }
 
-        public void setLactation_text_item(TextView lactation_text_item) {
-            this.lactation_text_item = lactation_text_item;
+        public void setIv_image(ImageView iv_image) {
+            this.iv_image = iv_image;
         }
+
+        public VideoView getIv_video() {
+            return iv_video;
+        }
+
+        public void setIv_video(VideoView iv_video) {
+            this.iv_video = iv_video;
+        }*/
     }
 
     @Override
@@ -118,32 +132,8 @@ private static Context context;
     {
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
-            if(DataSet.get(position).isCh())
-            {
-                holder.getCh_text_item().setText("CH");
-                holder.getCh_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).isGastritis())
-            {
-                holder.getGastritis_text_item().setText("Gastritis");
-                holder.getGastritis_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).isSmoking())
-            {
-                holder.getSmoking_text_item().setText("Smoking");
-                holder.getSmoking_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).isPregnecy())
-            {
-                holder.getPregnacy_text_item().setText("Pregnacy.");
-                holder.getPregnacy_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-            if(DataSet.get(position).isLactation())
-            {
-                holder.getLactation_text_item().setText("Lactation");
-                holder.getLactation_text_item().setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-
+            holder.getStatus_history_text_item().setText(DataSet.get(position).getStatusName());
+            holder.getInfo_history_text_item().setText(DataSet.get(position).getInfo());
 
 
         }
@@ -154,7 +144,7 @@ private static Context context;
         return DataSet.size();
     }
 
-    public void filterList(List<HistoryItem> filterdNames) {
+    public void filterList(List<PersonalItem> filterdNames) {
         this.DataSet = filterdNames;
         notifyDataSetChanged();
     }

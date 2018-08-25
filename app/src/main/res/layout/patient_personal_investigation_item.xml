@@ -6,178 +6,50 @@
     android:layout_height="wrap_content">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:id="@+id/status_invest_text_item"
+            android:text="Test "
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:id="@+id/info_invest_text_item"
+            android:text="test test"
+            android:textColor="@color/colorGray"
+            android:textSize="15sp" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="15dp"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:id="@+id/images_invest_linear"
+            android:orientation="horizontal">
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/chemistry_text_item"
-                        android:text="Chemistry "
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorGray" />
-
-
-                <TextView
-                        android:id="@+id/cls_text_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="C.L.S"
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorGray" />
-
-
-                    <TextView
-                        android:id="@+id/cutology_text_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="Cytology"
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/xray_text_item"
-                        android:text="X-Ray "
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorGray" />
-
-
-                <TextView
-                        android:id="@+id/scanogram_text_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
-                        android:layout_margin="3dp"
-                        android:gravity="center"
-                        android:text="Scanogram"
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorGray" />
-
-
-
-                    <TextView
-                        android:id="@+id/ct_text_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="C.T"
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/mri_text_item"
-                        android:layout_marginRight="5dp"
-                        android:text="M.R.I "
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorGray" />
-
-
-                <TextView
-                        android:id="@+id/dexa_text_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="DEXA"
-                        android:textColor="@color/colorGray"
-                        android:textSize="15sp" />
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorGray" />
-
-
-                <TextView
-                    android:id="@+id/bone_text_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Bone Scan"
-                    android:textColor="@color/colorGray"
-                    android:textSize="15sp" />
-
-
-            </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/vedios_invest_linear"
+            android:orientation="horizontal">
 
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
