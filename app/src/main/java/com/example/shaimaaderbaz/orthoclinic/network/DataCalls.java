@@ -3,6 +3,7 @@ package com.example.shaimaaderbaz.orthoclinic.network;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +49,8 @@ public class DataCalls {
         call.enqueue(new Callback<PatientItem>() {
             @Override
             public void onResponse(Call<PatientItem> call, Response<PatientItem> response) {
-                if(response.isSuccessful())
-                {
-                    
+                if (response.isSuccessful()) {
+
                 }
 
             }
@@ -58,6 +58,19 @@ public class DataCalls {
             @Override
             public void onFailure(Call<PatientItem> call, Throwable t) {
 
+            }
+        });
+    }
+    public void getAllData(final AllDataCall presenterCallback) {
+        orthoAPI.getAllData().enqueue(new Callback<RetrofitModels.AllDataResponse>() {
+            @Override
+            public void onResponse(Call<RetrofitModels.AllDataResponse> call, Response<RetrofitModels.AllDataResponse> response) {
+                presenterCallback.success(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RetrofitModels.AllDataResponse> call, Throwable t) {
+                presenterCallback.error(t.getMessage());
             }
         });
     }

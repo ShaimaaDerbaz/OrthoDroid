@@ -1,5 +1,6 @@
 package com.example.shaimaaderbaz.orthoclinic.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -37,6 +38,11 @@ public class PatientsListActivity extends AppCompatActivity
     ArrayList<PatientItem> allPatients;
     PatientItemsAdapter patientItemsAdapter;
     PatientListPresenterImp presenter ;
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, PatientsListActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
