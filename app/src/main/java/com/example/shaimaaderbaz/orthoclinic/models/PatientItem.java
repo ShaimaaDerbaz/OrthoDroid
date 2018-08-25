@@ -1,26 +1,51 @@
 package com.example.shaimaaderbaz.orthoclinic.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Shaimaa Derbaz on 8/6/2018.
  */
 
 public class PatientItem {
-    String patientName ,id,occup,info,lastdate;
-    Integer age ,weight;
+    @SerializedName("id")
+    @Expose
+    String id ;
+    @SerializedName("name")
+    @Expose
+    String patientName ;
+    @SerializedName("occupation")
+    @Expose
+    String occup ;
+    @SerializedName("additional_info")
+    @Expose
+    String info;
+    @SerializedName("created_at")
+    @Expose
+    String created_date;
+    @SerializedName("updated_at")
+    @Expose
+    String updated_date;
+    @SerializedName("age")
+    @Expose
+    Integer age ;
+    @SerializedName("weight")
+    @Expose
+    Integer weight;
 
 
     public PatientItem() {
 
     }
 
-    public PatientItem(String patientName, String id, String occup, String info, Integer age, Integer weight,String lastdate) {
+    public PatientItem(String patientName, String id, String occup, String info, Integer age, Integer weight,String created_date) {
         this.patientName = patientName;
         this.id = id;
         this.occup = occup;
         this.info = info;
         this.age = age;
         this.weight = weight;
-        this.lastdate=lastdate;
+        this.created_date =created_date;
     }
 
     public String getPatientName() {
@@ -71,11 +96,19 @@ public class PatientItem {
         this.weight = weight;
     }
 
-    public String getLastdate() {
-        return lastdate;
+    public String getCreatedDate() {
+        return created_date;
     }
 
-    public void setLastdate(String lastdate) {
-        this.lastdate = lastdate;
+    public void setCreatedDate(String created_date) {
+        this.created_date = created_date;
+    }
+
+    public String getUpdated_date() {
+        return updated_date;
+    }
+
+    public void setUpdated_date(String updated_date) {
+        this.updated_date = updated_date;
     }
 }

@@ -17,20 +17,26 @@ import android.view.MenuItem;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientItemsAdapter;
+import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
+import com.example.shaimaaderbaz.orthoclinic.presenter.PatientListPresenter;
+import com.example.shaimaaderbaz.orthoclinic.presenter.PatientListPresenterImp;
+import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PatientsListActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener ,PatientListView{
     @BindView(R.id.recyclerViewItemPatient)
     RecyclerView patientsRecyclerview;
 
     ArrayList<PatientItem> allPatients;
     PatientItemsAdapter patientItemsAdapter;
+    PatientListPresenterImp presenter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +54,13 @@ public class PatientsListActivity extends AppCompatActivity
             }
         });
         ButterKnife.bind(this);
-        allPatients = new ArrayList<>();
+        presenter.retreivePatientsFromServer();
+        /*allPatients = new ArrayList<>();
         PatientItem patient =new PatientItem() ;
         patient.setPatientName("pateint test");
         patient.setId("00000");
         patient.setAge(18);
-        patient.setLastdate("7/8/2018");
+        patient.setCreatedDate("7/8/2018");
         patient.setOccup("Test");
         patient.setInfo("Test Info");
 
@@ -63,7 +70,7 @@ public class PatientsListActivity extends AppCompatActivity
         }
         patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         patientItemsAdapter = new PatientItemsAdapter(this,allPatients);
-        patientsRecyclerview.setAdapter(patientItemsAdapter);
+        patientsRecyclerview.setAdapter(patientItemsAdapter);*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -128,5 +135,13 @@ public class PatientsListActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void showPatients(List<PatientItem> allPatientData)
+    {
+        patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        patientItemsAdapter = new PatientItemsAdapter(this,allPatientData);
+        patientsRecyclerview.setAdapter(patientItemsAdapter);
     }
 }

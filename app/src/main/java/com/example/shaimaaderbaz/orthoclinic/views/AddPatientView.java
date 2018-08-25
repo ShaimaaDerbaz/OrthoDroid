@@ -8,8 +8,6 @@ import android.content.Context;
 
 public interface AddPatientView {
 
-
-
     void setPatientCreateSucessfull(Context context);
     void setPatientCreateFailure(Context context);
 
