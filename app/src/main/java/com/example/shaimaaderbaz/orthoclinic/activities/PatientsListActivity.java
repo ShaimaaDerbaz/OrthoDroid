@@ -54,6 +54,7 @@ public class PatientsListActivity extends AppCompatActivity
             }
         });
         ButterKnife.bind(this);
+        presenter = new PatientListPresenterImp(this);
         presenter.retreivePatientsFromServer();
         /*allPatients = new ArrayList<>();
         PatientItem patient =new PatientItem() ;
