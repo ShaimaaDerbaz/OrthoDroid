@@ -73,7 +73,7 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
                     patientItem.setWeight(i);
                 }
                 patientItem.setInfo(patientInfo);
-                if(patientId !=null &&!patientName.isEmpty() &&patientAge !=null)
+                if(!patientName.isEmpty() &&patientAge !=null)
                 {
                     presenter.addPatientToServer(patientItem);
                     presenter.onPatientCreateSucessfull(context);

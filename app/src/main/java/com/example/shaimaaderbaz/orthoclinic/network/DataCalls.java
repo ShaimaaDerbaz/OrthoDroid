@@ -40,4 +40,25 @@ public class DataCalls {
             }
         });
     }
+
+    public void addpatient( final PatientItem patientItem) {
+
+        Call<PatientItem> call = orthoAPI.savePatient(patientItem);
+
+        call.enqueue(new Callback<PatientItem>() {
+            @Override
+            public void onResponse(Call<PatientItem> call, Response<PatientItem> response) {
+                if(response.isSuccessful())
+                {
+                    
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PatientItem> call, Throwable t) {
+
+            }
+        });
+    }
 }

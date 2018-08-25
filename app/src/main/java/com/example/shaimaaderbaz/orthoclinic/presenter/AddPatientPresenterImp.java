@@ -1,8 +1,10 @@
 package com.example.shaimaaderbaz.orthoclinic.presenter;
 
 import android.content.Context;
+import android.content.pm.LauncherApps;
 
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
+import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
 
 /**
@@ -20,9 +22,8 @@ public class AddPatientPresenterImp implements AddPatientPresenter ,AddPatientIn
     @Override
     public void addPatientToServer(PatientItem patientItem)
     {
-        String patientId;String patientName;String patientAge;String occupation;String patientWeight;String patientInfo;
-        //Save user to database on Server
-
+        DataCalls dataCalls =new DataCalls();
+        dataCalls.addpatient(patientItem);
     }
     //implement from AddPatientInteractor
     @Override
