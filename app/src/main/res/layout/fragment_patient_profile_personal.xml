@@ -21,7 +21,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="Name : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_personal_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorGray"
+                android:text="test"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +40,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="ID : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/id_personal_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorGray"
+                android:text="test"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +59,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="Age : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/age_personal_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorGray"
+                android:text="test"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +78,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="Occupation : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/occup_personal_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorGray"
+                android:text="test"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,15 +97,62 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="Weight : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight_personal_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorGray"
+                android:text="test"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="Info : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/info_personal_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorGray"
+                android:text="test"/>
 
-
+        </LinearLayout>
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@color/colorGray" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History : "
+                android:textSize="32sp"
+                android:textColor="@color/colorAccent"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItemHistory"
                 android:scrollbars="vertical"
@@ -77,6 +164,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Examinations : "
+                android:textSize="32sp"
+                android:textColor="@color/colorAccent"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItemExamination"
                 android:scrollbars="vertical"
@@ -91,8 +184,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History : "
-                android:textColor="@color/colorPrimaryDark"/>
+                android:text="Investigation : "
+                android:textSize="32sp"
+                android:textColor="@color/colorAccent"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItemInvestigation"
                 android:scrollbars="vertical"
@@ -107,8 +201,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Examination : "
-                android:textColor="@color/colorPrimaryDark"/>
+                android:text="Operations "
+                android:textSize="32sp"
+                android:textColor="@color/colorAccent"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItemOperations"
                 android:scrollbars="vertical"
@@ -116,6 +211,8 @@
                 android:layout_height="wrap_content"/>
 
            </LinearLayout>
+    </LinearLayout>
+</ScrollView>
 
         </LinearLayout>
 
