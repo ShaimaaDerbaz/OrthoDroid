@@ -45,8 +45,8 @@ private static Context context;
     {
         @BindView(R.id.status_ex_text_item)TextView status_ex_text_item;
         @BindView(R.id.info_ex_text_item)TextView info_ex_text_item;
-        @BindView(R.id.images_examination_linear)LinearLayout images_examination_linear;
-        @BindView(R.id.vedios_examination_linear)TextView vedios_examination_linear;
+        //@BindView(R.id.images_examination_linear)LinearLayout images_examination_linear;
+        //@BindView(R.id.vedios_examination_linear)TextView vedios_examination_linear;
       //  @BindView(R.id.iv_image)ImageView iv_image;
       //  @BindView(R.id.iv_video)VideoView iv_video;
 
@@ -83,7 +83,7 @@ private static Context context;
             this.info_ex_text_item = info_ex_text_item;
         }
 
-        public LinearLayout getImages_examination_linear() {
+      /*  public LinearLayout getImages_examination_linear() {
             return images_examination_linear;
         }
 
@@ -97,7 +97,7 @@ private static Context context;
 
         public void setVedios_examination_linear(TextView vedios_examination_linear) {
             this.vedios_examination_linear = vedios_examination_linear;
-        }
+        }*/
     }
 
     @Override

@@ -45,8 +45,8 @@ private static Context context;
     {
         @BindView(R.id.status_history_text_item)TextView status_history_text_item;
         @BindView(R.id.info_history_text_item)TextView info_history_text_item;
-        @BindView(R.id.images_history_linear)LinearLayout images_history_linear;
-        @BindView(R.id.vedios_history_linear)TextView vedios_history_linear;
+        //@BindView(R.id.images_history_linear)LinearLayout images_history_linear;
+        //@BindView(R.id.vedios_history_linear)TextView vedios_history_linear;
        // @BindView(R.id.iv_image)ImageView iv_image;
        // @BindView(R.id.iv_video)VideoView iv_video;
 
@@ -84,12 +84,12 @@ private static Context context;
             this.info_history_text_item = info_history_text_item;
         }
 
-        public LinearLayout getImages_history_linear() {
+       /*    public LinearLayout getImages_history_linear() {
             return images_history_linear;
         }
 
         public void setImages_history_linear(LinearLayout images_history_linear) {
-            this.images_history_linear = images_history_linear;
+           this.images_history_linear = images_history_linear;
         }
 
         public TextView getVedios_history_linear() {
@@ -100,7 +100,7 @@ private static Context context;
             this.vedios_history_linear = vedios_history_linear;
         }
 
-   /*     public ImageView getIv_image() {
+      public ImageView getIv_image() {
             return iv_image;
         }
 

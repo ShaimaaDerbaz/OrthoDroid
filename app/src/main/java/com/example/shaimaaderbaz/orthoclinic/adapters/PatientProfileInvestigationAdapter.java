@@ -44,10 +44,10 @@ private static Context context;
     {
         @BindView(R.id.status_invest_text_item)TextView status_invest_text_item;
         @BindView(R.id.info_invest_text_item)TextView info_invest_text_item;
-        @BindView(R.id.images_invest_linear)LinearLayout images_invest_linear;
-        @BindView(R.id.vedios_invest_linear)TextView vedios_invest_linear;
-        @BindView(R.id.iv_image)ImageView iv_image;
-        @BindView(R.id.iv_video)VideoView iv_video;
+       // @BindView(R.id.images_invest_linear)LinearLayout images_invest_linear;
+        //@BindView(R.id.vedios_invest_linear)TextView vedios_invest_linear;
+       // @BindView(R.id.iv_image)ImageView iv_image;
+       // @BindView(R.id.iv_video)VideoView iv_video;
         public ViewHolder(View v)
         {
 
@@ -81,7 +81,7 @@ private static Context context;
             this.info_invest_text_item = info_invest_text_item;
         }
 
-        public LinearLayout getImages_invest_linear() {
+        /*public LinearLayout getImages_invest_linear() {
             return images_invest_linear;
         }
 
@@ -111,7 +111,7 @@ private static Context context;
 
         public void setIv_video(VideoView iv_video) {
             this.iv_video = iv_video;
-        }
+        }*/
     }
 
     @Override
