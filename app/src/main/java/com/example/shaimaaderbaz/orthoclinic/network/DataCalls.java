@@ -1,6 +1,7 @@
 package com.example.shaimaaderbaz.orthoclinic.network;
 
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
+import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
@@ -70,6 +71,25 @@ public class DataCalls {
 
             @Override
             public void onFailure(Call<RetrofitModels.AllDataResponse> call, Throwable t) {
+                presenterCallback.error(t.getMessage());
+            }
+        });
+    }
+
+    public void getAllpatientInfo(final AllPatientsInfoCall presenterCallback , final int patient_id) {
+
+        Call<AllPatientInfoData> call = orthoAPI.getAllPatientInfo(patient_id);
+
+        call.enqueue(new Callback<AllPatientInfoData>() {
+            @Override
+            public void onResponse(Call<AllPatientInfoData> call, Response<AllPatientInfoData> response) {
+                AllPatientInfoData allPatientInfoData = response.body();
+                presenterCallback.success(allPatientInfoData,patient_id);
+
+            }
+
+            @Override
+            public void onFailure(Call<AllPatientInfoData> call, Throwable t) {
                 presenterCallback.error(t.getMessage());
             }
         });

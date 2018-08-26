@@ -6,7 +6,7 @@ package com.example.shaimaaderbaz.orthoclinic.network;
 
 public class Utils {
 
-    public static final String BASE_URL = "http://117950e6.ngrok.io/";
+    public static final String BASE_URL = "http://a91d7417.ngrok.io/";
 
     public static OrthoAPI getOrthoAPI() {
         return RetrofitClient.getClient(BASE_URL).create(OrthoAPI.class);

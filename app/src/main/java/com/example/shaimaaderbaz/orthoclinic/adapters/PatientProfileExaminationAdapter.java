@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
@@ -30,11 +31,11 @@ import static android.content.ContentValues.TAG;
 
 public class PatientProfileExaminationAdapter extends RecyclerView.Adapter<PatientProfileExaminationAdapter.ViewHolder> {
 
-private List<PersonalItem> DataSet;
+private List<ComplainItem> DataSet;
 private static Context context;
 
 
-    public PatientProfileExaminationAdapter(Context cont, List<PersonalItem> dataSet)
+    public PatientProfileExaminationAdapter(Context cont, List<ComplainItem> dataSet)
     {
         context=cont;
         DataSet = dataSet;
@@ -115,7 +116,7 @@ private static Context context;
     {
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
-            holder.getStatus_ex_text_item().setText(DataSet.get(position).getStatusName());
+            holder.getStatus_ex_text_item().setText(DataSet.get(position).getName());
             holder.getInfo_ex_text_item().setText(DataSet.get(position).getInfo());
            /* for(int i=0;i<DataSet.get(position).getImages().size();i++) {
                 //ExaminationItem item = DataSet.get(position);
@@ -138,7 +139,7 @@ private static Context context;
         return DataSet.size();
     }
 
-    public void filterList(List<PersonalItem> filterdNames) {
+    public void filterList(List<ComplainItem> filterdNames) {
         this.DataSet = filterdNames;
         notifyDataSetChanged();
     }

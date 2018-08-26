@@ -16,7 +16,10 @@ import android.view.ViewGroup;
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
+import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.example.shaimaaderbaz.orthoclinic.presenter.PatientPersonalPresenterImp;
+import com.example.shaimaaderbaz.orthoclinic.views.PatientPersonalView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,7 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public  class PersonalFragment extends Fragment {
+public  class PersonalFragment extends Fragment implements PatientPersonalView{
 
     private static final String TAG = "personal_tab_fragment";
 
@@ -36,12 +39,11 @@ public  class PersonalFragment extends Fragment {
     @BindView(R.id.recyclerViewItemExamination)
     RecyclerView examinationRecyclerview;
 
-
-
     List<PersonalItem> allHistory;
     List<PersonalItem> allExaminations;
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
     PatientProfileExaminationAdapter patientProfileExaminationAdapter;
+    PatientPersonalPresenterImp presenter =new PatientPersonalPresenterImp(this);
 
 
     public PersonalFragment() {
@@ -71,6 +73,8 @@ public  class PersonalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_personal, container, false);
+        presenter =new PatientPersonalPresenterImp(this);
+        presenter.retreivePatientInfoFromServer(mPatientId);
         ButterKnife.bind(this,view);
         allHistory = new ArrayList<>();
         PersonalItem historyItem =new PersonalItem() ;
@@ -93,12 +97,19 @@ public  class PersonalFragment extends Fragment {
         historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allHistory);
         historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
-        examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allExaminations);
-        examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
-        //TextView textView = (TextView) view.findViewById(R.id.text_personal);
-        //textView.setText(getString(R.string.section_format, getArguments().getInt(PATIENT_KEY)));
-       // textView.setText("Text personal");
+        //examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        //patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allExaminations);
+        //examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
         return view;
+    }
+    @Override
+    public void showPatientInfo(AllPatientInfoData allPatientInfoData ,int patient_id)
+    {
+        //historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        //patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allHistory);
+        //historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
+        examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains());
+        examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
     }
 }
