@@ -100,7 +100,7 @@ public class InvestigationFragment extends Fragment implements InvestigationView
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_invistigation, container, false);
-        presenter = new InvestigationPresenterImp(this);
+        presenter = new InvestigationPresenterImp(this,this.getContext());
         context=getContext();
         ButterKnife.bind(this,view);
         btnAddInv.setOnClickListener(new View.OnClickListener()
@@ -119,32 +119,23 @@ public class InvestigationFragment extends Fragment implements InvestigationView
                 Boolean dexa=dexa_check.isChecked();
                 Boolean bone=bone_check.isChecked();
 
-                Info chemistryInfo=new Info();
-                chemistryInfo.setInfo1(chemisty_text1.getText().toString());
+                String chemistryInfo=chemisty_text1.getText().toString();
 
-                Info clsInfo=new Info();
-                clsInfo.setInfo1(cls_text1.getText().toString());
+                String clsInfo=cls_text1.getText().toString();
 
-                Info cytologyInfo=new Info();
-                cytologyInfo.setInfo1(cytology_text1.getText().toString());
+                String cytologyInfo=cytology_text1.getText().toString();
 
-                Info xrayInfo=new Info();
-                xrayInfo.setInfo1(xray_text1.getText().toString());
+                String xrayInfo=xray_text1.getText().toString();
 
-                Info scanogramInfo=new Info();
-                scanogramInfo.setInfo1(scanogram_text1.getText().toString());
+                String scanogramInfo=scanogram_text1.getText().toString();
 
-                Info ctInfo=new Info();
-                ctInfo.setInfo1(ct_text1.getText().toString());
+                String ctInfo=ct_text1.getText().toString();
 
-                Info mriInfo=new Info();
-                mriInfo.setInfo1(mri_text1.getText().toString());
+                String mriInfo=mri_text1.getText().toString();
 
-                Info dexaInfo=new Info();
-                dexaInfo.setInfo1(dexa_text1.getText().toString());
+                String dexaInfo=dexa_text1.getText().toString();
 
-                Info boneInfo=new Info();
-                boneInfo.setInfo1(bone_text1.getText().toString());
+                String boneInfo=bone_text1.getText().toString();
 
                 investigationItem.setChemistry(chemistry);
                 investigationItem.setChemistryInfo(chemistryInfo);
@@ -165,7 +156,7 @@ public class InvestigationFragment extends Fragment implements InvestigationView
                 investigationItem.setBonescan(bone);
                 investigationItem.setBonescanInfo(boneInfo);
 
-                presenter.addInvestigationToServer(investigationItem);
+                presenter.addInvestigationToServer(investigationItem,mPatientId);
                 presenter.onInvestigationCreateSucessfull(context);
             }
         });

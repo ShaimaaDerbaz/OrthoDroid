@@ -135,7 +135,7 @@ public class PatientItemsAdapter extends RecyclerView.Adapter<PatientItemsAdapte
             holder.getPatientId().setText(DataSet.get(position).getId());
             holder.getAge().setText(DataSet.get(position).getAge()+"");
             holder.getInfo().setText(DataSet.get(position).getInfo());
-            holder.getDate().setText(DataSet.get(position).getCreatedDate());
+            holder.getDate().setText(DataSet.get(position).getCreatedDate().substring(0,10));
 
 
         }

@@ -134,4 +134,38 @@ public class DataCalls {
         });
 
     }
+
+    public void addLab(List<RetrofitModels.Lab> labs, int patientId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.addLab(new RetrofitModels.AddLabRequest(labs, patientId)).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                baseResponseCall.success();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+
+            }
+        });
+
+    }
+
+    public void addRadiation(List<RetrofitModels.Radiation> radiations, int patientId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.addRadiation(new RetrofitModels.AddRadiationRequest(radiations, patientId)).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                baseResponseCall.success();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+
+            }
+        });
+
+    }
 }

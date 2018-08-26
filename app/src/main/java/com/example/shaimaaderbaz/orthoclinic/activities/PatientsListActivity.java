@@ -63,22 +63,6 @@ public class PatientsListActivity extends AppCompatActivity
         ButterKnife.bind(this);
         presenter = new PatientListPresenterImp(this);
         presenter.retreivePatientsFromServer();
-        /*allPatients = new ArrayList<>();
-        PatientItem patient =new PatientItem() ;
-        patient.setPatientName("pateint test");
-        patient.setId("00000");
-        patient.setAge(18);
-        patient.setCreatedDate("7/8/2018");
-        patient.setOccup("Test");
-        patient.setInfo("Test Info");
-
-        for (int i=0;i<10;i++)
-        {
-            allPatients.add(patient) ;
-        }
-        patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        patientItemsAdapter = new PatientItemsAdapter(this,allPatients);
-        patientsRecyclerview.setAdapter(patientItemsAdapter);*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

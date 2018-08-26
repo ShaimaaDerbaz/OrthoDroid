@@ -6,7 +6,8 @@ package com.example.shaimaaderbaz.orthoclinic.models;
 
 public class InvestigationItem {
     Boolean chemistry,cls,cytology,xray,scanogram,ct,mri,dexa,bonescan;
-    Info chemistryInfo,clsInfo,cytologyInfo,xrayInfo,scanogramInfo,ctInfo,mriInfo,dexaInfo,bonescanInfo;
+    String chemistryInfo,clsInfo,cytologyInfo,xrayInfo,scanogramInfo,ctInfo,mriInfo,dexaInfo,bonescanInfo;
+
 
     public InvestigationItem() {
     }
@@ -21,15 +22,7 @@ public class InvestigationItem {
         this.mri = mri;
         this.dexa = dexa;
         this.bonescan = bonescan;
-        this.chemistryInfo = chemistryInfo;
-        this.clsInfo = clsInfo;
-        this.cytologyInfo = cytologyInfo;
-        this.xrayInfo = xrayInfo;
-        this.scanogramInfo = scanogramInfo;
-        this.ctInfo = ctInfo;
-        this.mriInfo = mriInfo;
-        this.dexaInfo = dexaInfo;
-        this.bonescanInfo = bonescanInfo;
+
     }
 
     public Boolean getChemistry() {
@@ -104,75 +97,75 @@ public class InvestigationItem {
         this.bonescan = bonescan;
     }
 
-    public Info getChemistryInfo() {
+    public String getChemistryInfo() {
         return chemistryInfo;
     }
 
-    public void setChemistryInfo(Info chemistryInfo) {
+    public void setChemistryInfo(String chemistryInfo) {
         this.chemistryInfo = chemistryInfo;
     }
 
-    public Info getClsInfo() {
+    public String getClsInfo() {
         return clsInfo;
     }
 
-    public void setClsInfo(Info clsInfo) {
+    public void setClsInfo(String clsInfo) {
         this.clsInfo = clsInfo;
     }
 
-    public Info getCytologyInfo() {
+    public String getCytologyInfo() {
         return cytologyInfo;
     }
 
-    public void setCytologyInfo(Info cytologyInfo) {
+    public void setCytologyInfo(String cytologyInfo) {
         this.cytologyInfo = cytologyInfo;
     }
 
-    public Info getXrayInfo() {
+    public String getXrayInfo() {
         return xrayInfo;
     }
 
-    public void setXrayInfo(Info xrayInfo) {
+    public void setXrayInfo(String xrayInfo) {
         this.xrayInfo = xrayInfo;
     }
 
-    public Info getScanogramInfo() {
+    public String getScanogramInfo() {
         return scanogramInfo;
     }
 
-    public void setScanogramInfo(Info scanogramInfo) {
+    public void setScanogramInfo(String scanogramInfo) {
         this.scanogramInfo = scanogramInfo;
     }
 
-    public Info getCtInfo() {
+    public String getCtInfo() {
         return ctInfo;
     }
 
-    public void setCtInfo(Info ctInfo) {
+    public void setCtInfo(String ctInfo) {
         this.ctInfo = ctInfo;
     }
 
-    public Info getMriInfo() {
+    public String getMriInfo() {
         return mriInfo;
     }
 
-    public void setMriInfo(Info mriInfo) {
+    public void setMriInfo(String mriInfo) {
         this.mriInfo = mriInfo;
     }
 
-    public Info getDexaInfo() {
+    public String getDexaInfo() {
         return dexaInfo;
     }
 
-    public void setDexaInfo(Info dexaInfo) {
+    public void setDexaInfo(String dexaInfo) {
         this.dexaInfo = dexaInfo;
     }
 
-    public Info getBonescanInfo() {
+    public String getBonescanInfo() {
         return bonescanInfo;
     }
 
-    public void setBonescanInfo(Info bonescanInfo) {
+    public void setBonescanInfo(String bonescanInfo) {
         this.bonescanInfo = bonescanInfo;
     }
 }

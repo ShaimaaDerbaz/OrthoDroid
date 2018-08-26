@@ -75,6 +75,33 @@ public class RetrofitModels {
         }
     }
 
+    public static class AddRadiationRequest extends AddDataBaseRequest {
+        @SerializedName("radiations")
+        private List<Radiation> mRadiation;
+
+        public AddRadiationRequest(List<Radiation> mRadiation,int patientId) {
+            this.mRadiation = mRadiation;
+            this.patientId = patientId;
+        }
+
+        public List<Radiation> getmRadiation() {
+            return mRadiation;
+        }
+    }
+
+    public static class AddLabRequest extends AddDataBaseRequest {
+        @SerializedName("labs")
+        private List<Lab> mLab;
+
+        public AddLabRequest(List<Lab> mLab,int patientId) {
+            this.mLab = mLab;
+            this.patientId = patientId;
+        }
+
+        public List<Lab> getmLab() {
+            return mLab;
+        }
+    }
 
 
     public static class Complain {
@@ -111,12 +138,24 @@ public class RetrofitModels {
         @SerializedName("name")
         private String mName;
 
+        @SerializedName("info")
+        private String mAdditionalInfo;
+
+        public Radiation (int mId, String mAdditionalInfo) {
+            this.mId = mId;
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
+
         public int getId() {
             return mId;
         }
 
         public String getName() {
             return mName;
+        }
+
+        public String getmAdditionalInfo() {
+            return mAdditionalInfo;
         }
     }
 
@@ -127,12 +166,24 @@ public class RetrofitModels {
         @SerializedName("name")
         private String mName;
 
+        @SerializedName("info")
+        private String mAdditionalInfo;
+
+        public Lab (int mId, String mAdditionalInfo) {
+            this.mId = mId;
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
+
         public int getId() {
             return mId;
         }
 
         public String getName() {
             return mName;
+        }
+
+        public String getmAdditionalInfo() {
+            return mAdditionalInfo;
         }
     }
 

@@ -28,6 +28,19 @@
     <string name="elbow">Elbow</string>
     <string name="wrist">Wrist</string>
 
+    <!--Labs Strings-->
+    <string name="chemistry">Chemistry</string>
+    <string name="cls">C.L.S</string>
+    <string name="cytology">Cytology</string>
+
+    <!--Radiations Strings-->
+    <string name="xray">X-Ray</string>
+    <string name="scanogram">Scanogram</string>
+    <string name="ct">C.T</string>
+    <string name="mri">M.R.I</string>
+    <string name="dexa">DEXA</string>
+    <string name="bonescan">Bone Scan</string>
+
 
 
 </resources>
