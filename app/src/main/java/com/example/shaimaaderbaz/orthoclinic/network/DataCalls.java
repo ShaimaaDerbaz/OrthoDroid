@@ -9,6 +9,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +44,7 @@ public class DataCalls {
         });
     }
 
-    public void addpatient( final PatientItem patientItem) {
+    public void addpatient(final PatientItem patientItem) {
 
         Call<PatientItem> call = orthoAPI.savePatient(patientItem);
 
@@ -62,6 +63,7 @@ public class DataCalls {
             }
         });
     }
+
     public void getAllData(final AllDataCall presenterCallback) {
         orthoAPI.getAllData().enqueue(new Callback<RetrofitModels.AllDataResponse>() {
             @Override
@@ -76,7 +78,8 @@ public class DataCalls {
         });
     }
 
-    public void getAllpatientInfo(final AllPatientsInfoCall presenterCallback , final int patient_id) {
+
+    public void getAllpatientInfo(final AllPatientsInfoCall presenterCallback, final int patient_id) {
 
         Call<AllPatientInfoData> call = orthoAPI.getAllPatientInfo(patient_id);
 
@@ -84,15 +87,34 @@ public class DataCalls {
             @Override
             public void onResponse(Call<AllPatientInfoData> call, Response<AllPatientInfoData> response) {
                 AllPatientInfoData allPatientInfoData = response.body();
-                presenterCallback.success(allPatientInfoData,patient_id);
+                presenterCallback.success(allPatientInfoData, patient_id);
 
             }
 
             @Override
             public void onFailure(Call<AllPatientInfoData> call, Throwable t) {
                 presenterCallback.error(t.getMessage());
+
+
             }
         });
+
     }
 
+    public void addMedicalHistory(List<RetrofitModels.MedicalHistory> history, int patientId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.addMedicalHistory(new RetrofitModels.AddMedicalHistoryRequest(history, patientId)).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                baseResponseCall.success();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+
+            }
+        });
+
+    }
 }

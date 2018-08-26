@@ -4,10 +4,14 @@ import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
+
+import java.util.List;
+
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -27,7 +31,12 @@ public interface OrthoAPI {
     @GET("/api/data")
     Call<RetrofitModels.AllDataResponse> getAllData();
 
+
     @GET("/api/patients/{patient_id}")
     Call<AllPatientInfoData> getAllPatientInfo(@Path("patient_id") long patient_id);
+
+    @POST("/api/medical-history")
+    Call<ResponseBody> addMedicalHistory(@Body RetrofitModels.AddMedicalHistoryRequest medicalHistoryRequest);
+
 
 }

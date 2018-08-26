@@ -94,9 +94,9 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         {
             allExaminations.add(examinationItem) ;
         }
-        historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allHistory);
-        historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
+        //historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        //patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allHistory);
+        //historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
         //examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         //patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allExaminations);
         //examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
@@ -105,9 +105,9 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
     @Override
     public void showPatientInfo(AllPatientInfoData allPatientInfoData ,int patient_id)
     {
-        //historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        //patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allHistory);
-        //historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
+        historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allPatientInfoData.getMedical_history());
+        historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
         examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains());
         examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);

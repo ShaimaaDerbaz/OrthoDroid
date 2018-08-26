@@ -3,10 +3,11 @@ package com.example.shaimaaderbaz.orthoclinic.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RetrofitModels {
 
-    public class AllDataResponse {
+    public static class AllDataResponse {
 
         @SerializedName("complains")
         private ArrayList<Complain> mComplains;
@@ -37,7 +38,32 @@ public class RetrofitModels {
         }
     }
 
-    public class Complain {
+    public static class AddDataBaseRequest {
+        @SerializedName("patient_id")
+        protected int patientId;
+
+        public int getPatientId() {
+            return patientId;
+        }
+    }
+
+    public static class AddMedicalHistoryRequest extends AddDataBaseRequest {
+        @SerializedName("medical_history")
+        private List<MedicalHistory> mMedicalHistory;
+
+        public AddMedicalHistoryRequest(List<MedicalHistory> mMedicalHistory,int patientId) {
+            this.mMedicalHistory = mMedicalHistory;
+            this.patientId = patientId;
+        }
+
+        public List<MedicalHistory> getMedicalHistory() {
+            return mMedicalHistory;
+        }
+    }
+
+
+
+    public static class Complain {
         @SerializedName("id")
         private int mId;
 
@@ -53,7 +79,7 @@ public class RetrofitModels {
         }
     }
 
-    public class Radiation {
+    public static class Radiation {
         @SerializedName("id")
         private int mId;
 
@@ -69,7 +95,7 @@ public class RetrofitModels {
         }
     }
 
-    public class Lab {
+    public static class Lab {
         @SerializedName("id")
         private int mId;
 
@@ -85,12 +111,20 @@ public class RetrofitModels {
         }
     }
 
-    public class MedicalHistory {
+    public static class MedicalHistory {
         @SerializedName("id")
         private int mId;
 
-        @SerializedName("name")
+        @SerializedName("state_name")
         private String mName;
+
+        @SerializedName("info")
+        private String mAdditionalInfo;
+
+        public MedicalHistory(int mId, String mAdditionalInfo) {
+            this.mId = mId;
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
 
         public int getId() {
             return mId;
@@ -99,8 +133,11 @@ public class RetrofitModels {
         public String getName() {
             return mName;
         }
-    }
 
+        public String getAdditionalInfo() {
+            return mAdditionalInfo;
+        }
+    }
 
 
 

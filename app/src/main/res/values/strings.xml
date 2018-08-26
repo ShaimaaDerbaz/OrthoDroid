@@ -9,4 +9,14 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="connection_error">Failed to connect, please check your internet connection</string>
     <string name="retry">Retry</string>
+
+    <!--History Strings-->
+    <string name="ch">CH</string>
+    <string name="gastritis">Gastritis</string>
+    <string name="smoking">Smoking</string>
+    <string name="pregnancy">Pregnancy</string>
+    <string name="lactation">Lactation</string>
+    <string name="add_history">Add History</string>
+
+
 </resources>
