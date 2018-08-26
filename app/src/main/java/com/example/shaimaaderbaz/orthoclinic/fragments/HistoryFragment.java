@@ -2,6 +2,7 @@ package com.example.shaimaaderbaz.orthoclinic.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.view.LayoutInflater;
@@ -26,6 +27,8 @@ import butterknife.ButterKnife;
  */
 
 public class HistoryFragment  extends Fragment implements HistoryView {
+    private static final String PATIENT_ID_KEY = "patient_key";
+
     HistoryPresenterImp presenter;
     Context context;
     @BindView(R.id.ch_check)
@@ -50,6 +53,26 @@ public class HistoryFragment  extends Fragment implements HistoryView {
     EditText lactation_text;
     @BindView(R.id.btnAddHistory)
     Button btnAddHistory;
+
+    private int mPatientId;
+    private static final String PATIENT_KEY = "patient_key";
+
+    public static HistoryFragment newInstance(int patientID) {
+        HistoryFragment fragment = new HistoryFragment();
+        Bundle args = new Bundle();
+        args.putInt(PATIENT_KEY, patientID);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments().getInt(PATIENT_KEY,0) != 0)
+            mPatientId = getArguments().getInt(PATIENT_KEY);
+        else
+            throw new RuntimeException("Invalid Patient ID");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

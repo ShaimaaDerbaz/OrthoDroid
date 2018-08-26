@@ -5,20 +5,17 @@ package com.example.shaimaaderbaz.orthoclinic.fragments;
  */
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
-import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
-import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
-import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 
 import java.util.ArrayList;
@@ -31,7 +28,7 @@ import butterknife.ButterKnife;
  * A placeholder fragment containing a simple view.
  */
 public  class PersonalFragment extends Fragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
+
     private static final String TAG = "personal_tab_fragment";
 
     @BindView(R.id.recyclerViewItemHistory)
@@ -39,20 +36,35 @@ public  class PersonalFragment extends Fragment {
     @BindView(R.id.recyclerViewItemExamination)
     RecyclerView examinationRecyclerview;
 
+
+
     List<PersonalItem> allHistory;
     List<PersonalItem> allExaminations;
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
     PatientProfileExaminationAdapter patientProfileExaminationAdapter;
+
+
     public PersonalFragment() {
     }
 
+    private int mPatientId;
+    private static final String PATIENT_KEY = "patient_key";
 
-    public static PersonalFragment newInstance(int sectionNumber) {
+    public static PersonalFragment newInstance(int patientID) {
         PersonalFragment fragment = new PersonalFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putInt(PATIENT_KEY, patientID);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments().getInt(PATIENT_KEY,0) != 0)
+            mPatientId = getArguments().getInt(PATIENT_KEY);
+        else
+            throw new RuntimeException("Invalid Patient ID");
     }
 
     @Override
@@ -85,7 +97,7 @@ public  class PersonalFragment extends Fragment {
         patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allExaminations);
         examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
         //TextView textView = (TextView) view.findViewById(R.id.text_personal);
-        //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+        //textView.setText(getString(R.string.section_format, getArguments().getInt(PATIENT_KEY)));
        // textView.setText("Text personal");
         return view;
     }

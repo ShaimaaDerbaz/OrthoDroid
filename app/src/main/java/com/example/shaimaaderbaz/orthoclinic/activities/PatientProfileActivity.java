@@ -1,5 +1,7 @@
 package com.example.shaimaaderbaz.orthoclinic.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -22,15 +24,29 @@ import com.example.shaimaaderbaz.orthoclinic.fragments.SectionsPageAdapter;
 
 public class PatientProfileActivity extends AppCompatActivity {
 
+    private static final String PATIENT_ID_KEY = "patient_id";
     private SectionsPageAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
+
+    private int mPatientId;
+
+    public static void start(Context context, int patientId) {
+        Intent starter = new Intent(context, PatientProfileActivity.class);
+        starter.putExtra(PATIENT_ID_KEY,patientId);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_profile);
-
+        if (getIntent().getIntExtra(PATIENT_ID_KEY,0) !=0 ) {
+            mPatientId = getIntent().getIntExtra(PATIENT_ID_KEY,0);
+        }
+        else {
+            throw new RuntimeException("INVALID PATIENT ID");
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,11 +86,16 @@ public class PatientProfileActivity extends AppCompatActivity {
     private void setUpViewPager (ViewPager viewPager)
     {
         SectionsPageAdapter adapter =new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PersonalFragment(),"Personal Details");
-        adapter.addFragment(new HistoryFragment(),"History");
-        adapter.addFragment(new ExaminationFragment(),"Complain & Examination");
-        adapter.addFragment(new InvestigationFragment(),"Investigation");
-        adapter.addFragment(new OperationsFragment(),"Operations");
+        adapter.addFragment(PersonalFragment.newInstance(mPatientId),
+                "Personal Details");
+        adapter.addFragment(HistoryFragment.newInstance(mPatientId),
+                "History");
+        adapter.addFragment(ExaminationFragment.newInstance(mPatientId),
+                "Complain & Examination");
+        adapter.addFragment(InvestigationFragment.newInstance(mPatientId),
+                "Investigation");
+        adapter.addFragment(OperationsFragment.newInstance(mPatientId),
+                "Operations");
 
         viewPager.setAdapter(adapter);
     }

@@ -31,7 +31,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PatientsListActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener ,PatientListView{
+        implements NavigationView.OnNavigationItemSelectedListener ,
+        PatientListView,PatientItemsAdapter.PatientsItemsAdapterListener{
     @BindView(R.id.recyclerViewItemPatient)
     RecyclerView patientsRecyclerview;
 
@@ -150,5 +151,10 @@ public class PatientsListActivity extends AppCompatActivity
         patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         patientItemsAdapter = new PatientItemsAdapter(this,allPatientData);
         patientsRecyclerview.setAdapter(patientItemsAdapter);
+    }
+
+    @Override
+    public void onItemClicked(int id) {
+        PatientProfileActivity.start(this,id);
     }
 }

@@ -28,7 +28,7 @@ public class PatientItemsAdapter extends RecyclerView.Adapter<PatientItemsAdapte
     private static Context context;
     private PatientsItemsAdapterListener mPatientAdapterListener;
     public interface PatientsItemsAdapterListener {
-        void onDeleteButtonClicked(int id);
+        void onItemClicked(int id);
 
     }
 
@@ -58,9 +58,12 @@ public class PatientItemsAdapter extends RecyclerView.Adapter<PatientItemsAdapte
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d(TAG, "Element " + getPosition() + " clicked.");
+                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                     if(mPatientAdapterListener != null){
-                        mPatientAdapterListener.onDeleteButtonClicked(getPosition());
+                        PatientItem clickedItem = DataSet.get(getAdapterPosition());
+                        mPatientAdapterListener.onItemClicked(Integer.parseInt(
+                                clickedItem.getId()
+                        ));
                     }
 
                 }

@@ -2,6 +2,7 @@ package com.example.shaimaaderbaz.orthoclinic.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.view.LayoutInflater;
@@ -74,6 +75,26 @@ public class InvestigationFragment extends Fragment implements InvestigationView
 
     @BindView(R.id.btnAddInv)
     Button btnAddInv;
+
+    private int mPatientId;
+    private static final String PATIENT_KEY = "patient_key";
+
+    public static InvestigationFragment newInstance(int patientID) {
+        InvestigationFragment fragment = new InvestigationFragment();
+        Bundle args = new Bundle();
+        args.putInt(PATIENT_KEY, patientID);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments().getInt(PATIENT_KEY,0) != 0)
+            mPatientId = getArguments().getInt(PATIENT_KEY);
+        else
+            throw new RuntimeException("Invalid Patient ID");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
