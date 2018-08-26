@@ -9,9 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
@@ -21,6 +20,7 @@ import com.example.shaimaaderbaz.orthoclinic.views.HistoryView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 
 /**
  * Created by Shaimaa Derbaz on 7/29/2018.
@@ -43,7 +43,7 @@ public class HistoryFragment  extends Fragment implements HistoryView {
     AppCompatCheckBox gastritis_check;
     @BindView(R.id.gastritis_text)
     EditText gastritis_text;
-    @BindView(R.id.pregnacy_check)
+    @BindView(R.id.pregnancy_check)
     AppCompatCheckBox pregnacy_check;
     @BindView(R.id.pregnacy_text)
     EditText pregnacy_text;
@@ -53,6 +53,19 @@ public class HistoryFragment  extends Fragment implements HistoryView {
     EditText lactation_text;
     @BindView(R.id.btnAddHistory)
     Button btnAddHistory;
+    @BindView(R.id.ch_layout)
+    View chView;
+    @BindView(R.id.gastritis_layout)
+    View gastritisView;
+    @BindView(R.id.lactation_layout)
+    View lactationView;
+    @BindView(R.id.smoking_layout)
+    View smokingView;
+    @BindView(R.id.pregnancy_layout)
+    View pregnancyView;
+
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
     private int mPatientId;
     private static final String PATIENT_KEY = "patient_key";
@@ -78,7 +91,8 @@ public class HistoryFragment  extends Fragment implements HistoryView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_history, container, false);
-        presenter = new HistoryPresenterImp(this);
+        presenter = new HistoryPresenterImp(this,
+                this.getContext());
         context=getContext();
         ButterKnife.bind(this,view);
         btnAddHistory.setOnClickListener(new View.OnClickListener()
@@ -107,8 +121,8 @@ public class HistoryFragment  extends Fragment implements HistoryView {
                 historyItem.setSmokingInfo(smokingInfo);
                 historyItem.setPregnecyInfo(pregnacyInfo);
                 historyItem.setLactationInfo(lactationInfo);
-                presenter.addHistoryToServer(historyItem);
-                presenter.onHistoryCreateSucessfull(context);
+                presenter.addHistoryToServer(historyItem,mPatientId);
+                mProgress.setVisibility(View.VISIBLE);
             }
         });
 
@@ -116,8 +130,51 @@ public class HistoryFragment  extends Fragment implements HistoryView {
     }
 
     @Override
-    public void setHistoryCreateSucessfull (Context context)
+    public void setHistoryCreateSucessfull()
     {
-        Toast.makeText(context, "History Added Sucessfully", Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
+        Toast.makeText(getContext(), "History Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
+
+    @OnCheckedChanged(R.id.ch_check)
+    void onChCheckChanged(){
+        if(ch_check.isChecked())
+            chView.setVisibility(View.VISIBLE);
+        else
+            chView.setVisibility(View.GONE);
+    }
+
+    @OnCheckedChanged(R.id.gastritis_check)
+    void onGastCheckChanged(){
+        if(gastritis_check.isChecked())
+            gastritisView.setVisibility(View.VISIBLE);
+        else
+            gastritisView.setVisibility(View.GONE);
+    }
+
+    @OnCheckedChanged(R.id.lactation_check)
+    void onLactationCheckChanged(){
+        if(lactation_check.isChecked())
+            lactationView.setVisibility(View.VISIBLE);
+        else
+            lactationView.setVisibility(View.GONE);
+    }
+
+    @OnCheckedChanged(R.id.pregnancy_check)
+    void onPregnancyCheckChanged(){
+        if(pregnacy_check.isChecked())
+            pregnancyView.setVisibility(View.VISIBLE);
+        else
+            pregnancyView.setVisibility(View.GONE);
+    }
+
+    @OnCheckedChanged(R.id.smoking_check)
+    void onSmokingCheckChanged(){
+        if(smoking_check.isChecked())
+            smokingView.setVisibility(View.VISIBLE);
+        else
+            smokingView.setVisibility(View.GONE);
+    }
+
+
 }

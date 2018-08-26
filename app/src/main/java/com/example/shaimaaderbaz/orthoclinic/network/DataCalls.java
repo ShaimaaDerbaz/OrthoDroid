@@ -8,6 +8,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -71,6 +72,25 @@ public class DataCalls {
             @Override
             public void onFailure(Call<RetrofitModels.AllDataResponse> call, Throwable t) {
                 presenterCallback.error(t.getMessage());
+            }
+        });
+    }
+
+    public void addMedicalHistory(List<RetrofitModels.MedicalHistory> history,
+                                  int patientId,
+                                  final BaseResponseCall baseResponseCall) {
+        orthoAPI.addMedicalHistory(new RetrofitModels.AddMedicalHistoryRequest(
+                history,patientId
+        )).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                baseResponseCall.success();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
             }
         });
     }

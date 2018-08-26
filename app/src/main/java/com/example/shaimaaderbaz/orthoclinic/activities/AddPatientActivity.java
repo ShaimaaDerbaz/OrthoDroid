@@ -91,6 +91,6 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
     @Override
     public void setPatientCreateFailure(Context context)
     {
-        Toast.makeText(context, "Name or Id or Age is not added , please try again", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Name or Age is not added , please try again", Toast.LENGTH_SHORT).show();
     }
 }

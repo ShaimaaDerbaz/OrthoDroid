@@ -8,7 +8,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
 
 public interface HistoryPresenter {
 
-    void addHistoryToServer(HistoryItem historyItem);
+    void addHistoryToServer(HistoryItem historyItem, int patientId);
 }
 
 
