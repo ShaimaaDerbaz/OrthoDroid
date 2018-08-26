@@ -7,8 +7,8 @@ import android.content.Context;
 public interface OperationsInteractor {
 
     interface OnAddOperationsFinishedListener {
-        void onOperationsCreateSucessfull(Context context);
-        void onOperationsCreateFailure(Context context);
+        void onOperationsCreateSucessfull();
+        void onOperationsCreateFailure();
 
           }
 

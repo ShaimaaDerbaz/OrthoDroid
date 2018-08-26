@@ -8,7 +8,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 
 public interface OperationsPresenter {
 
-    void addOperationsToServer(OperationsItem operationsItem);
+    void addOperationsToServer(OperationsItem operationsItem, int patientId);
 }
 
 

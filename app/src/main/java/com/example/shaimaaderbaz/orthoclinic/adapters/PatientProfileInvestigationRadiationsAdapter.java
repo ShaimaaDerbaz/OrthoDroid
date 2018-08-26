@@ -125,8 +125,8 @@ private static Context context;
     {
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
-           // holder.getStatus_invest_text_item().setText(DataSet.get(position).getName());
-           // holder.getInfo_invest_text_item().setText(DataSet.get(position).getInfo());
+            holder.getStatus_invest_text_item().setText(DataSet.get(position).getName());
+            holder.getInfo_invest_text_item().setText(DataSet.get(position).getInfo());
         }
     }
 

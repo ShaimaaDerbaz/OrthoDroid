@@ -121,7 +121,7 @@ public class PatientProfileOperationsAdapter extends RecyclerView.Adapter<Patien
             holder.getDate_text_item().setText(DataSet.get(position).getDate());
             holder.getSteps_text_item().setText(DataSet.get(position).getSteps()+"");
             holder.getPersons_text_item().setText(DataSet.get(position).getPersons());
-            holder.getFollow_text_item().setText(DataSet.get(position).getFollowup());
+            holder.getFollow_text_item().setText(DataSet.get(position).getFollow_up());
 
 
         }
