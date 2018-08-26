@@ -18,5 +18,16 @@
     <string name="lactation">Lactation</string>
     <string name="add_history">Add History</string>
 
+    <!--Complains Strings-->
+    <string name="trauma">Trauma</string>
+    <string name="knee">Knee</string>
+    <string name="shoulder">/shoulder</string>
+    <string name="sqine">sQine</string>
+    <string name="pelvis">Pelvis</string>
+    <string name="anke">Anke Foot</string>
+    <string name="elbow">Elbow</string>
+    <string name="wrist">Wrist</string>
+
+
 
 </resources>

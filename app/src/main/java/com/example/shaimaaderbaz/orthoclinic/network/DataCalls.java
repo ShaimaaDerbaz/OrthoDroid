@@ -117,4 +117,21 @@ public class DataCalls {
         });
 
     }
+
+    public void addComplain(List<RetrofitModels.Complain> complains, int patientId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.addComplain(new RetrofitModels.AddComplainRequest(complains, patientId)).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                baseResponseCall.success();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+
+            }
+        });
+
+    }
 }

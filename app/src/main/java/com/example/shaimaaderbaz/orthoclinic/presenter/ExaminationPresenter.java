@@ -8,7 +8,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 
 public interface ExaminationPresenter {
 
-    void addExaminationToServer(ExaminationItem examinationItem);
+    void addExaminationToServer(ExaminationItem examinationItem, int patientId);
 }
 
 

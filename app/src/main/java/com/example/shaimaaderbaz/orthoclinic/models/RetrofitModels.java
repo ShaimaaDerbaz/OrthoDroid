@@ -61,6 +61,20 @@ public class RetrofitModels {
         }
     }
 
+    public static class AddComplainRequest extends AddDataBaseRequest {
+        @SerializedName("complains")
+        private List<Complain> mComplain;
+
+        public AddComplainRequest(List<Complain> mComplain,int patientId) {
+            this.mComplain = mComplain;
+            this.patientId = patientId;
+        }
+
+        public List<Complain> getmComplain() {
+            return mComplain;
+        }
+    }
+
 
 
     public static class Complain {
@@ -70,12 +84,23 @@ public class RetrofitModels {
         @SerializedName("name")
         private String mName;
 
+        @SerializedName("info")
+        private String mAdditionalInfo;
+
+        public Complain(int mId, String mAdditionalInfo) {
+            this.mId = mId;
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
+
         public int getId() {
             return mId;
         }
 
         public String getName() {
             return mName;
+        }
+        public String getAdditionalInfo() {
+            return mAdditionalInfo;
         }
     }
 

@@ -96,7 +96,7 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_examination, container, false);
-        presenter = new ExaminationPresenterImp(this);
+        presenter = new ExaminationPresenterImp(this,this.getContext());
         context=getContext();
         ButterKnife.bind(this,view);
         btnAddEx.setOnClickListener(new View.OnClickListener()
@@ -114,29 +114,21 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
                 Boolean elbow=elbow_check.isChecked();
                 Boolean wrist=wrist_check.isChecked();
 
-                Info traumaInfo=new Info();
-                traumaInfo.setInfo1(trauma_text1.getText().toString());
+                String traumaInfo=trauma_text1.getText().toString();
 
-                Info kneeInfo=new Info();
-                kneeInfo.setInfo1(knee_text1.getText().toString());
+                String kneeInfo=knee_text1.getText().toString();
 
-                Info shoulderInfo=new Info();
-                shoulderInfo.setInfo1(shoulder_text1.getText().toString());
+                String shoulderInfo=shoulder_text1.getText().toString();
 
-                Info sqineInfo=new Info();
-                sqineInfo.setInfo1(sqine_text1.getText().toString());
+                String sqineInfo=sqine_text1.getText().toString();
 
-                Info pelvisInfo=new Info();
-                pelvisInfo.setInfo1(pelvis_text1.getText().toString());
+                String pelvisInfo=pelvis_text1.getText().toString();
 
-                Info ankeInfo=new Info();
-                ankeInfo.setInfo1(anke_text1.getText().toString());
+                String ankeInfo=anke_text1.getText().toString();
 
-                Info elbowInfo=new Info();
-                elbowInfo.setInfo1(elbow_text1.getText().toString());
+                String elbowInfo=elbow_text1.getText().toString();
 
-                Info wristInfo=new Info();
-                wristInfo.setInfo1(wrist_text1.getText().toString());
+                String wristInfo=wrist_text1.getText().toString();
 
                 examinationItem.setTrauma(trauma);
                 examinationItem.setTraumaInfo(traumaInfo);
@@ -154,7 +146,7 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
                 examinationItem.setElbowInfo(elbowInfo);
                 examinationItem.setWrist(wrist);
                 examinationItem.setWristInfo(wristInfo);
-                presenter.addExaminationToServer(examinationItem);
+                presenter.addExaminationToServer(examinationItem,mPatientId);
                 presenter.onExaminationCreateSucessfull(context);
             }
         });

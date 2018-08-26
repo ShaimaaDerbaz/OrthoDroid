@@ -2,6 +2,7 @@ package com.example.shaimaaderbaz.orthoclinic.network;
 
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
+import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 
 import okhttp3.ResponseBody;
@@ -37,6 +38,9 @@ public interface OrthoAPI {
 
     @POST("/api/medical-history")
     Call<ResponseBody> addMedicalHistory(@Body RetrofitModels.AddMedicalHistoryRequest medicalHistoryRequest);
+
+    @POST("/api/complains")
+    Call<ResponseBody> addComplain(@Body RetrofitModels.AddComplainRequest complainRequest);
 
 
 }

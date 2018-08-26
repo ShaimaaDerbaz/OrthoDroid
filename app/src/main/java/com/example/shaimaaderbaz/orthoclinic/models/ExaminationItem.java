@@ -6,7 +6,7 @@ package com.example.shaimaaderbaz.orthoclinic.models;
 
 public class ExaminationItem {
     Boolean trauma,knee,shoulder,sqine,pelvis,ankefoot,elbow,wrist;
-    Info traumaInfo,kneeInfo,shoulderInfo,sqineInfo,pelvisInfo,ankefootInfo,elbowInfo,wristInfo;
+    String traumaInfo,kneeInfo,shoulderInfo,sqineInfo,pelvisInfo,ankefootInfo,elbowInfo,wristInfo;
     String traumaS,kneeS,shoulderS,sqineS,pelvisS,ankefootS,elbowS,wristS;
 
     public ExaminationItem() {
@@ -21,14 +21,7 @@ public class ExaminationItem {
         this.ankefoot = ankefoot;
         this.elbow = elbow;
         this.wrist = wrist;
-        this.traumaInfo = traumaInfo;
-        this.kneeInfo = kneeInfo;
-        this.shoulderInfo = shoulderInfo;
-        this.sqineInfo = sqineInfo;
-        this.pelvisInfo = pelvisInfo;
-        this.ankefootInfo = ankefootInfo;
-        this.elbowInfo = elbowInfo;
-        this.wristInfo = wristInfo;
+
     }
 
     public Boolean getTrauma() {
@@ -95,67 +88,67 @@ public class ExaminationItem {
         this.wrist = wrist;
     }
 
-    public Info getTraumaInfo() {
+    public String getTraumaInfo() {
         return traumaInfo;
     }
 
-    public void setTraumaInfo(Info traumaInfo) {
+    public void setTraumaInfo(String traumaInfo) {
         this.traumaInfo = traumaInfo;
     }
 
-    public Info getKneeInfo() {
+    public String getKneeInfo() {
         return kneeInfo;
     }
 
-    public void setKneeInfo(Info kneeInfo) {
+    public void setKneeInfo(String kneeInfo) {
         this.kneeInfo = kneeInfo;
     }
 
-    public Info getShoulderInfo() {
+    public String getShoulderInfo() {
         return shoulderInfo;
     }
 
-    public void setShoulderInfo(Info shoulderInfo) {
+    public void setShoulderInfo(String shoulderInfo) {
         this.shoulderInfo = shoulderInfo;
     }
 
-    public Info getSqineInfo() {
+    public String getSqineInfo() {
         return sqineInfo;
     }
 
-    public void setSqineInfo(Info sqineInfo) {
+    public void setSqineInfo(String sqineInfo) {
         this.sqineInfo = sqineInfo;
     }
 
-    public Info getPelvisInfo() {
+    public String getPelvisInfo() {
         return pelvisInfo;
     }
 
-    public void setPelvisInfo(Info pelvisInfo) {
+    public void setPelvisInfo(String pelvisInfo) {
         this.pelvisInfo = pelvisInfo;
     }
 
-    public Info getAnkefootInfo() {
+    public String getAnkefootInfo() {
         return ankefootInfo;
     }
 
-    public void setAnkefootInfo(Info ankefootInfo) {
+    public void setAnkefootInfo(String ankefootInfo) {
         this.ankefootInfo = ankefootInfo;
     }
 
-    public Info getElbowInfo() {
+    public String getElbowInfo() {
         return elbowInfo;
     }
 
-    public void setElbowInfo(Info elbowInfo) {
+    public void setElbowInfo(String elbowInfo) {
         this.elbowInfo = elbowInfo;
     }
 
-    public Info getWristInfo() {
+    public String getWristInfo() {
         return wristInfo;
     }
 
-    public void setWristInfo(Info wristInfo) {
+    public void setWristInfo(String wristInfo) {
         this.wristInfo = wristInfo;
     }
 
