@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
@@ -44,6 +45,19 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
     RecyclerView investigationLabRecyclerView;
     @BindView(R.id.recyclerViewItemInvestigationRads)
     RecyclerView investigationRadsRecyclerView;
+
+    @BindView(R.id.name_personal_text)
+    TextView name_personal_text;
+    @BindView(R.id.id_personal_text)
+    TextView id_personal_text;
+    @BindView(R.id.age_personal_text)
+    TextView age_personal_text;
+    @BindView(R.id.occup_personal_text)
+    TextView occup_personal_text;
+    @BindView(R.id.weight_personal_text)
+    TextView weight_personal_text;
+    @BindView(R.id.info_personal_text)
+    TextView info_personal_text;
 
 
     List<PersonalItem> allHistory;
@@ -83,37 +97,19 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_personal, container, false);
         presenter =new PatientPersonalPresenterImp(this);
-        presenter.retreivePatientInfoFromServer(mPatientId);
         ButterKnife.bind(this,view);
-        allHistory = new ArrayList<>();
-        PersonalItem historyItem =new PersonalItem() ;
-        historyItem.setStatusName("Lactation");
-        historyItem.setInfo("test");
-
-        allExaminations = new ArrayList<>();
-        PersonalItem examinationItem =new PersonalItem() ;
-        examinationItem.setStatusName("Knee");
-        examinationItem.setInfo("test");
-
-        for (int i=0;i<3;i++)
-        {
-            allHistory.add(historyItem) ;
-        }
-        for (int i=0;i<3;i++)
-        {
-            allExaminations.add(examinationItem) ;
-        }
-        //historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        //patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allHistory);
-        //historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
-        //examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        //patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allExaminations);
-        //examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
+        presenter.retreivePatientInfoFromServer(mPatientId);
         return view;
     }
     @Override
     public void showPatientInfo(AllPatientInfoData allPatientInfoData ,int patient_id)
     {
+        id_personal_text.setText(allPatientInfoData.getPatient().getId());
+        name_personal_text.setText(allPatientInfoData.getPatient().getPatientName());
+        occup_personal_text.setText(allPatientInfoData.getPatient().getOccup());
+        age_personal_text.setText(allPatientInfoData.getPatient().getAge()+"");
+        weight_personal_text.setText(allPatientInfoData.getPatient().getWeight()+"");
+        info_personal_text.setText(allPatientInfoData.getPatient().getInfo());
         historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allPatientInfoData.getMedical_history());
         historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
