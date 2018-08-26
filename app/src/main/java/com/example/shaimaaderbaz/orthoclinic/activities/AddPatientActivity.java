@@ -21,8 +21,6 @@ import butterknife.ButterKnife;
 public class AddPatientActivity extends AppCompatActivity implements AddPatientView{
     private AddPatientPresenterImp presenter;
     private Context context;
-    @BindView(R.id.etPatientId)
-    EditText patientIdEt;
     @BindView(R.id.etPatientAge)
     EditText patientAgeEt;
     @BindView(R.id.etPatientName)
@@ -48,13 +46,11 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
             @Override
             public void onClick(View view) {
                 PatientItem patientItem = new PatientItem();
-                String patientId=patientIdEt.getText().toString();
                 String patientAge=patientAgeEt.getText().toString();
                 String patientName=patientNameEt.getText().toString();
                 String occupation=occupationEt.getText().toString();
                 String patientWeight=patientWeightEt.getText().toString();
                 String patientInfo=patientInfoEt.getText().toString();
-                patientItem.setId(patientId);
                 patientItem.setPatientName(patientName);
                 try {
                     patientItem.setAge(Integer.parseInt(patientAge));
@@ -77,6 +73,7 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
                 {
                     presenter.addPatientToServer(patientItem);
                     presenter.onPatientCreateSucessfull(context);
+                    PatientsListActivity.start(context);
 
                 }else{
                     presenter.onPatientCreateFailure(context);
