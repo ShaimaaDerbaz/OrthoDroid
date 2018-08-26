@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
+import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationLabsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 import com.example.shaimaaderbaz.orthoclinic.presenter.PatientPersonalPresenterImp;
@@ -38,11 +39,15 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
     RecyclerView historyRecyclerview;
     @BindView(R.id.recyclerViewItemExamination)
     RecyclerView examinationRecyclerview;
+    @BindView(R.id.recyclerViewItemInvestigationLabs)
+    RecyclerView investigationrecyclerView;
+
 
     List<PersonalItem> allHistory;
     List<PersonalItem> allExaminations;
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
     PatientProfileExaminationAdapter patientProfileExaminationAdapter;
+    PatientProfileInvestigationLabsAdapter patientProfileInvestigationLabsAdapter;
     PatientPersonalPresenterImp presenter =new PatientPersonalPresenterImp(this);
 
 
@@ -111,5 +116,8 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains());
         examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
+        investigationrecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(),allPatientInfoData.getLabs());
+        investigationrecyclerView.setAdapter(patientProfileInvestigationLabsAdapter);
     }
 }

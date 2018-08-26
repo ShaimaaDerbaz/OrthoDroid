@@ -187,13 +187,31 @@
                 android:text="Investigation : "
                 android:textSize="32sp"
                 android:textColor="@color/colorAccent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Labs : "
+                android:textSize="32sp"
+                android:textColor="@color/colorAccent"/>
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewItemInvestigation"
+                android:id="@+id/recyclerViewItemInvestigationLabs"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Radiations : "
+                android:textSize="32sp"
+                android:textColor="@color/colorAccent"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewItemInvestigationRads"
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-           </LinearLayout>
+
+        </LinearLayout>
         <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"

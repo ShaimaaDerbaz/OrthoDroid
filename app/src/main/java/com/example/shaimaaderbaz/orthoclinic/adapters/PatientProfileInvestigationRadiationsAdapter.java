@@ -6,15 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
-import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
-import com.example.shaimaaderbaz.orthoclinic.models.InvestigationItem;
-import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 
 import java.util.List;
 
@@ -27,13 +23,13 @@ import static android.content.ContentValues.TAG;
  * Created by Shaimaa Derbaz on 8/17/2018.
  */
 
-public class PatientProfileInvestigationAdapter extends RecyclerView.Adapter<PatientProfileInvestigationAdapter.ViewHolder> {
+public class PatientProfileInvestigationRadiationsAdapter extends RecyclerView.Adapter<PatientProfileInvestigationRadiationsAdapter.ViewHolder> {
 
-private List<PersonalItem> DataSet;
+private List<RadiationItem> DataSet;
 private static Context context;
 
 
-    public PatientProfileInvestigationAdapter(Context cont, List<PersonalItem> dataSet)
+    public PatientProfileInvestigationRadiationsAdapter(Context cont, List<RadiationItem> dataSet)
     {
         context=cont;
         DataSet = dataSet;
@@ -42,8 +38,8 @@ private static Context context;
 
     public  class ViewHolder extends RecyclerView.ViewHolder
     {
-        @BindView(R.id.status_invest_text_item)TextView status_invest_text_item;
-        @BindView(R.id.info_invest_text_item)TextView info_invest_text_item;
+        @BindView(R.id.status_invest_rad_text_item)TextView status_invest_text_item;
+        @BindView(R.id.info_invest_rad_text_item)TextView info_invest_text_item;
        // @BindView(R.id.images_invest_linear)LinearLayout images_invest_linear;
         //@BindView(R.id.vedios_invest_linear)TextView vedios_invest_linear;
        // @BindView(R.id.iv_image)ImageView iv_image;
@@ -115,22 +111,22 @@ private static Context context;
     }
 
     @Override
-    public PatientProfileInvestigationAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public PatientProfileInvestigationRadiationsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.patient_personal_investigation_item, parent, false);
+                .inflate(R.layout.patient_personal_investigation_radiations_item, parent, false);
 
-        return  new PatientProfileInvestigationAdapter.ViewHolder(v);
+        return  new PatientProfileInvestigationRadiationsAdapter.ViewHolder(v);
     }
 
 
     @Override
-    public void onBindViewHolder(final PatientProfileInvestigationAdapter.ViewHolder holder, int position)
+    public void onBindViewHolder(final PatientProfileInvestigationRadiationsAdapter.ViewHolder holder, int position)
     {
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
-            holder.getStatus_invest_text_item().setText(DataSet.get(position).getStatusName());
-            holder.getInfo_invest_text_item().setText(DataSet.get(position).getInfo());
+           // holder.getStatus_invest_text_item().setText(DataSet.get(position).getName());
+           // holder.getInfo_invest_text_item().setText(DataSet.get(position).getInfo());
         }
     }
 
@@ -139,7 +135,7 @@ private static Context context;
         return DataSet.size();
     }
 
-    public void filterList(List<PersonalItem> filterdNames) {
+    public void filterList(List<RadiationItem> filterdNames) {
         this.DataSet = filterdNames;
         notifyDataSetChanged();
     }

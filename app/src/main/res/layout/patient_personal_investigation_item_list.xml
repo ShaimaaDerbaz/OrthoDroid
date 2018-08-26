@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewItemInvestigation"
+        android:id="@+id/recyclerViewItemInvestigationLabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        tools:listitem= "@layout/patient_personal_investigation_item"/>
+        tools:listitem= "@layout/patient_personal_investigation_labs_item"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>

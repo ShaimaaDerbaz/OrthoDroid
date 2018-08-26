@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:id="@+id/status_invest_text_item"
+            android:id="@+id/status_invest_rad_text_item"
             android:text="Test "
             android:textColor="@color/colorPrimary"
             android:textSize="25sp" />
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:id="@+id/info_invest_text_item"
+            android:id="@+id/info_invest_rad_text_item"
             android:text="test test"
             android:textColor="@color/colorGray"
             android:textSize="15sp" />
