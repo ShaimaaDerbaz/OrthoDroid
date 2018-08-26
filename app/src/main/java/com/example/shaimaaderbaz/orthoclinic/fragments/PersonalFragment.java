@@ -17,6 +17,7 @@ import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationLabsAdapter;
+import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationRadiationsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 import com.example.shaimaaderbaz.orthoclinic.presenter.PatientPersonalPresenterImp;
@@ -40,7 +41,9 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
     @BindView(R.id.recyclerViewItemExamination)
     RecyclerView examinationRecyclerview;
     @BindView(R.id.recyclerViewItemInvestigationLabs)
-    RecyclerView investigationrecyclerView;
+    RecyclerView investigationLabRecyclerView;
+    @BindView(R.id.recyclerViewItemInvestigationRads)
+    RecyclerView investigationRadsRecyclerView;
 
 
     List<PersonalItem> allHistory;
@@ -48,6 +51,7 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
     PatientProfileExaminationAdapter patientProfileExaminationAdapter;
     PatientProfileInvestigationLabsAdapter patientProfileInvestigationLabsAdapter;
+    PatientProfileInvestigationRadiationsAdapter patientProfileInvestigationRadiationsAdapter;
     PatientPersonalPresenterImp presenter =new PatientPersonalPresenterImp(this);
 
 
@@ -116,8 +120,13 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains());
         examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
-        investigationrecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        investigationLabRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(),allPatientInfoData.getLabs());
-        investigationrecyclerView.setAdapter(patientProfileInvestigationLabsAdapter);
+        investigationLabRecyclerView.setAdapter(patientProfileInvestigationLabsAdapter);
+        investigationRadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(),allPatientInfoData.getRadiations());
+        investigationRadsRecyclerView.setAdapter(patientProfileInvestigationRadiationsAdapter);
     }
-}
+
+    }
+
