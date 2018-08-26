@@ -10,7 +10,7 @@ public interface OperationsView {
 
 
 
-    void setOperationsCreateSucessfull(Context context);
-    void setOperationsCreateFailure(Context context);
+    void setOperationsCreateSucessfull();
+    void setOperationsCreateFailure();
 
 }

@@ -72,6 +72,7 @@ public class OperationsFragment extends Fragment implements OperationsView{
         presenter = new OperationsPresenterImp(this);
         context=getContext();
         ButterKnife.bind(this,view);
+
         btnAddOperation.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -88,13 +89,10 @@ public class OperationsFragment extends Fragment implements OperationsView{
                 operationsItem.setPersons(persons);
                 operationsItem.setFollowup(followup);
 
-                if(!name.isEmpty() &&!date.isEmpty() &&!persons.isEmpty())
+                if(!name.isEmpty())
                 {
-                    presenter.addOperationsToServer(operationsItem);
-                    presenter.onOperationsCreateSucessfull(context);
+                    presenter.addOperationsToServer(operationsItem,mPatientId);
 
-                }else{
-                    presenter.onOperationsCreateFailure(context);
                 }
             }
         });
@@ -103,12 +101,12 @@ public class OperationsFragment extends Fragment implements OperationsView{
     }
 
     @Override
-    public void setOperationsCreateSucessfull (Context context)
+    public void setOperationsCreateSucessfull ()
     {
         Toast.makeText(context, "Operations Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
     @Override
-    public void setOperationsCreateFailure (Context context)
+    public void setOperationsCreateFailure ()
     {
         Toast.makeText(context, "Op Name or Date or Persons not Added, please try again", Toast.LENGTH_SHORT).show();
     }

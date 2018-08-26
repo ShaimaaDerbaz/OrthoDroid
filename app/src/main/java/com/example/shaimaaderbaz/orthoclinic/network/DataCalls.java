@@ -132,6 +132,28 @@ public class DataCalls {
 
             }
         });
+    }
+    public void addOperation(RetrofitModels.Operation operation,
+                             int patientId,
+                             final BaseResponseCall baseResponseCall) {
+        ArrayList<RetrofitModels.Operation> operations = new ArrayList<>();
+        operations.add(operation);
+        orthoAPI.addOperation(new RetrofitModels.AddOperationRequest(operations,patientId)).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        }
+                        else
+                            baseResponseCall.error("Unkown Error");
+                    }
 
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
     }
 }

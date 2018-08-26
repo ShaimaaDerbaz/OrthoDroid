@@ -42,5 +42,6 @@ public interface OrthoAPI {
     @POST("/api/complains")
     Call<ResponseBody> addComplain(@Body RetrofitModels.AddComplainRequest complainRequest);
 
-
+    @POST("/api/operations")
+    Call<ResponseBody> addOperation(@Body RetrofitModels.AddOperationRequest operationRequest);
 }
