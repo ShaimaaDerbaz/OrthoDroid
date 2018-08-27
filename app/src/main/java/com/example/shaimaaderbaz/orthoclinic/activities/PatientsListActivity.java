@@ -43,7 +43,7 @@ public class PatientsListActivity extends AppCompatActivity
     @BindView(R.id.searchPatients)
     EditText searchPatients;
 
-    ArrayList<PatientItem> allPatients;
+    List<PatientItem> allPatients;
     PatientItemsAdapter patientItemsAdapter;
     PatientListPresenterImp presenter ;
 
@@ -164,6 +164,8 @@ public class PatientsListActivity extends AppCompatActivity
         patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         patientItemsAdapter = new PatientItemsAdapter(this,allPatientData);
         patientsRecyclerview.setAdapter(patientItemsAdapter);
+        allPatients=allPatientData;
+
     }
 
     @Override

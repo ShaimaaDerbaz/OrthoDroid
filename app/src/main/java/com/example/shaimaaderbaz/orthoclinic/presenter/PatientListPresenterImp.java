@@ -52,7 +52,7 @@ public class PatientListPresenterImp implements PatientListPresenter ,PatientLis
         //looping through existing elements
         for (PatientItem s : dataSet) {
             //if the existing elements contains the search input
-            if (s.getPatientName().toLowerCase().contains(text.toLowerCase())) {
+            if (s.getPatientName().toLowerCase().contains(text.toLowerCase())||s.getId().toLowerCase().contains(text.toLowerCase())) {
                 //adding the element to filtered list
                 filterdNames.add(s);
 
