@@ -12,5 +12,5 @@ import java.util.List;
 
 public interface PatientListView {
     void showPatients(List<PatientItem> AllPatients);
-
+    void showSearchResult(List<PatientItem> filteredPatients);
 }

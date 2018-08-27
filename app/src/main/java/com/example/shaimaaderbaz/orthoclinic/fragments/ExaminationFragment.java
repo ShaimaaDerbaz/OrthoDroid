@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
@@ -129,6 +130,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
     LinearLayout linear_select_image_wrist;
     @BindView(R.id.linear_select_vedio_wrist)
     LinearLayout linear_select_vedio_wrist;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
 
     private int mPatientId;
@@ -206,7 +209,7 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
                 examinationItem.setWrist(wrist);
                 examinationItem.setWristInfo(wristInfo);
                 presenter.addExaminationToServer(examinationItem,mPatientId);
-                presenter.onExaminationCreateSucessfull(context);
+                mProgress.setVisibility(View.VISIBLE);
             }
         });
 
@@ -217,6 +220,7 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
     @Override
     public void setExaminationCreateSucessfull(Context context)
     {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(context, "Examination Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
 

@@ -47,8 +47,9 @@ public class PatientListPresenterImp implements PatientListPresenter ,PatientLis
     public void filterPatientsResult(String text,List<PatientItem> dataSet)
     {
         //patientListView.showPatients(allPatientData);
-        List<PatientItem> filterdNames = new ArrayList<>();
-
+        ArrayList<PatientItem> filterdNames = new ArrayList<>();
+        if (text.isEmpty())
+            patientListView.showSearchResult(dataSet);
         //looping through existing elements
         for (PatientItem s : dataSet) {
             //if the existing elements contains the search input
@@ -58,7 +59,7 @@ public class PatientListPresenterImp implements PatientListPresenter ,PatientLis
 
             }
         }
-        patientListView.showPatients(filterdNames);
+        patientListView.showSearchResult(filterdNames);
     }
     //implement from Interactor
     @Override

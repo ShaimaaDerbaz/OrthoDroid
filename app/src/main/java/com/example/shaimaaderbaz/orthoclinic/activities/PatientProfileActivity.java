@@ -96,7 +96,7 @@ public class PatientProfileActivity extends AppCompatActivity {
                 "Investigation");
         adapter.addFragment(OperationsFragment.newInstance(mPatientId),
                 "Operations");
-
+        viewPager.setOffscreenPageLimit(1);
         viewPager.setAdapter(adapter);
     }
 

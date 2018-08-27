@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
@@ -47,6 +48,8 @@ public class OperationsFragment extends Fragment implements OperationsView{
     Button select_vedio;
     @BindView(R.id.btnAddOperation)
     Button btnAddOperation;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
     private int mPatientId;
     private static final String PATIENT_KEY = "patient_key";
@@ -110,7 +113,7 @@ public class OperationsFragment extends Fragment implements OperationsView{
                 if(!name.isEmpty())
                 {
                     presenter.addOperationsToServer(operationsItem,mPatientId);
-
+                    mProgress.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -121,11 +124,13 @@ public class OperationsFragment extends Fragment implements OperationsView{
     @Override
     public void setOperationsCreateSucessfull ()
     {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(context, "Operations Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
     @Override
     public void setOperationsCreateFailure ()
     {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(context, "Op Name or Date or Persons not Added, please try again", Toast.LENGTH_SHORT).show();
     }
 

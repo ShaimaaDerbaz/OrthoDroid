@@ -82,7 +82,8 @@ public class PatientsListActivity extends AppCompatActivity
 
             @Override
             public void afterTextChanged(Editable s) {
-                presenter.filterPatientsResult(s.toString(),allPatients);
+                if (allPatients != null)
+                    presenter.filterPatientsResult(s.toString(),allPatients);
             }
         });
 
@@ -126,9 +127,9 @@ public class PatientsListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -143,9 +144,9 @@ public class PatientsListActivity extends AppCompatActivity
             Intent i =new Intent(PatientsListActivity.this,AddPatientActivity.class);
             startActivity(i);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Intent i =new Intent(PatientsListActivity.this,PatientProfileActivity.class);
-            startActivity(i);
+//        } else if (id == R.id.nav_gallery) {
+//            Intent i =new Intent(PatientsListActivity.this,PatientProfileActivity.class);
+//            startActivity(i);
 
         } else if (id == R.id.search) {
 
@@ -161,11 +162,19 @@ public class PatientsListActivity extends AppCompatActivity
     @Override
     public void showPatients(List<PatientItem> allPatientData)
     {
+        allPatients = allPatientData;
         patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         patientItemsAdapter = new PatientItemsAdapter(this,allPatientData);
         patientsRecyclerview.setAdapter(patientItemsAdapter);
         allPatients=allPatientData;
 
+    }
+
+    @Override
+    public void showSearchResult(List<PatientItem> filteredPatients) {
+        patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        patientItemsAdapter = new PatientItemsAdapter(this,filteredPatients);
+        patientsRecyclerview.setAdapter(patientItemsAdapter);
     }
 
     @Override

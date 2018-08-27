@@ -42,22 +42,23 @@ public class SplashPresenterImpl implements SplashPresenter {
         HashMap<String,Integer> radiationsMap = new HashMap<>();
         HashMap<String,Integer> labsMap = new HashMap<>();
 
-        for (RetrofitModels.Complain complain:items.getmComplains()) {
-            complainsMap.put(complain.getName(),complain.getId());
-        }
+        if(items != null) {
+            for (RetrofitModels.Complain complain : items.getmComplains()) {
+                complainsMap.put(complain.getName(), complain.getId());
+            }
 
-        for(RetrofitModels.MedicalHistory history: items.getmMedicalHistory()) {
-            historyMap.put(history.getName(),history.getId());
-        }
+            for (RetrofitModels.MedicalHistory history : items.getmMedicalHistory()) {
+                historyMap.put(history.getName(), history.getId());
+            }
 
-        for(RetrofitModels.Radiation radiation: items.getmRadiations()) {
-            radiationsMap.put(radiation.getName(),radiation.getId());
-        }
+            for (RetrofitModels.Radiation radiation : items.getmRadiations()) {
+                radiationsMap.put(radiation.getName(), radiation.getId());
+            }
 
-        for(RetrofitModels.Lab lab: items.getmLabs()) {
-            labsMap.put(lab.getName(),lab.getId());
+            for (RetrofitModels.Lab lab : items.getmLabs()) {
+                labsMap.put(lab.getName(), lab.getId());
+            }
         }
-
         mSharedPreferencesRepository.clearRepos();
         mSharedPreferencesRepository.saveComplains(complainsMap);
         mSharedPreferencesRepository.saveHistory(historyMap);

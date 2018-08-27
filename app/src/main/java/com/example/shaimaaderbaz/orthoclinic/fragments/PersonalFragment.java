@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
@@ -61,6 +62,8 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
     TextView weight_personal_text;
     @BindView(R.id.info_personal_text)
     TextView info_personal_text;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
 
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
@@ -100,12 +103,12 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         View view = inflater.inflate(R.layout.fragment_patient_profile_personal, container, false);
         presenter =new PatientPersonalPresenterImp(this);
         ButterKnife.bind(this,view);
-        presenter.retreivePatientInfoFromServer(mPatientId);
         return view;
     }
     @Override
     public void showPatientInfo(AllPatientInfoData allPatientInfoData ,int patient_id)
     {
+        mProgress.setVisibility(View.GONE);
         id_personal_text.setText(allPatientInfoData.getPatient().getId());
         name_personal_text.setText(allPatientInfoData.getPatient().getPatientName());
         occup_personal_text.setText(allPatientInfoData.getPatient().getOccup());
@@ -129,5 +132,11 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         operationsRecyclerView.setAdapter(patientProfileOperationsAdapter);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.retreivePatientInfoFromServer(mPatientId);
+        mProgress.setVisibility(View.VISIBLE);
     }
+}
 

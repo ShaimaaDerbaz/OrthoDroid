@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
@@ -140,6 +141,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
     LinearLayout linear_select_image_bone;
     @BindView(R.id.linear_select_vedio_bone)
     LinearLayout linear_select_vedio_bone;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
 
     private int mPatientId;
@@ -223,7 +226,7 @@ public class InvestigationFragment extends Fragment implements InvestigationView
                 investigationItem.setBonescanInfo(boneInfo);
 
                 presenter.addInvestigationToServer(investigationItem,mPatientId);
-                presenter.onInvestigationCreateSucessfull(context);
+                mProgress.setVisibility(View.VISIBLE);
             }
         });
 
@@ -234,6 +237,7 @@ public class InvestigationFragment extends Fragment implements InvestigationView
     @Override
     public void setInvestigationCreateSucessfull (Context context)
     {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(context, "Investigation Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
 

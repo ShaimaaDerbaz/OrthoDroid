@@ -28,7 +28,7 @@
             android:background="#fff"
             android:layout_weight="9"
             android:layout_margin="16dp"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:layout_gravity="center"
             />
     </LinearLayout>
