@@ -1,14 +1,19 @@
-package com.example.shaimaaderbaz.orthoclinic.activities;
+package com.example.shaimaaderbaz.orthoclinic.fragments;
+
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.activities.PatientsListActivity;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.presenter.AddPatientPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
@@ -16,9 +21,15 @@ import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AddPatientActivity extends AppCompatActivity implements AddPatientView{
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link AddPatientFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class AddPatientFragment extends Fragment implements AddPatientView {
+
     private AddPatientPresenterImp presenter;
-    private Context context;
+
     @BindView(R.id.etPatientAge)
     EditText patientAgeEt;
     @BindView(R.id.etPatientName)
@@ -32,13 +43,31 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
     @BindView(R.id.btnCreateProfile)
     Button btnCreateProfile;
 
+    public AddPatientFragment() {
+        // Required empty public constructor
+    }
+
+    // TODO: Rename and change types and number of parameters
+    public static AddPatientFragment newInstance() {
+        AddPatientFragment fragment = new AddPatientFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_patient);
+        if (getArguments() != null) {
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_add_patient,container,false);
+        ButterKnife.bind(this,view);
         presenter = new AddPatientPresenterImp(this);
-        context=this;
-        ButterKnife.bind(this);
         btnCreateProfile.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -59,7 +88,7 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
                 }
                 patientItem.setOccup(occupation);
                 try{
-                patientItem.setWeight(Integer.parseInt(patientWeight));
+                    patientItem.setWeight(Integer.parseInt(patientWeight));
                 }
                 catch (Exception e)
                 {
@@ -70,25 +99,24 @@ public class AddPatientActivity extends AppCompatActivity implements AddPatientV
                 if(!patientName.isEmpty() &&patientAge !=null)
                 {
                     presenter.addPatientToServer(patientItem);
-                    presenter.onPatientCreateSucessfull(context);
-                    PatientsListActivity.start(context);
 
                 }else{
-                    presenter.onPatientCreateFailure(context);
+                    presenter.onPatientCreateFailure(getContext());
                 }
             }
         });
+        return view;
     }
-
 
     @Override
     public void setPatientCreateSucessfull()
     {
-        Toast.makeText(context, "Patient Added Sucessfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Patient Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
     @Override
     public void setPatientCreateFailure()
     {
-        Toast.makeText(context, "Name or Age is not added , please try again", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Name or Age is not added , please try again", Toast.LENGTH_SHORT).show();
     }
+
 }

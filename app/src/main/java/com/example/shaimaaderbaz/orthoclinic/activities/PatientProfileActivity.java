@@ -50,14 +50,12 @@ public class PatientProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mSectionsPagerAdapter =new SectionsPageAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new SectionsPageAdapter(getSupportFragmentManager());
         mViewPager=(ViewPager)findViewById(R.id.container);
         setUpViewPager(mViewPager);
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tabs);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(mViewPager);
-
-
     }
 
 
@@ -96,10 +94,7 @@ public class PatientProfileActivity extends AppCompatActivity {
                 "Investigation");
         adapter.addFragment(OperationsFragment.newInstance(mPatientId),
                 "Operations");
-        viewPager.setOffscreenPageLimit(1);
+        viewPager.setOffscreenPageLimit(0);
         viewPager.setAdapter(adapter);
     }
-
-
-
 }

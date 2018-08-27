@@ -1,7 +1,6 @@
 package com.example.shaimaaderbaz.orthoclinic.presenter;
 
 import android.content.Context;
-import android.content.pm.LauncherApps;
 
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
@@ -29,12 +28,12 @@ public class AddPatientPresenterImp implements AddPatientPresenter ,AddPatientIn
     @Override
     public void onPatientCreateSucessfull(Context context)
     {
-        addPatientView.setPatientCreateSucessfull(context);
+        addPatientView.setPatientCreateSucessfull();
     }
 
     @Override
     public void onPatientCreateFailure(Context context)
     {
-        addPatientView.setPatientCreateFailure(context);
+        addPatientView.setPatientCreateFailure();
     }
 }

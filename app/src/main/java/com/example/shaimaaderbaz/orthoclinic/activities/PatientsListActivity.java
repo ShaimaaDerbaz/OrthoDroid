@@ -21,13 +21,10 @@ import android.widget.EditText;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientItemsAdapter;
-import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
-import com.example.shaimaaderbaz.orthoclinic.presenter.PatientListPresenter;
 import com.example.shaimaaderbaz.orthoclinic.presenter.PatientListPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -127,9 +124,9 @@ public class PatientsListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -164,7 +161,7 @@ public class PatientsListActivity extends AppCompatActivity
     {
         allPatients = allPatientData;
         patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        patientItemsAdapter = new PatientItemsAdapter(this,allPatientData);
+        patientItemsAdapter = new PatientItemsAdapter(this,allPatientData,this );
         patientsRecyclerview.setAdapter(patientItemsAdapter);
         allPatients=allPatientData;
 
@@ -173,7 +170,7 @@ public class PatientsListActivity extends AppCompatActivity
     @Override
     public void showSearchResult(List<PatientItem> filteredPatients) {
         patientsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        patientItemsAdapter = new PatientItemsAdapter(this,filteredPatients);
+        patientItemsAdapter = new PatientItemsAdapter(this,filteredPatients, this);
         patientsRecyclerview.setAdapter(patientItemsAdapter);
     }
 

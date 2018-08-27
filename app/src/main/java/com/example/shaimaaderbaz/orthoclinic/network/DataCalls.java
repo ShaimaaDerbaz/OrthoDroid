@@ -32,14 +32,18 @@ public class DataCalls {
         call.enqueue(new Callback<AllPatientData>() {
             @Override
             public void onResponse(Call<AllPatientData> call, Response<AllPatientData> response) {
-                List<PatientItem> allPatientData = response.body().getPatients();
-                presenterCallback.success(allPatientData);
+                if(response.body()!= null) {
+                    List<PatientItem> allPatientData = response.body().getPatients();
+                    presenterCallback.success(allPatientData);
+                }
+                else
+                    presenterCallback.error("Unknown Error");
 
             }
 
             @Override
             public void onFailure(Call<AllPatientData> call, Throwable t) {
-
+                presenterCallback.error(t.getMessage());
             }
         });
     }

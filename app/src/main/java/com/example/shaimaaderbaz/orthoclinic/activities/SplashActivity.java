@@ -62,7 +62,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView{
 
     @Override
     public void onDataReturned() {
-        PatientsListActivity.start(this);
+        HomeActivity.start(this);
     }
 
     @Override

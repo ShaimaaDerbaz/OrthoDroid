@@ -32,13 +32,11 @@ public class PatientItemsAdapter extends RecyclerView.Adapter<PatientItemsAdapte
 
     }
 
-    public PatientItemsAdapter(Context cont, List<PatientItem> dataSet)
+    public PatientItemsAdapter(Context cont, List<PatientItem> dataSet, PatientsItemsAdapterListener listener)
     {
         context=cont;
         DataSet = dataSet;
-        if (context instanceof PatientsItemsAdapterListener) {
-            mPatientAdapterListener = (PatientsItemsAdapterListener) context;
-        }
+        mPatientAdapterListener = listener;
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder
