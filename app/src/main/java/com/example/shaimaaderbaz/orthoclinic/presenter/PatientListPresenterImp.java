@@ -9,6 +9,7 @@ import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,24 @@ public class PatientListPresenterImp implements PatientListPresenter ,PatientLis
         //DataCalls
         DataCalls dataCalls=new DataCalls();
         dataCalls.getAllpatients(presenterCallback);
+    }
+
+    @Override
+    public void filterPatientsResult(String text,List<PatientItem> dataSet)
+    {
+        //patientListView.showPatients(allPatientData);
+        List<PatientItem> filterdNames = new ArrayList<>();
+
+        //looping through existing elements
+        for (PatientItem s : dataSet) {
+            //if the existing elements contains the search input
+            if (s.getPatientName().toLowerCase().contains(text.toLowerCase())) {
+                //adding the element to filtered list
+                filterdNames.add(s);
+
+            }
+        }
+        patientListView.showPatients(filterdNames);
     }
     //implement from Interactor
     @Override
