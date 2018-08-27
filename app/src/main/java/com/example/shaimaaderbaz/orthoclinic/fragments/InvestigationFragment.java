@@ -242,8 +242,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(chemistry_check.isChecked())
         {
             chemistry_layout.setVisibility(View.VISIBLE);
-            linear_select_image_ch.setVisibility(View.VISIBLE);
-            linear_select_vedio_ch.setVisibility(View.VISIBLE);
+            //linear_select_image_ch.setVisibility(View.VISIBLE);
+            //linear_select_vedio_ch.setVisibility(View.VISIBLE);
         }
         else {
             chemistry_layout.setVisibility(View.GONE);
@@ -257,8 +257,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(cls_check.isChecked())
         {
             cls_layout.setVisibility(View.VISIBLE);
-            linear_select_image_cls.setVisibility(View.VISIBLE);
-            linear_select_vedio_cls.setVisibility(View.VISIBLE);
+            //linear_select_image_cls.setVisibility(View.VISIBLE);
+            //linear_select_vedio_cls.setVisibility(View.VISIBLE);
         }
         else {
             cls_layout.setVisibility(View.GONE);
@@ -272,8 +272,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(cytology_check.isChecked())
         {
             cutology_layout.setVisibility(View.VISIBLE);
-            linear_select_image_cut.setVisibility(View.VISIBLE);
-            linear_select_vedio_cut.setVisibility(View.VISIBLE);
+            //linear_select_image_cut.setVisibility(View.VISIBLE);
+            //linear_select_vedio_cut.setVisibility(View.VISIBLE);
         }
         else {
             cutology_layout.setVisibility(View.GONE);
@@ -287,8 +287,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(xray_check.isChecked())
         {
             xray_layout.setVisibility(View.VISIBLE);
-            linear_select_image_xray.setVisibility(View.VISIBLE);
-            linear_select_vedio_xray.setVisibility(View.VISIBLE);
+            //linear_select_image_xray.setVisibility(View.VISIBLE);
+            //linear_select_vedio_xray.setVisibility(View.VISIBLE);
         }
         else {
             xray_layout.setVisibility(View.GONE);
@@ -302,8 +302,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(scanogram_check.isChecked())
         {
             scanogram_layout.setVisibility(View.VISIBLE);
-            linear_select_image_scan.setVisibility(View.VISIBLE);
-            linear_select_vedio_scan.setVisibility(View.VISIBLE);
+            //linear_select_image_scan.setVisibility(View.VISIBLE);
+            //linear_select_vedio_scan.setVisibility(View.VISIBLE);
         }
         else {
             scanogram_layout.setVisibility(View.GONE);
@@ -317,8 +317,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(ct_check.isChecked())
         {
             ct_layout.setVisibility(View.VISIBLE);
-            linear_select_image_ct.setVisibility(View.VISIBLE);
-            linear_select_vedio_ct.setVisibility(View.VISIBLE);
+            //linear_select_image_ct.setVisibility(View.VISIBLE);
+            //linear_select_vedio_ct.setVisibility(View.VISIBLE);
         }
         else {
             ct_layout.setVisibility(View.GONE);
@@ -332,8 +332,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(mri_check.isChecked())
         {
             mrt_layout.setVisibility(View.VISIBLE);
-            linear_select_image_mrt.setVisibility(View.VISIBLE);
-            linear_select_vedio_mrt.setVisibility(View.VISIBLE);
+            //linear_select_image_mrt.setVisibility(View.VISIBLE);
+            //linear_select_vedio_mrt.setVisibility(View.VISIBLE);
         }
         else {
             mrt_layout.setVisibility(View.GONE);
@@ -347,8 +347,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(dexa_check.isChecked())
         {
             dexa_layout.setVisibility(View.VISIBLE);
-            linear_select_image_dexa.setVisibility(View.VISIBLE);
-            linear_select_vedio_dexa.setVisibility(View.VISIBLE);
+            //linear_select_image_dexa.setVisibility(View.VISIBLE);
+            //linear_select_vedio_dexa.setVisibility(View.VISIBLE);
         }
         else {
             dexa_layout.setVisibility(View.GONE);
@@ -362,8 +362,8 @@ public class InvestigationFragment extends Fragment implements InvestigationView
         if(bone_check.isChecked())
         {
             bone_layout.setVisibility(View.VISIBLE);
-            linear_select_image_bone.setVisibility(View.VISIBLE);
-            linear_select_vedio_bone.setVisibility(View.VISIBLE);
+            //linear_select_image_bone.setVisibility(View.VISIBLE);
+            //linear_select_vedio_bone.setVisibility(View.VISIBLE);
         }
         else {
             bone_layout.setVisibility(View.GONE);

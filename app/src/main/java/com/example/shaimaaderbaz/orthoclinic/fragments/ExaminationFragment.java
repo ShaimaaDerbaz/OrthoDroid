@@ -225,8 +225,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(trauma_check.isChecked())
         {
             trauma_layout.setVisibility(View.VISIBLE);
-            linear_select_image_trauma.setVisibility(View.VISIBLE);
-            linear_select_vedio_trauma.setVisibility(View.VISIBLE);
+            //linear_select_image_trauma.setVisibility(View.VISIBLE);
+            //linear_select_vedio_trauma.setVisibility(View.VISIBLE);
         }
         else {
             trauma_layout.setVisibility(View.GONE);
@@ -240,8 +240,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(knee_check.isChecked())
         {
             knee_layout.setVisibility(View.VISIBLE);
-            linear_select_image_knee.setVisibility(View.VISIBLE);
-            linear_select_vedio_knee.setVisibility(View.VISIBLE);
+            //linear_select_image_knee.setVisibility(View.VISIBLE);
+            //linear_select_vedio_knee.setVisibility(View.VISIBLE);
         }
         else {
             knee_layout.setVisibility(View.GONE);
@@ -255,8 +255,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(shoulder_check.isChecked())
         {
             shoulder_layout.setVisibility(View.VISIBLE);
-            linear_select_image_shoulder.setVisibility(View.VISIBLE);
-            linear_select_vedio_shoulder.setVisibility(View.VISIBLE);
+            //linear_select_image_shoulder.setVisibility(View.VISIBLE);
+            //linear_select_vedio_shoulder.setVisibility(View.VISIBLE);
         }
         else {
             shoulder_layout.setVisibility(View.GONE);
@@ -270,8 +270,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(sqine_check.isChecked())
         {
             sqine_layout.setVisibility(View.VISIBLE);
-            linear_select_image_sqine.setVisibility(View.VISIBLE);
-            linear_select_vedio_sqine.setVisibility(View.VISIBLE);
+            //linear_select_image_sqine.setVisibility(View.VISIBLE);
+            //linear_select_vedio_sqine.setVisibility(View.VISIBLE);
         }
         else {
             sqine_layout.setVisibility(View.GONE);
@@ -285,8 +285,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(pelvis_check.isChecked())
         {
             pelvis_layout.setVisibility(View.VISIBLE);
-            linear_select_image_pelvis.setVisibility(View.VISIBLE);
-            linear_select_vedio_pelvis.setVisibility(View.VISIBLE);
+            //linear_select_image_pelvis.setVisibility(View.VISIBLE);
+            //linear_select_vedio_pelvis.setVisibility(View.VISIBLE);
         }
         else {
             pelvis_layout.setVisibility(View.GONE);
@@ -300,8 +300,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(anke_check.isChecked())
         {
             anke_layout.setVisibility(View.VISIBLE);
-            linear_select_image_anke.setVisibility(View.VISIBLE);
-            linear_select_vedio_anke.setVisibility(View.VISIBLE);
+            //linear_select_image_anke.setVisibility(View.VISIBLE);
+            //linear_select_vedio_anke.setVisibility(View.VISIBLE);
         }
         else {
             anke_layout.setVisibility(View.GONE);
@@ -315,8 +315,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(elbow_check.isChecked())
         {
             elbow_layout.setVisibility(View.VISIBLE);
-            linear_select_image_elbow.setVisibility(View.VISIBLE);
-            linear_select_vedio_elbow.setVisibility(View.VISIBLE);
+            //linear_select_image_elbow.setVisibility(View.VISIBLE);
+            //linear_select_vedio_elbow.setVisibility(View.VISIBLE);
         }
         else {
             elbow_layout.setVisibility(View.GONE);
@@ -330,8 +330,8 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
         if(wrist_check.isChecked())
         {
             wrist_layout.setVisibility(View.VISIBLE);
-            linear_select_image_wrist.setVisibility(View.VISIBLE);
-            linear_select_vedio_wrist.setVisibility(View.VISIBLE);
+            //linear_select_image_wrist.setVisibility(View.VISIBLE);
+            //linear_select_vedio_wrist.setVisibility(View.VISIBLE);
         }
         else {
             wrist_layout.setVisibility(View.GONE);
