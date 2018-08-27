@@ -14,8 +14,8 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Search" />
         <item
-            android:id="@+id/nav_manage"
-            android:title="Tools" />
+            android:id="@+id/contact_us"
+            android:title="Contact Us" />
     </group>
 
 

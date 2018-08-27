@@ -13,8 +13,7 @@
         <activity
             android:name=".activities.PatientsListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".activities.AddPatientActivity" />
         <activity
             android:name=".activities.PatientProfileActivity"
@@ -27,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.ContactUsActivity"></activity>
     </application>
 
 </manifest>
