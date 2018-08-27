@@ -1,6 +1,9 @@
 package com.example.shaimaaderbaz.orthoclinic.fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,6 +51,9 @@ public class OperationsFragment extends Fragment implements OperationsView{
     private int mPatientId;
     private static final String PATIENT_KEY = "patient_key";
 
+    int PICK_PHOTO_FOR_AVATAR =1;
+    Uri actualUri;
+
     public static OperationsFragment newInstance(int patientID) {
         OperationsFragment fragment = new OperationsFragment();
         Bundle args = new Bundle();
@@ -72,6 +78,18 @@ public class OperationsFragment extends Fragment implements OperationsView{
         presenter = new OperationsPresenterImp(this);
         context=getContext();
         ButterKnife.bind(this,view);
+        select_image.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                /*Intent intent = new Intent();
+                intent.setType("image/*"); //set type for files (image type)
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 2);*/
+                pickImage();
+            }
+        });
 
         btnAddOperation.setOnClickListener(new View.OnClickListener()
         {
@@ -109,5 +127,24 @@ public class OperationsFragment extends Fragment implements OperationsView{
     public void setOperationsCreateFailure ()
     {
         Toast.makeText(context, "Op Name or Date or Persons not Added, please try again", Toast.LENGTH_SHORT).show();
+    }
+
+    public void pickImage() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_PHOTO_FOR_AVATAR);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_PHOTO_FOR_AVATAR && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                actualUri = data.getData();
+                //Display an error
+                return;
+            }
+
+        }
     }
 }
