@@ -7,7 +7,7 @@ package com.example.shaimaaderbaz.orthoclinic.network;
 public class Utils {
 
 
-    public static final String BASE_URL = "http://034c1b2c.ngrok.io";
+    public static final String BASE_URL = "http://ab7eb262.ngrok.io";
 
 
     public static OrthoAPI getOrthoAPI() {

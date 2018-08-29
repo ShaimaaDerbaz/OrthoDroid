@@ -64,7 +64,7 @@ public class PatientsListFragment extends Fragment implements PatientListView,
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_patients_list,container,false);
+        View view = inflater.inflate(R.layout.fragment_patients_list,container,false);
         ButterKnife.bind(this,view);
 
         presenter = new PatientListPresenterImp(this);

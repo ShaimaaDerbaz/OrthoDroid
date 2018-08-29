@@ -3,6 +3,7 @@
     package="com.example.shaimaaderbaz.orthoclinic">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher2"
@@ -13,8 +14,9 @@
             android:name=".activities.PatientProfileActivity"
             android:label="@string/title_activity_patient_profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.SplashActivity"
-            android:noHistory="true" >
+        <activity
+            android:name=".activities.SplashActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +24,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ContactUsActivity" />
-        <activity android:name=".activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+        <activity
+            android:name=".activities.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.EditItemActivity"></activity>
     </application>
 
 </manifest>

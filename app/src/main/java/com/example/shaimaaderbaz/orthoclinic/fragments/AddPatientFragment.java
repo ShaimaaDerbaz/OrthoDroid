@@ -62,7 +62,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_add_patient,container,false);
+        View view = inflater.inflate(R.layout.fragment_add_patient,container,false);
         ButterKnife.bind(this,view);
         presenter = new AddPatientPresenterImp(this);
         btnCreateProfile.setOnClickListener(new View.OnClickListener()
