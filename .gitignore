@@ -5,7 +5,8 @@
 /.idea/libraries
 /.idea/misc.xml
 /.idea/codeStyles/Project.xml
-.idea/vcs.xml
+/.idea/vcs.xml
+/.idea/caches/build_file_checksums.ser
 
 .DS_Store
 /build

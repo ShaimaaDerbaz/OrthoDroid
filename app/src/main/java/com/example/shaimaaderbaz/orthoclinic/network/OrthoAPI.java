@@ -24,7 +24,7 @@ import retrofit2.http.Path;
 public interface OrthoAPI {
 
     @POST("/api/patients")
-    Call<PatientItem> savePatient(@Body PatientItem patientItem);
+    Call<ResponseBody> savePatient(@Body PatientItem patientItem);
 
     @GET("/api/patients")
     Call<AllPatientData> getAllPatients();

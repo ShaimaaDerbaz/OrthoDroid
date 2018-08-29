@@ -80,8 +80,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
                     patientItem.setAge(Integer.parseInt(patientAge));
                 }catch (Exception e)
                 {
-                    Integer i=null;
-                    patientItem.setAge(i);
+                    patientItem.setAge(null);
                 }
                 patientItem.setOccup(occupation);
                 try{
@@ -89,16 +88,15 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
                 }
                 catch (Exception e)
                 {
-                    Integer i=null;
-                    patientItem.setWeight(i);
+                    patientItem.setWeight(null);
                 }
                 patientItem.setInfo(patientInfo);
-                if(!patientName.isEmpty() &&patientAge !=null)
+                if(!patientName.isEmpty() && patientItem.getAge() != null)
                 {
                     presenter.addPatientToServer(patientItem);
 
                 }else{
-                    presenter.onPatientCreateFailure(getContext());
+                    setPatientCreateFailure();
                 }
             }
         });
@@ -113,7 +111,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
     @Override
     public void setPatientCreateFailure()
     {
-        Toast.makeText(getContext(), "Name or Age is not added , please try again", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Failed to add patient", Toast.LENGTH_SHORT).show();
     }
 
 }

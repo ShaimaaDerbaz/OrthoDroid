@@ -48,22 +48,24 @@ public class DataCalls {
         });
     }
 
-    public void addpatient(final PatientItem patientItem) {
+    public void addpatient(final PatientItem patientItem, final BaseResponseCall presenterCall) {
 
-        Call<PatientItem> call = orthoAPI.savePatient(patientItem);
+        Call<ResponseBody> call = orthoAPI.savePatient(patientItem);
 
-        call.enqueue(new Callback<PatientItem>() {
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<PatientItem> call, Response<PatientItem> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-
+                    presenterCall.success();
                 }
+                else
+                    presenterCall.error("Unkown Error");
 
             }
 
             @Override
-            public void onFailure(Call<PatientItem> call, Throwable t) {
-
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                presenterCall.error(t.getMessage());
             }
         });
     }
@@ -189,7 +191,6 @@ public class DataCalls {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 baseResponseCall.error(t.getMessage());
-
             }
         });
 

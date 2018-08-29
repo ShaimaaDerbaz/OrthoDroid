@@ -10,6 +10,7 @@ import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public class PatientListPresenterImp implements PatientListPresenter ,PatientLis
      AllPatientsCall presenterCallback =new AllPatientsCall() {
          @Override
          public void success(List<PatientItem> patientItems) {
+             Collections.reverse(patientItems);
              patientListView.showPatients(patientItems);
          }
 

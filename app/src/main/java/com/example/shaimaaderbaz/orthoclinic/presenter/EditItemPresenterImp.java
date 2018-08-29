@@ -22,20 +22,20 @@ public class EditItemPresenterImp implements EditItemPresenter ,EditItemInteract
     public void UploadMediaToServer(PatientItem patientItem)
     {
         DataCalls dataCalls =new DataCalls();
-        dataCalls.addpatient(patientItem);
+//        dataCalls.addpatient(patientItem);
     }
 
     @Override
     public void EditItemToServer(PatientItem patientItem)
     {
         DataCalls dataCalls =new DataCalls();
-        dataCalls.addpatient(patientItem);
+//        dataCalls.addpatient(patientItem);
     }
     @Override
     public void DeleteItemFromServer(PatientItem patientItem)
     {
         DataCalls dataCalls =new DataCalls();
-        dataCalls.addpatient(patientItem);
+//        dataCalls.addpatient(patientItem);
     }
     //implement from AddPatientInteractor
 

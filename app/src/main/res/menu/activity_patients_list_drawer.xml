@@ -3,16 +3,16 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Patients" />
+        <item
             android:id="@+id/new_patient"
             android:icon="@drawable/ic_menu_gallery"
             android:title="New Patient" />
         <!--<item-->
             <!--android:id="@+id/nav_gallery"-->
             <!--android:title="Gallery" />-->
-        <item
-            android:id="@+id/search"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Search" />
         <item
             android:id="@+id/contact_us"
             android:title="Contact Us" />

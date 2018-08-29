@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(AddPatientFragment.newInstance(),false);
+                replaceFragment(PatientsListFragment.newInstance(),false);
             }
         });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
