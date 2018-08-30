@@ -163,7 +163,7 @@ public class DataCalls {
         );
     }
 
-    public void UdateOperation(RetrofitModels.Operation operation,
+    public void updateOperation(RetrofitModels.Operation operation,
                              int patientId,
                              final BaseResponseCall baseResponseCall) {
         ArrayList<RetrofitModels.Operation> operations = new ArrayList<>();
