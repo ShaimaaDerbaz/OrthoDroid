@@ -230,6 +230,8 @@ public class RetrofitModels {
     }
 
     public static class Operation {
+        @SerializedName("id")
+        private Integer id;
         @SerializedName("name")
         private String mName;
 
@@ -271,6 +273,10 @@ public class RetrofitModels {
 
         public String getSteps() {
             return mSteps;
+        }
+
+        public Integer getId() {
+            return id;
         }
     }
 

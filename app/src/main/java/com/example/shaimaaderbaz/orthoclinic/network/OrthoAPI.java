@@ -14,6 +14,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -52,5 +53,9 @@ public interface OrthoAPI {
 
     @POST("/api/operations")
     Call<ResponseBody> addOperation(@Body RetrofitModels.AddOperationRequest operationRequest);
+
+    @PATCH("api/operations/{operation_id}")
+    Call<ResponseBody> updateOperation(@Body RetrofitModels.AddOperationRequest operationRequest,@Path("operation_id") long operation_id);
+
 
 }

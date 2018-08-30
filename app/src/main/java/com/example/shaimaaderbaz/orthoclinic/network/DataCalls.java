@@ -163,6 +163,31 @@ public class DataCalls {
         );
     }
 
+    public void UdateOperation(RetrofitModels.Operation operation,
+                             int patientId,
+                             final BaseResponseCall baseResponseCall) {
+        ArrayList<RetrofitModels.Operation> operations = new ArrayList<>();
+        operations.add(operation);
+        long patient_id=operation.getId();
+        orthoAPI.updateOperation(new RetrofitModels.AddOperationRequest(operations,patientId),patient_id).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        }
+                        else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
     public void addLab(List<RetrofitModels.Lab> labs, int patientId, final BaseResponseCall baseResponseCall) {
         orthoAPI.addLab(new RetrofitModels.AddLabRequest(labs, patientId)).enqueue(new Callback<ResponseBody>() {
             @Override
