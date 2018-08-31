@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.activities.EditOperationActivity;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationLabsAdapter;
@@ -35,7 +36,7 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public  class PersonalFragment extends Fragment implements PatientPersonalView{
+public  class PersonalFragment extends Fragment implements PatientPersonalView ,PatientProfileOperationsAdapter.PatientProfileAdapterListener{
 
     private static final String TAG = "personal_tab_fragment";
 
@@ -128,7 +129,7 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(),allPatientInfoData.getRadiations());
         investigationRadsRecyclerView.setAdapter(patientProfileInvestigationRadiationsAdapter);
         operationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileOperationsAdapter = new PatientProfileOperationsAdapter(getContext(),allPatientInfoData.getOperations());
+        patientProfileOperationsAdapter = new PatientProfileOperationsAdapter(getContext(),allPatientInfoData.getOperations(),this);
         operationsRecyclerView.setAdapter(patientProfileOperationsAdapter);
     }
 
@@ -137,6 +138,12 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView{
         super.onStart();
         presenter.retreivePatientInfoFromServer(mPatientId);
         mProgress.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onItemClicked(int id)
+    {
+        EditOperationActivity.start(getContext(),id);
     }
 }
 

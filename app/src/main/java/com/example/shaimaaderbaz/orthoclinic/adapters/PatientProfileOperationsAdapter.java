@@ -27,12 +27,17 @@ public class PatientProfileOperationsAdapter extends RecyclerView.Adapter<Patien
 
     private List<OperationsItem> DataSet;
     private static Context context;
+    private PatientProfileOperationsAdapter.PatientProfileAdapterListener mPatientProfileAdapterListener;
+    public interface PatientProfileAdapterListener {
+        void onItemClicked(int id);
 
-    public PatientProfileOperationsAdapter(Context cont, List<OperationsItem> dataSet)
+    }
+
+    public PatientProfileOperationsAdapter(Context cont, List<OperationsItem> dataSet, PatientProfileAdapterListener listener)
     {
         context=cont;
         DataSet = dataSet;
-
+        mPatientProfileAdapterListener = listener;
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder
@@ -53,6 +58,10 @@ public class PatientProfileOperationsAdapter extends RecyclerView.Adapter<Patien
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "Element " + getPosition() + " clicked.");
+                    if(mPatientProfileAdapterListener != null){
+                        OperationsItem clickedItem = DataSet.get(getAdapterPosition());
+                        mPatientProfileAdapterListener.onItemClicked(clickedItem.getId());
+                    }
 
                 }
             });
