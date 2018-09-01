@@ -11,7 +11,7 @@ public interface EditOperationPresenter {
 
     void UploadVediosToServer(int patient_id, OperationsItem operationsItem);
     void UploadImagesToServer(int patient_id, OperationsItem operationsItem);
-    void EditItemToServer(int patient_id, OperationsItem operationsItem);
+    void EditItemToServer(int patient_id,int op_id, OperationsItem operationsItem);
     void DeleteItemFromServer(PatientItem patientItem);
 }
 

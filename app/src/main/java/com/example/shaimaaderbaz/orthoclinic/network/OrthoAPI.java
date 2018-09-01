@@ -57,7 +57,8 @@ public interface OrthoAPI {
     Call<ResponseBody> addOperation(@Body RetrofitModels.AddOperationRequest operationRequest);
 
     @PATCH("api/operations/{operation_id}")
-    Call<ResponseBody> updateOperation(@Body RetrofitModels.AddOperationRequest operationRequest,@Path("operation_id") long operation_id);
+    @Multipart 
+    Call<ResponseBody> updateOperation(@Path("operation_id") long operation_id,@Body RetrofitModels.UpdateOperationRequest operationRequest);
 
     @PATCH("api/radiations/{radiation_id}")
     Call<ResponseBody> updateRadiation(@Body RetrofitModels.AddRadiationRequest radiationRequest,@Path("radiation_id") long radiation_id);

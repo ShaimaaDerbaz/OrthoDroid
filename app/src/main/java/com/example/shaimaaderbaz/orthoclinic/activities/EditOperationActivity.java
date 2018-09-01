@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
@@ -81,7 +82,6 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             @Override
             public void onClick(View view) {
                 OperationsItem operationsItem = new OperationsItem();
-                operationsItem.setId(op_id);
                 String name = operation_name_text.getText().toString();
                 String date = date_text.getText().toString();
                 String steps = steps_text.getText().toString();
@@ -94,19 +94,20 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
                 operationsItem.setFollow_up(followup);
 
                 if (!name.isEmpty()) {
-                    presenter.EditItemToServer(mPatientId,operationsItem);
+                    presenter.EditItemToServer(mPatientId,op_id,operationsItem);
                     //mProgress.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
-
+    @Override
     public void setOperationsUpdateSucessfull()
     {
-
+        Toast.makeText(this, "Operations Updated Sucessfully", Toast.LENGTH_SHORT).show();
     }
+    @Override
     public void setOperationsUpdateFailure()
     {
-
+        Toast.makeText(this, "Can't Update Operations ", Toast.LENGTH_SHORT).show();
     }
 }

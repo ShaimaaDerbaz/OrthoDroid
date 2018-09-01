@@ -35,16 +35,15 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
     }
 
     @Override
-    public void EditItemToServer(int patient_id, OperationsItem operationsItem)
+    public void EditItemToServer(int patient_id,int op_id, OperationsItem operationsItem)
     {
         DataCalls dataCalls =new DataCalls();
         dataCalls.updateOperation(new RetrofitModels.Operation(
-                operationsItem.getId(),
                 operationsItem.getName(),
                 operationsItem.getSteps(),
                 operationsItem.getDate(),
                 operationsItem.getPersons(),
-                operationsItem.getFollow_up()),patient_id,this);
+                operationsItem.getFollow_up()),patient_id,op_id,this);
     }
     @Override
     public void DeleteItemFromServer(PatientItem patientItem)

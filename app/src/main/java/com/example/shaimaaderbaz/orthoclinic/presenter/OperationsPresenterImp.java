@@ -33,18 +33,7 @@ public class OperationsPresenterImp implements OperationsPresenter,
                 operationsItem.getFollow_up()
         ),patinetId,this);
     }
-    @Override
-    public void updateOperationsToServer(OperationsItem operationsItem, int patientId)
-    {
-        DataCalls dataCalls = new DataCalls();
-        dataCalls.updateOperation(new RetrofitModels.Operation(
-                operationsItem.getName(),
-                operationsItem.getSteps(),
-                operationsItem.getDate(),
-                operationsItem.getPersons(),
-                operationsItem.getFollow_up()
-        ),patientId,this);
-    }
+
     //implement from Interactor
     @Override
     public void onOperationsCreateSucessfull()

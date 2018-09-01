@@ -62,6 +62,19 @@ public class RetrofitModels {
         }
     }
 
+    public static class UpdateOperationRequest extends AddDataBaseRequest {
+        private Operation mOperations;
+
+        public UpdateOperationRequest(Operation mOperations, int patientId) {
+            this.patientId = patientId;
+            this.mOperations = mOperations;
+        }
+
+        public Operation getOperations() {
+            return mOperations;
+        }
+    }
+
     public static class AddMedicalHistoryRequest extends AddDataBaseRequest {
         @SerializedName("medical_history")
         private List<MedicalHistory> mMedicalHistory;
@@ -251,8 +264,6 @@ public class RetrofitModels {
     }
 
     public static class Operation {
-        @SerializedName("id")
-        private Integer id;
         @SerializedName("name")
         private String mName;
 
@@ -268,14 +279,6 @@ public class RetrofitModels {
         @SerializedName("follow_up")
         private String mFollowUp;
 
-        public Operation(Integer id, String name, String steps, String date, String persons, String followUp) {
-            this.id=id;
-            this.mName = name;
-            this.mSteps = steps;
-            this.mDate = date;
-            this.mPersons = persons;
-            this.mFollowUp = followUp;
-        }
 
         public Operation(String name, String steps, String date, String persons, String followUp) {
             this.mName = name;
@@ -305,9 +308,7 @@ public class RetrofitModels {
             return mSteps;
         }
 
-        public Integer getId() {
-            return id;
-        }
+
     }
 
 

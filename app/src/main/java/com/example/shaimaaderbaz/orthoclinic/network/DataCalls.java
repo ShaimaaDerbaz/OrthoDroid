@@ -163,13 +163,11 @@ public class DataCalls {
         );
     }
 
-    public void updateOperation(RetrofitModels.Operation operation,
-                             int patientId,
-                             final BaseResponseCall baseResponseCall) {
-        ArrayList<RetrofitModels.Operation> operations = new ArrayList<>();
-        operations.add(operation);
-        long operation_id=operation.getId();
-        orthoAPI.updateOperation(new RetrofitModels.AddOperationRequest(operations,patientId),operation_id).enqueue(
+    public void updateOperation(RetrofitModels.Operation operation, int patientId,int operation_id, final BaseResponseCall baseResponseCall) {
+        //ArrayList<RetrofitModels.Operation> operations = new ArrayList<>();
+        //operations.add(operation);
+        RetrofitModels.Operation finalOperation=new RetrofitModels.Operation(operation.getName(),operation.getSteps(),operation.getDate(),operation.getPersons(),operation.getFollowUp());
+        orthoAPI.updateOperation(operation_id,new RetrofitModels.UpdateOperationRequest(finalOperation,patientId)).enqueue(
                 new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
