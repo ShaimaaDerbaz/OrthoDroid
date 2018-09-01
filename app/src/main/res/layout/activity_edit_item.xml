@@ -16,13 +16,13 @@
         android:layout_weight="7"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/edit_feiled_text"
+            android:id="@+id/edit_field_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="15dp"
             android:paddingBottom="5dp"
             android:textSize="24sp"
-            android:text="Operation Name"
+            android:text="Name"
             android:textColor="@color/colorGray"/>
 
         <LinearLayout
@@ -37,10 +37,10 @@
 
 
             <EditText
-                android:id="@+id/operation_text"
+                android:id="@+id/edit_info_edit_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="name"
+                android:hint="info"
                 android:textColorHint="@color/colorGray"
                 android:textColor="@color/colorGray"
                 android:background="#fff"
@@ -73,7 +73,7 @@
         android:layout_weight="1.5"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btnUploadMedia"
+            android:id="@+id/btnUploadImages"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:layout_weight="1"
@@ -88,7 +88,7 @@
             android:padding="10dp">
         </Button>
         <Button
-            android:id="@+id/btnVedios"
+            android:id="@+id/btnUploadVedios"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:layout_weight="1"

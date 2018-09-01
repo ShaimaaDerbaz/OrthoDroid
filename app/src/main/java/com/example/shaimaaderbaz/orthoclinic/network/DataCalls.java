@@ -222,11 +222,9 @@ public class DataCalls {
 
     }
 
-    public void updateRadiation(RetrofitModels.Radiation radiation, int patientId, final BaseResponseCall baseResponseCall) {
-        ArrayList<RetrofitModels.Radiation> radiations = new ArrayList<>();
-        radiations.add(radiation);
-        long radiationId_id = radiation.getRadiation_id();
-        orthoAPI.updateRadiation(new RetrofitModels.AddRadiationRequest(radiations, patientId), radiationId_id).enqueue(
+    public void updateRadiation(int rad_id,RetrofitModels.Radiation radiation, final BaseResponseCall baseResponseCall) {
+        long radiationId_id = rad_id;
+        orthoAPI.updateRadiation(radiationId_id,radiation).enqueue(
                 new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

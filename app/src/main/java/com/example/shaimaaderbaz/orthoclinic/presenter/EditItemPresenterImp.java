@@ -9,6 +9,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.network.BaseResponseCall;
 import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
+import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
 import com.example.shaimaaderbaz.orthoclinic.views.EditOperationsView;
 
 /**
@@ -18,10 +19,10 @@ import com.example.shaimaaderbaz.orthoclinic.views.EditOperationsView;
 public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall{
 
     private AddPatientView addPatientView;
-    private EditOperationsView editOperationsView;
-    public EditItemPresenterImp(AddPatientView addPatientView)
+    private EditItemsView editItemsView;
+    public EditItemPresenterImp(EditItemsView editItemsView)
     {
-        this.addPatientView=addPatientView;
+        this.editItemsView=editItemsView;
     }
     // implement from Presenter
     @Override
@@ -32,10 +33,10 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
     }
 
     @Override
-    public void EditItemRadiationToServer(int patient_id, RadiationItem radiationItem)
+    public void EditItemRadiationToServer(int rad_id, RadiationItem radiationItem)
     {
         DataCalls dataCalls =new DataCalls();
-        dataCalls.updateRadiation(new RetrofitModels.Radiation(radiationItem.getInfo()),patient_id,this);
+        dataCalls.updateRadiation(rad_id,new RetrofitModels.Radiation(radiationItem.getInfo()),this);
     }
     @Override
     public void DeleteItemFromServer(PatientItem patientItem)
@@ -45,11 +46,12 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
     }
     @Override
     public void success() {
-        editOperationsView.setOperationsUpdateSucessfull();
+        editItemsView.setItemsUpdateSucessfull();
+
     }
 
     @Override
     public void error(String message) {
-        editOperationsView.setOperationsUpdateFailure();
+        editItemsView.setItemsUpdateFailure();
     }
 }

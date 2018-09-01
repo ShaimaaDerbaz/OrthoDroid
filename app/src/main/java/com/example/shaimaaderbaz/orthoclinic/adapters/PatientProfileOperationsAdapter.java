@@ -29,7 +29,7 @@ public class PatientProfileOperationsAdapter extends RecyclerView.Adapter<Patien
     private static Context context;
     private PatientProfileOperationsAdapter.PatientProfileAdapterListener mPatientProfileAdapterListener;
     public interface PatientProfileAdapterListener {
-        void onItemClicked(int id);
+        void onItemClicked(int id,int adapterPos);
 
     }
 
@@ -60,7 +60,7 @@ public class PatientProfileOperationsAdapter extends RecyclerView.Adapter<Patien
                     Log.d(TAG, "Element " + getPosition() + " clicked.");
                     if(mPatientProfileAdapterListener != null){
                         OperationsItem clickedItem = DataSet.get(getAdapterPosition());
-                        mPatientProfileAdapterListener.onItemClicked(clickedItem.getId());
+                        mPatientProfileAdapterListener.onItemClicked(clickedItem.getId(),getAdapterPosition());
                     }
 
                 }

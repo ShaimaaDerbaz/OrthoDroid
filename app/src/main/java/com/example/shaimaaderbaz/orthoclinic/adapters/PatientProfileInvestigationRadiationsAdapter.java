@@ -29,7 +29,7 @@ public class PatientProfileInvestigationRadiationsAdapter extends RecyclerView.A
     private static Context context;
     private PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener mPatientProfileRadiationsAdapterListener;
     public interface PatientProfileRadiationsAdapterListener{
-        void onItemRadiationClicked(int id);
+        void onItemRadiationClicked(int id,int adapterPos);
 
     }
 
@@ -61,7 +61,7 @@ public class PatientProfileInvestigationRadiationsAdapter extends RecyclerView.A
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
                 if(mPatientProfileRadiationsAdapterListener != null){
                     RadiationItem clickedItem = DataSet.get(getAdapterPosition());
-                    mPatientProfileRadiationsAdapterListener.onItemRadiationClicked(clickedItem.getId());
+                    mPatientProfileRadiationsAdapterListener.onItemRadiationClicked(clickedItem.getId(),getAdapterPosition());
                 }
 
             }

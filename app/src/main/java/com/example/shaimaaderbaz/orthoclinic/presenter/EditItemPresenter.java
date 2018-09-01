@@ -11,7 +11,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 public interface EditItemPresenter {
 
     void UploadVediosToServer(int patient_id, OperationsItem operationsItem);
-    void EditItemRadiationToServer(int patient_id, RadiationItem radiationItem);
+    void EditItemRadiationToServer(int rad_id, RadiationItem radiationItem);
     void DeleteItemFromServer(PatientItem patientItem);
 }
 
