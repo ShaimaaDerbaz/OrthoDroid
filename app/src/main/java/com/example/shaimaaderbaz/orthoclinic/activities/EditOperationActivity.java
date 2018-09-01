@@ -36,12 +36,12 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     EditText person_text;
     @BindView(R.id.follow_text)
     EditText follow_text;
-    @BindView(R.id.btnUpdateOperation)
-    Button btnUpdateOperation;
-    @BindView(R.id.upload_image_button_op)
-    Button upload_image_button_op;
-    @BindView(R.id.upload_video_button_op)
-    Button upload_video_button_op;
+    @BindView(R.id.btnEditOperation)
+    Button btnEditOperation;
+    @BindView(R.id.btnUploadImagesOp)
+    Button btnUploadImagesOp;
+    @BindView(R.id.btnUploadVediosOp)
+    Button btnUploadVediosOp;
 
     public static void start(Context context, int patientId, OperationsItem operationsItemO) {
         Intent starter = new Intent(context, EditOperationActivity.class);
@@ -77,7 +77,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             follow_text.setText(operationItem.getFollow_up());
         }
 
-        btnUpdateOperation.setOnClickListener(new View.OnClickListener() {
+        btnEditOperation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OperationsItem operationsItem = new OperationsItem();
