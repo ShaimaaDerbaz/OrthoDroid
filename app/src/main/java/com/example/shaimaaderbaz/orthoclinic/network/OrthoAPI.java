@@ -14,8 +14,10 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -57,5 +59,10 @@ public interface OrthoAPI {
     @PATCH("api/operations/{operation_id}")
     Call<ResponseBody> updateOperation(@Body RetrofitModels.AddOperationRequest operationRequest,@Path("operation_id") long operation_id);
 
+    @PATCH("api/radiations/{radiation_id}")
+    Call<ResponseBody> updateRadiation(@Body RetrofitModels.AddRadiationRequest radiationRequest,@Path("radiation_id") long radiation_id);
 
+    //@Multipart
+   // @POST("/")
+   // Call<ResponseBody> postImage(@Part MultipartBody.Part image, @Part("name") RequestBody name);
 }

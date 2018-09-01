@@ -1,5 +1,8 @@
 package com.example.shaimaaderbaz.orthoclinic.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Shaimaa Derbaz on 8/15/2018.
  */
 
-public class OperationsItem {
+public class OperationsItem implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -40,8 +43,32 @@ public class OperationsItem {
     @Expose
     private String info;
 
+    public static final Creator<OperationsItem> CREATOR = new Creator<OperationsItem>() {
+        @Override
+        public OperationsItem createFromParcel(Parcel in) {
+            return new OperationsItem(in);
+        }
 
+        @Override
+        public OperationsItem[] newArray(int size) {
+            return new OperationsItem[size];
+        }
+    };
     public OperationsItem() {
+    }
+
+    protected OperationsItem(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        patient_id = in.readInt();
+        operation_id = in.readInt();
+        created_at = in.readString();
+        date = in.readString();
+        persons = in.readString();
+        follow_up = in.readString();
+        steps = in.readString();
+        info = in.readString();
+
     }
 
     public Integer getId() {
@@ -122,6 +149,16 @@ public class OperationsItem {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }
 

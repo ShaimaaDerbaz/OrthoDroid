@@ -168,8 +168,8 @@ public class DataCalls {
                              final BaseResponseCall baseResponseCall) {
         ArrayList<RetrofitModels.Operation> operations = new ArrayList<>();
         operations.add(operation);
-        long patient_id=operation.getId();
-        orthoAPI.updateOperation(new RetrofitModels.AddOperationRequest(operations,patientId),patient_id).enqueue(
+        long operation_id=operation.getId();
+        orthoAPI.updateOperation(new RetrofitModels.AddOperationRequest(operations,patientId),operation_id).enqueue(
                 new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -219,5 +219,28 @@ public class DataCalls {
             }
         });
 
+    }
+
+    public void updateRadiation(RetrofitModels.Radiation radiation, int patientId, final BaseResponseCall baseResponseCall) {
+        ArrayList<RetrofitModels.Radiation> radiations = new ArrayList<>();
+        radiations.add(radiation);
+        long radiationId_id=radiation.getRadiation_id();
+        orthoAPI.updateRadiation(new RetrofitModels.AddRadiationRequest(radiations,patientId),radiationId_id).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        }
+                        else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
     }
 }

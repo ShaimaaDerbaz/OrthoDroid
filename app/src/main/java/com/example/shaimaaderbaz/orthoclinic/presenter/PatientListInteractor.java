@@ -29,7 +29,7 @@ public interface PatientListInteractor {
 
     interface OnRetreivePatientsFinishedListener {
         void onPatientRetreivesSucessfull(Context context,List<PatientItem> allPatientData);
-        public void onPatientsRetreiveFailure(Context context,List<PatientItem> allPatientData);
+        void onPatientsRetreiveFailure(Context context,List<PatientItem> allPatientData);
 
           }
 

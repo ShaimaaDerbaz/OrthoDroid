@@ -25,14 +25,20 @@ import static android.content.ContentValues.TAG;
 
 public class PatientProfileInvestigationRadiationsAdapter extends RecyclerView.Adapter<PatientProfileInvestigationRadiationsAdapter.ViewHolder> {
 
-private List<RadiationItem> DataSet;
-private static Context context;
+    private List<RadiationItem> DataSet;
+    private static Context context;
+    private PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener mPatientProfileRadiationsAdapterListener;
+    public interface PatientProfileRadiationsAdapterListener{
+        void onItemRadiationClicked(int id);
+
+    }
 
 
-    public PatientProfileInvestigationRadiationsAdapter(Context cont, List<RadiationItem> dataSet)
+    public PatientProfileInvestigationRadiationsAdapter(Context cont, List<RadiationItem> dataSet,PatientProfileRadiationsAdapterListener listener)
     {
         context=cont;
         DataSet = dataSet;
+        this.mPatientProfileRadiationsAdapterListener=listener;
 
     }
 
@@ -53,6 +59,10 @@ private static Context context;
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
+                if(mPatientProfileRadiationsAdapterListener != null){
+                    RadiationItem clickedItem = DataSet.get(getAdapterPosition());
+                    mPatientProfileRadiationsAdapterListener.onItemRadiationClicked(clickedItem.getId());
+                }
 
             }
             });

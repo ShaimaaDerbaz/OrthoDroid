@@ -1,5 +1,6 @@
 package com.example.shaimaaderbaz.orthoclinic.models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -155,6 +156,18 @@ public class RetrofitModels {
         @SerializedName("info")
         private String mAdditionalInfo;
 
+        @SerializedName("radiation_id")
+        @Expose
+        private Integer radiation_id;
+
+        @SerializedName("examination_date")
+        @Expose
+        private String examination_date;
+
+        public Radiation ( String mAdditionalInfo) {
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
+
         public Radiation (int mId, String mAdditionalInfo) {
             this.mId = mId;
             this.mAdditionalInfo = mAdditionalInfo;
@@ -170,6 +183,14 @@ public class RetrofitModels {
 
         public String getmAdditionalInfo() {
             return mAdditionalInfo;
+        }
+
+        public Integer getRadiation_id() {
+            return radiation_id;
+        }
+
+        public String getExamination_date() {
+            return examination_date;
         }
     }
 
@@ -246,6 +267,15 @@ public class RetrofitModels {
 
         @SerializedName("follow_up")
         private String mFollowUp;
+
+        public Operation(Integer id, String name, String steps, String date, String persons, String followUp) {
+            this.id=id;
+            this.mName = name;
+            this.mSteps = steps;
+            this.mDate = date;
+            this.mPersons = persons;
+            this.mFollowUp = followUp;
+        }
 
         public Operation(String name, String steps, String date, String persons, String followUp) {
             this.mName = name;

@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.activities.EditItemActivity;
 import com.example.shaimaaderbaz.orthoclinic.activities.EditOperationActivity;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
@@ -23,7 +24,9 @@ import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigatio
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationRadiationsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileOperationsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
+import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.presenter.PatientPersonalPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientPersonalView;
 
@@ -36,7 +39,7 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public  class PersonalFragment extends Fragment implements PatientPersonalView ,PatientProfileOperationsAdapter.PatientProfileAdapterListener{
+public  class PersonalFragment extends Fragment implements PatientPersonalView ,PatientProfileOperationsAdapter.PatientProfileAdapterListener,PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener{
 
     private static final String TAG = "personal_tab_fragment";
 
@@ -73,8 +76,9 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     PatientProfileInvestigationRadiationsAdapter patientProfileInvestigationRadiationsAdapter;
     PatientProfileOperationsAdapter patientProfileOperationsAdapter;
     PatientPersonalPresenterImp presenter =new PatientPersonalPresenterImp(this);
-
-
+    static OperationsItem operationsItem ;
+    static RadiationItem radiationItem ;
+    static AllPatientInfoData allPatientInfoDataG;
     public PersonalFragment() {
     }
 
@@ -126,11 +130,13 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
         patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(),allPatientInfoData.getLabs());
         investigationLabRecyclerView.setAdapter(patientProfileInvestigationLabsAdapter);
         investigationRadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(),allPatientInfoData.getRadiations());
+        patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(),allPatientInfoData.getRadiations(),this);
         investigationRadsRecyclerView.setAdapter(patientProfileInvestigationRadiationsAdapter);
         operationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileOperationsAdapter = new PatientProfileOperationsAdapter(getContext(),allPatientInfoData.getOperations(),this);
         operationsRecyclerView.setAdapter(patientProfileOperationsAdapter);
+        allPatientInfoDataG=allPatientInfoData;
+
     }
 
     @Override
@@ -142,8 +148,15 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
 
     @Override
     public void onItemClicked(int id)
-    {
-        EditOperationActivity.start(getContext(),id);
+    {   operationsItem=allPatientInfoDataG.getOperations().get(id);
+        EditOperationActivity.start(getContext(),id,operationsItem);
     }
+    @Override
+    public void onItemRadiationClicked(int id)
+    {
+        radiationItem=allPatientInfoDataG.getRadiations().get(id);
+      //  EditItemActivity.start(getContext(),id,operationsItem);
+    }
+
 }
 

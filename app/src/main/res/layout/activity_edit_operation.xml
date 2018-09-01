@@ -173,57 +173,36 @@
                     />
             </LinearLayout>
 
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:id="@+id/linear_select_image_op"
-                android:weightSum="10"
-                android:orientation="horizontal"
-                android:layout_margin="5dp"
-                android:paddingLeft="5dp"
-                >
-                <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:background="@drawable/button_background"
-                    android:id="@+id/select_image_button_op"
-                    android:text="select images"
-                    android:inputType="textCapWords"/>
-            </LinearLayout>
-            <LinearLayout
-                android:visibility="gone"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:id="@+id/linear_select_vedio_op"
-                android:weightSum="10"
-                android:orientation="horizontal"
-                android:layout_margin="5dp"
-                android:paddingLeft="5dp"
-                >
-                <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:background="@drawable/button_background"
-                    android:id="@+id/select_video_button_op"
-                    android:text="select Videos"
-                    android:inputType="textCapWords"/>
-            </LinearLayout>
-
-
         </LinearLayout>
 
-
-
     </ScrollView>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal">
     <Button
-        android:id="@+id/btnAddOperation"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:background="@drawable/button_background"
-        android:text="Add Operation"
+        android:id="@+id/upload_video_button_op"
+        android:textColor="#ffff"
+        android:text="Upload Videos"
+        android:inputType="textCapWords"/>
+    <Button
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:background="@drawable/button_background"
+        android:textColor="#ffff"
+        android:id="@+id/upload_image_button_op"
+        android:text="Upload Images"
+        android:inputType="textCapWords"/>
+    <Button
+        android:id="@+id/btnUpdateOperation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="update"
         android:textSize="20sp"
         android:textColor="#ffff"
         android:layout_gravity="center"
@@ -231,5 +210,7 @@
         android:layout_marginTop="10dp"
         android:padding="10dp">
     </Button>
+</LinearLayout>
+
 
 </LinearLayout>
