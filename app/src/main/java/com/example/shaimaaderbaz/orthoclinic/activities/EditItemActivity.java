@@ -24,7 +24,6 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     private int mRadiationtId;
     private static final String RADIATION_ID_KEY = "radiation_id";
     private static final String PATIENT_KEY = "patient_key";
-    int rad_id;
     EditItemPresenterImp presenter;
     @BindView(R.id.edit_field_name_text)
     TextView edit_field_name_text;
@@ -76,7 +75,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                 {
                     String info = edit_info_edit_text.getText().toString();
                     radiationItem.setInfo(info);
-                    presenter.EditItemRadiationToServer(rad_id,radiationItem);
+                    presenter.EditItemRadiationToServer(mRadiationtId,radiationItem);
 
                 }
             }}
