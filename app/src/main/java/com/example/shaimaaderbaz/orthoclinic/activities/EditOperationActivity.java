@@ -65,7 +65,8 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             throw new RuntimeException("INVALID PATIENT ID");
         }
         if (extras != null) {
-            OperationsItem operationItem = extras.getParcelable("operationsItem");
+           // OperationsItem operationItem = extras.getParcelable("operationsItem");
+            OperationsItem operationItem = extras.getParcelable(operationsItem);
             op_id = operationItem.getId();
             operation_name_text.setText(operationItem.getName());
             date_text.setText(operationItem.getDate());

@@ -148,13 +148,14 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
 
     @Override
     public void onItemClicked(int id)
-    {   operationsItem=allPatientInfoDataG.getOperations().get(id);
+    {
+        operationsItem=allPatientInfoDataG.getOperations().get(id-1);
         EditOperationActivity.start(getContext(),id,operationsItem);
     }
     @Override
     public void onItemRadiationClicked(int id)
     {
-        radiationItem=allPatientInfoDataG.getRadiations().get(id);
+        radiationItem=allPatientInfoDataG.getRadiations().get(id-1);
       //  EditItemActivity.start(getContext(),id,operationsItem);
     }
 
