@@ -30,7 +30,6 @@ public class PatientProfileOperationsAdapter extends RecyclerView.Adapter<Patien
     private PatientProfileOperationsAdapter.PatientProfileAdapterListener mPatientProfileAdapterListener;
     public interface PatientProfileAdapterListener {
         void onItemClicked(int id,int adapterPos);
-
     }
 
     public PatientProfileOperationsAdapter(Context cont, List<OperationsItem> dataSet, PatientProfileAdapterListener listener)

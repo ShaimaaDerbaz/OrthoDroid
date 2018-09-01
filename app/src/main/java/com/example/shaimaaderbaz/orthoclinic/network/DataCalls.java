@@ -1,7 +1,9 @@
 package com.example.shaimaaderbaz.orthoclinic.network;
 
+import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.content.CursorLoader;
 
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -242,27 +245,30 @@ public class DataCalls {
         );
     }
 
-    public void uploadMedia(List<Uri> files, int ownerId, int objectId,
+    public void uploadMedia(List<String> paths, int ownerId, int objectId,
                             final BaseResponseCall baseResponseCall) {
-        ArrayList<RequestBody> mediaBodies = new ArrayList<>();
-        for (Uri file : files) {
-            File f = new File(file.getPath());
+        ArrayList<MultipartBody.Part> media = new ArrayList<>();
+        for (int i=0; i<paths.size(); i++) {
+            File file = new File(paths.get(i));
             RequestBody requestFile = RequestBody.create(MediaType.parse(
                     "multipart/form-data"
-            ), f);
+            ), file);
+            media.add(MultipartBody.Part.createFormData("media["+String.valueOf(i)+"]",file.getName(),requestFile));
         }
+
+        orthoAPI.uploadMedia(objectId,ownerId,media).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful())
+                    baseResponseCall.success();
+                else
+                    baseResponseCall.error("UnkwonError");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+            }
+        });
     }
-//    private String getRealPathFromURI(Uri contentUri){
-//        val proj = MediaStore.Images.Media.DATA;
-//        val loader = CursorLoader(context, contentUri, proj, null, null, null)
-//        val cursor = loader.loadInBackground()
-//        val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-//        cursor.moveToFirst()
-//        val result = cursor.getString(columnIndex)
-//        cursor.close()
-//        val s = contentUri.path
-//        return result
-//    }
-
-
 }

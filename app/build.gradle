@@ -45,7 +45,7 @@ dependencies {
 
     //Picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
-
+    compile(name:'PickImage', ext:'aar')
 
 
     testCompile 'junit:junit:4.12'

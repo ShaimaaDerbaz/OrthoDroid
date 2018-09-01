@@ -69,7 +69,7 @@ public interface OrthoAPI {
     Call<ResponseBody> updateRadiation(@Path("radiation_id") long radiation_id,@Body RetrofitModels.Radiation radiationRequest);
 
     @Multipart
-    @POST
+    @POST("api/media")
     Call<ResponseBody> uploadMedia(@Part("id") int id,
                                    @Part("owner") int ownerId,
                                    @Part() List<MultipartBody.Part> media);

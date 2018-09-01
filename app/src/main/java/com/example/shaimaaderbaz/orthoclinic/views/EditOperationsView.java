@@ -6,9 +6,8 @@ package com.example.shaimaaderbaz.orthoclinic.views;
 
 public interface EditOperationsView {
 
-
-
     void setOperationsUpdateSucessfull();
     void setOperationsUpdateFailure();
-
+    void setOperationMediaSuccess();
+    void setOperationMediaFailure();
 }
