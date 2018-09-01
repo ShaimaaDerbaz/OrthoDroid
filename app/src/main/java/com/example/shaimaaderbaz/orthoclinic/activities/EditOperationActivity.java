@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 public class EditOperationActivity extends AppCompatActivity implements EditOperationsView {
     private static final String PATIENT_ID_KEY = "patient_id";
     private static final String operationsItem = "operationsItem";
+    static OperationsItem operationItem;
     Integer op_id;
 
     private int mPatientId;
@@ -46,6 +47,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         Intent starter = new Intent(context, EditOperationActivity.class);
         starter.putExtra(PATIENT_ID_KEY, patientId);
         starter.putExtra(operationsItem, operationsItemO);
+        operationItem=operationsItemO;
         context.startActivity(starter);
     }
 
@@ -66,7 +68,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         }
         if (extras != null) {
            // OperationsItem operationItem = extras.getParcelable("operationsItem");
-            OperationsItem operationItem = extras.getParcelable(operationsItem);
+            //operationItem = extras.getParcelable(operationsItem);
             op_id = operationItem.getId();
             operation_name_text.setText(operationItem.getName());
             date_text.setText(operationItem.getDate());
