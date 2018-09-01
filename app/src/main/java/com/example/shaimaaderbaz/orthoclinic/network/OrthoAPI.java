@@ -14,6 +14,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 
 import java.util.List;
 
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
@@ -60,6 +61,9 @@ public interface OrthoAPI {
     @PATCH("api/operations/{operation_id}")
     Call<ResponseBody> updateOperation(@Path("operation_id") long operation_id,
                                        @Body RetrofitModels.Operation operationRequest);
+
+    @DELETE("api/operations/{operation_id}")
+    Call<ResponseBody> deleteOperation(@Path("operation_id") long operation_id);
 
     @PATCH("api/radiations/{radiation_id}")
     Call<ResponseBody> updateRadiation(@Body RetrofitModels.AddRadiationRequest radiationRequest,@Path("radiation_id") long radiation_id);

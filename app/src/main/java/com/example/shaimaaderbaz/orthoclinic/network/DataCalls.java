@@ -253,8 +253,7 @@ public class DataCalls {
                     "multipart/form-data"
             ), f);
         }
-//    }
-//
+    }
 //    private String getRealPathFromURI(Uri contentUri){
 //        val proj = MediaStore.Images.Media.DATA;
 //        val loader = CursorLoader(context, contentUri, proj, null, null, null)
@@ -267,5 +266,5 @@ public class DataCalls {
 //        return result
 //    }
 
-    }
+
 }
