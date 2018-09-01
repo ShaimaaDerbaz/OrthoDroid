@@ -5,6 +5,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 
+import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -57,12 +58,17 @@ public interface OrthoAPI {
     Call<ResponseBody> addOperation(@Body RetrofitModels.AddOperationRequest operationRequest);
 
     @PATCH("api/operations/{operation_id}")
-    @Multipart 
-    Call<ResponseBody> updateOperation(@Path("operation_id") long operation_id,@Body RetrofitModels.UpdateOperationRequest operationRequest);
+    Call<ResponseBody> updateOperation(@Path("operation_id") long operation_id,
+                                       @Body RetrofitModels.Operation operationRequest);
 
     @PATCH("api/radiations/{radiation_id}")
     Call<ResponseBody> updateRadiation(@Body RetrofitModels.AddRadiationRequest radiationRequest,@Path("radiation_id") long radiation_id);
 
+    @Multipart
+    @POST
+    Call<ResponseBody> uploadMedia(@Part("id") int id,
+                                   @Part("owner") int ownerId,
+                                   @Part() List<MultipartBody.Part> media);
     //@Multipart
    // @POST("/")
    // Call<ResponseBody> postImage(@Part MultipartBody.Part image, @Part("name") RequestBody name);

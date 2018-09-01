@@ -3,6 +3,8 @@ package com.example.shaimaaderbaz.orthoclinic.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Shaimaa Derbaz on 8/26/2018.
  */
@@ -29,6 +31,14 @@ public class RadiationItem {
     @SerializedName("examination_date")
     @Expose
     private String examination_date;
+
+    @SerializedName("media")
+    private List<MediaItem> mediaItems;
+
+    public List<MediaItem> getMediaItems() {
+        return mediaItems;
+    }
+
 
     public RadiationItem() {
     }

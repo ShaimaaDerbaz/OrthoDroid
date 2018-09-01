@@ -32,6 +32,13 @@ public class ComplainItem {
     @Expose
     private String examination_date;
 
+    @SerializedName("media")
+    private List<MediaItem> mediaItems;
+
+    public List<MediaItem> getMediaItems() {
+        return mediaItems;
+    }
+
     public ComplainItem() {
     }
 

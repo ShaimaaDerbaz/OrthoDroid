@@ -264,6 +264,7 @@ public class RetrofitModels {
     }
 
     public static class Operation {
+
         @SerializedName("name")
         private String mName;
 

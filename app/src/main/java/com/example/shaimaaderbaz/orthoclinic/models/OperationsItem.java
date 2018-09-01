@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Shaimaa Derbaz on 8/15/2018.
  */
@@ -42,6 +44,15 @@ public class OperationsItem implements Parcelable {
     @SerializedName("info")
     @Expose
     private String info;
+
+
+    @SerializedName("media")
+    private List<MediaItem> mediaItems;
+
+    public List<MediaItem> getMediaItems() {
+        return mediaItems;
+    }
+
 
     public static final Creator<OperationsItem> CREATOR = new Creator<OperationsItem>() {
         @Override
