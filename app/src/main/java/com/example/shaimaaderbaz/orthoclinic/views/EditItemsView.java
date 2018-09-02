@@ -9,4 +9,6 @@ public interface EditItemsView {
     void setItemsUpdateFailure();
     void setItemDeleteSuccessful();
     void setItemDeleteFailure();
+    void setItemMediaFailure();
+    void setItemMediaSuccessful();
 }

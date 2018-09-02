@@ -9,6 +9,8 @@ import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 
+import java.util.List;
+
 /**
  * Created by Shaimaa Derbaz on 7/25/2018.
  */
@@ -27,6 +29,8 @@ public interface EditItemPresenter {
     void deleteItemComplain(int mCompId);
 
     void deleteItemHistory(int mHistoryId);
+
+    void uploadMediaToServer(int objectId, List<String> filePaths);
 
 
 }

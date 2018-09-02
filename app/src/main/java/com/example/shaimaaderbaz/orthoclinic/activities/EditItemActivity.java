@@ -2,11 +2,16 @@ package com.example.shaimaaderbaz.orthoclinic.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,11 +23,21 @@ import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditItemPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.enums.EPickType;
+import com.vansuita.pickimage.listeners.IPickClick;
+import com.vansuita.pickimage.listeners.IPickResult;
+
+
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EditItemActivity extends AppCompatActivity implements EditItemsView {
+public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult{
     private static RadiationItem radiationItem ;
     private int mRadiationtId;
     private static LabItem labItem ;
@@ -31,6 +46,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     private int mLabId;
     private int mHistoryId;
     private int mCompId;
+    private int obj_id;
     private static final String RADIATION_ID_KEY = "radiation_id";
     private static final String PATIENT_KEY = "patient_key";
     private static final String LAB_ID_KEY = "lab_id";
@@ -49,6 +65,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     Button btnUploadImages;
     @BindView(R.id.btnDelete)
     Button btnDelete;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
     public static void start(Context context, int radiationId, RadiationItem radiationItemO) {
         Intent starter = new Intent(context, EditItemActivity.class);
@@ -212,6 +230,54 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                 }
             }
         });
+
+        btnUploadImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(radiationItem !=null)
+                {
+                    obj_id=mRadiationtId;
+                    showPickDialog(true);
+
+                }
+                if(labItem !=null)
+                {
+                    obj_id=mLabId;
+                    showPickDialog(true);
+
+                }
+                if(complainItem !=null)
+                {
+                    obj_id=mCompId;
+                    showPickDialog(true);
+                }
+
+            }
+        });
+
+        btnUploadVedios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(radiationItem !=null)
+                {
+                    obj_id=mRadiationtId;
+                    showPickDialog(false);
+
+                }
+                if(labItem !=null)
+                {
+                    obj_id=mLabId;
+                    showPickDialog(false);
+
+                }
+                if(complainItem !=null)
+                {
+                    obj_id=mCompId;
+                    showPickDialog(false);
+                }
+
+            }
+        });
     }
 
     @Override
@@ -243,4 +309,48 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void setItemDeleteFailure() {
         Toast.makeText(this,"Can't delete item",Toast.LENGTH_SHORT).show();
     }
+    @Override
+    public void setItemMediaSuccessful() {
+        Toast.makeText(this,"Images Uploaded successfully",Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
+        //TODO: Update Images List
+    }
+
+    @Override
+    public void setItemMediaFailure() {
+        Toast.makeText(this,"Can't upload images",Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
+    }
+
+    private void showPickDialog(boolean isPhoto) {
+        if (isPhoto)
+            PickImageDialog.build(new PickSetup()).show(this);
+        else
+            PickImageDialog.build(new PickSetup().setVideo(true)).show(this);
+    }
+
+    private String getRealPathFromURI(Uri contentUri) {
+        String[] proj = new String[1];
+        proj[0] = MediaStore.Images.Media.DATA;
+        CursorLoader loader = new CursorLoader(this, contentUri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(columnIndex);
+        cursor.close();
+        return result;
+    }
+
+    @Override
+    public void onPickResult(PickResult pickResult) {
+        ArrayList<String> paths = new ArrayList<>();
+        Uri file = pickResult.getUri();
+        if (pickResult.getPickType() == EPickType.CAMERA)
+            paths.add(file.getPath());
+        else
+            paths.add(getRealPathFromURI(file));
+        presenter.uploadMediaToServer(obj_id,paths);
+        mProgress.setVisibility(View.VISIBLE);
+    }
+
 }

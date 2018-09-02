@@ -12,9 +12,12 @@ import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.network.BaseResponseCall;
 import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
+import com.example.shaimaaderbaz.orthoclinic.utils.Utils;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
 import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
 import com.example.shaimaaderbaz.orthoclinic.views.EditOperationsView;
+
+import java.util.List;
 
 /**
  * Created by Shaimaa Derbaz on 8/4/2018.
@@ -107,6 +110,22 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
     {
         DataCalls dataCalls = new DataCalls();
         dataCalls.deleteComplain(mHistoryId,this);
+    }
+    @Override
+    public void uploadMediaToServer(int objectId, List<String> filePaths) {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.uploadMedia(filePaths, Utils.MediaConstants.OPERATION_MEDIA, objectId,
+                new BaseResponseCall() {
+                    @Override
+                    public void success() {
+                        editItemsView.setItemMediaSuccessful();
+                    }
+
+                    @Override
+                    public void error(String message) {
+                        editItemsView.setItemMediaFailure();
+                    }
+                });
     }
 
 
