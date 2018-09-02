@@ -7,7 +7,7 @@
 /.idea/codeStyles/Project.xml
 /.idea/vcs.xml
 /.idea/caches/build_file_checksums.ser
-
+.idea/
 .DS_Store
 /build
 /captures
