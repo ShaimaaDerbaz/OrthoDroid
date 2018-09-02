@@ -19,6 +19,12 @@ public interface EditItemPresenter {
     void EditItemLabToServer(int lab_id, LabItem labItem);
     void EditItemComplainToServer(int comp_id, ComplainItem complain );
     void DeleteItemFromServer(PatientItem patientItem);
+
+    void deleteItemRadiation(int mRadiationtId);
+
+    void deleteItemLab(int mLabId);
+
+    void deleteItemComplain(int mCompId);
 }
 
 

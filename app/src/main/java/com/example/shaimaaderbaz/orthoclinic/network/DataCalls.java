@@ -147,6 +147,42 @@ public class DataCalls {
         });
     }
 
+    public void updateComplain(int comp_id,RetrofitModels.Complain complain, final BaseResponseCall baseResponseCall) {
+        orthoAPI.updateComplain((long) comp_id,complain).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
+    public void deleteComplain(int complainId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.deleteComplain(complainId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful())
+                    baseResponseCall.success();
+                else
+                    baseResponseCall.error("Unkown Error");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+            }
+        });
+    }
+
     public void addOperation(RetrofitModels.Operation operation,
                              int patientId,
                              final BaseResponseCall baseResponseCall) {
@@ -192,6 +228,25 @@ public class DataCalls {
         );
     }
 
+    public void deleteOperation(int operationId, final BaseResponseCall baseResponseCall){
+        orthoAPI.deleteOperation(operationId).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
     public void addLab(List<RetrofitModels.Lab> labs, int patientId, final BaseResponseCall baseResponseCall) {
         orthoAPI.addLab(new RetrofitModels.AddLabRequest(labs, patientId)).enqueue(new Callback<ResponseBody>() {
             @Override
@@ -207,6 +262,45 @@ public class DataCalls {
             }
         });
 
+    }
+
+    public void updateLab(int lab_id,RetrofitModels.Lab lab, final BaseResponseCall baseResponseCall) {
+        long laboratory_id = lab_id;
+        orthoAPI.updateLab(laboratory_id,lab).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
+    public void deleteLab(int labId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.deleteLab(labId).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
     }
 
     public void addRadiation(List<RetrofitModels.Radiation> radiations, int patientId, final BaseResponseCall baseResponseCall) {
@@ -245,29 +339,8 @@ public class DataCalls {
         );
     }
 
-    public void updateLab(int lab_id,RetrofitModels.Lab lab, final BaseResponseCall baseResponseCall) {
-        long laboratory_id = lab_id;
-        orthoAPI.updateLab(laboratory_id,lab).enqueue(
-                new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()) {
-                            baseResponseCall.success();
-                        } else
-                            baseResponseCall.error("Unkown Error");
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        baseResponseCall.error(t.getMessage());
-                    }
-                }
-        );
-    }
-
-    public void updateComplain(int comp_id,RetrofitModels.Complain complain, final BaseResponseCall baseResponseCall) {
-        long complain_id = comp_id;
-        orthoAPI.updateComplain(complain_id,complain).enqueue(
+    public void deleteRadiation(int radiationId, final BaseResponseCall baseResponseCall){
+        orthoAPI.deleteRadiation(radiationId).enqueue(
                 new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

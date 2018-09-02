@@ -154,6 +154,31 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                 }
             }}
         );
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(radiationItem !=null)
+                {
+                    presenter.deleteItemRadiation(mRadiationtId);
+                }
+                if(labItem !=null)
+                {
+                    presenter.deleteItemLab(mLabId);
+                }
+                if(complainItem !=null)
+                {
+                    presenter.deleteItemComplain(mCompId);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        complainItem = null;
+        radiationItem = null;
+        labItem = null;
     }
 
     @Override
@@ -165,5 +190,16 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void setItemsUpdateFailure()
     {
         Toast.makeText(this, "Can't Update  ", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setItemDeleteSuccessful() {
+        Toast.makeText(this,"Item deleted successfully",Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void setItemDeleteFailure() {
+        Toast.makeText(this,"Can't delete item",Toast.LENGTH_SHORT).show();
     }
 }

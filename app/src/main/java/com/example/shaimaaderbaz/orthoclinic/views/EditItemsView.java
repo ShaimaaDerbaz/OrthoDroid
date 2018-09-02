@@ -5,10 +5,8 @@ package com.example.shaimaaderbaz.orthoclinic.views;
  */
 
 public interface EditItemsView {
-
-
-
     void setItemsUpdateSucessfull();
     void setItemsUpdateFailure();
-
+    void setItemDeleteSuccessful();
+    void setItemDeleteFailure();
 }

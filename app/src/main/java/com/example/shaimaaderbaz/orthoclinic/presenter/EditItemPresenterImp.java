@@ -60,6 +60,55 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
         DataCalls dataCalls =new DataCalls();
 //        dataCalls.addpatient(patientItem);
     }
+
+    @Override
+    public void deleteItemRadiation(int mRadiationtId) {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteRadiation(mRadiationtId, new BaseResponseCall() {
+            @Override
+            public void success() {
+                editItemsView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                editItemsView.setItemDeleteFailure();
+            }
+        });
+    }
+
+    @Override
+    public void deleteItemLab(int mLabId) {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteLab(mLabId, new BaseResponseCall() {
+            @Override
+            public void success() {
+                editItemsView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                editItemsView.setItemDeleteFailure();
+            }
+        });
+    }
+
+    @Override
+    public void deleteItemComplain(int mCompId) {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteComplain(mCompId, new BaseResponseCall() {
+            @Override
+            public void success() {
+                editItemsView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                editItemsView.setItemDeleteFailure();
+            }
+        });
+    }
+
     @Override
     public void success() {
         editItemsView.setItemsUpdateSucessfull();
