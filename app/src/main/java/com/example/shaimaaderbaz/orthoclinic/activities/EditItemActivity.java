@@ -189,6 +189,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     radiationItem.setInfo(info);
                     presenter.EditItemRadiationToServer(mRadiationtId,radiationItem);
                     radiationItem=null;
+                    btnUploadImages.setVisibility(View.VISIBLE);
+                    btnUploadVedios.setVisibility(View.VISIBLE);
 
                 }
                 if(labItem !=null)
@@ -297,6 +299,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         complainItem = null;
         radiationItem = null;
         labItem = null;
+        medicalHistoryItem=null;
     }
 
     @Override
