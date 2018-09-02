@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
+import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditItemPresenterImp;
@@ -22,8 +24,14 @@ import butterknife.ButterKnife;
 public class EditItemActivity extends AppCompatActivity implements EditItemsView {
     private static RadiationItem radiationItem ;
     private int mRadiationtId;
+    private static LabItem labItem ;
+    private static ComplainItem complainItem ;
+    private int mLabId;
+    private int mCompId;
     private static final String RADIATION_ID_KEY = "radiation_id";
     private static final String PATIENT_KEY = "patient_key";
+    private static final String LAB_ID_KEY = "lab_id";
+    private static final String COMPLAIN_ID_KEY = "complain_id";
     EditItemPresenterImp presenter;
     @BindView(R.id.edit_field_name_text)
     TextView edit_field_name_text;
@@ -46,6 +54,21 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         context.startActivity(starter);
     }
 
+    public static void start(Context context, int labId, LabItem labItemO) {
+        Intent starter = new Intent(context, EditItemActivity.class);
+        starter.putExtra(LAB_ID_KEY, labId);
+        labItem=labItemO;
+        context.startActivity(starter);
+    }
+
+    public static void start(Context context, int comoId, ComplainItem complainItemO) {
+        Intent starter = new Intent(context, EditItemActivity.class);
+        starter.putExtra(COMPLAIN_ID_KEY, comoId);
+        complainItem=complainItemO;
+        context.startActivity(starter);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +81,47 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         }
         else
         {
-            throw new RuntimeException("INVALID PATIENT ID");
+            //throw new RuntimeException("INVALID RADIATION ID");
+        }
+
+        if(getIntent().getIntExtra(LAB_ID_KEY,0) !=0 )
+        {
+            mLabId = getIntent().getIntExtra(LAB_ID_KEY,0);
+        }
+        else
+        {
+            //throw new RuntimeException("INVALID LAB ID");
+        }
+        if(getIntent().getIntExtra(COMPLAIN_ID_KEY,0) !=0 )
+        {
+            mCompId = getIntent().getIntExtra(COMPLAIN_ID_KEY,0);
+        }
+        else
+        {
+            //throw new RuntimeException("INVALID LAB ID");
         }
         ButterKnife.bind(this);
         if(radiationItem !=null)
         {
             edit_field_name_text.setText(radiationItem.getName());
             edit_info_edit_text.setText(radiationItem.getInfo());
+            radiationItem=null;
+
+        }
+
+        if(labItem !=null)
+        {
+            edit_field_name_text.setText(labItem.getName());
+            edit_info_edit_text.setText(labItem.getInfo());
+            labItem=null;
+
+        }
+
+        if(complainItem !=null)
+        {
+            edit_field_name_text.setText(complainItem.getName());
+            edit_info_edit_text.setText(complainItem.getInfo());
+            complainItem=null;
 
         }
 
@@ -76,6 +133,20 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     String info = edit_info_edit_text.getText().toString();
                     radiationItem.setInfo(info);
                     presenter.EditItemRadiationToServer(mRadiationtId,radiationItem);
+
+                }
+                if(labItem !=null)
+                {
+                    String info = edit_info_edit_text.getText().toString();
+                    labItem.setInfo(info);
+                    presenter.EditItemLabToServer(mLabId,labItem);
+
+                }
+                if(complainItem !=null)
+                {
+                    String info = edit_info_edit_text.getText().toString();
+                    complainItem.setInfo(info);
+                    presenter.EditItemComplainToServer(mCompId,complainItem);
 
                 }
             }}

@@ -68,6 +68,12 @@ public interface OrthoAPI {
     @PATCH("api/radiations/{radiation_id}")
     Call<ResponseBody> updateRadiation(@Path("radiation_id") long radiation_id,@Body RetrofitModels.Radiation radiationRequest);
 
+    @PATCH("/api/labs/{lab_id}")
+    Call<ResponseBody> updateLab(@Path("lab_id") long lab_id,@Body RetrofitModels.Lab labRequest);
+
+    @PATCH("/api/complains/{complain_id}")
+    Call<ResponseBody> updateComplain(@Path("complain_id") long complain_id,@Body RetrofitModels.Complain complainbRequest);
+
     @Multipart
     @POST("api/media")
     Call<ResponseBody> uploadMedia(@Part("id") int id,

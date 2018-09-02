@@ -16,6 +16,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.HistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
+import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -31,14 +32,20 @@ import static android.content.ContentValues.TAG;
 
 public class PatientProfileExaminationAdapter extends RecyclerView.Adapter<PatientProfileExaminationAdapter.ViewHolder> {
 
-private List<ComplainItem> DataSet;
-private static Context context;
+    private List<ComplainItem> DataSet;
+    private static Context context;
+    private PatientProfileExaminationAdapter.PatientProfileExaminationAdapterListener mPatientProfileExaminationAdapterListener;
+    public interface PatientProfileExaminationAdapterListener{
+        void onItemCompClicked(int id,int adapterPos);
+
+    }
 
 
-    public PatientProfileExaminationAdapter(Context cont, List<ComplainItem> dataSet)
+    public PatientProfileExaminationAdapter(Context cont, List<ComplainItem> dataSet,PatientProfileExaminationAdapterListener listener)
     {
         context=cont;
         DataSet = dataSet;
+        mPatientProfileExaminationAdapterListener=listener;
 
     }
 
@@ -60,6 +67,10 @@ private static Context context;
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
+                if(mPatientProfileExaminationAdapterListener != null){
+                    ComplainItem clickedItem = DataSet.get(getAdapterPosition());
+                    mPatientProfileExaminationAdapterListener.onItemCompClicked(clickedItem.getId(),getAdapterPosition());
+                }
 
             }
             });

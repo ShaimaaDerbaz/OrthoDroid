@@ -26,12 +26,19 @@ public class PatientProfileInvestigationLabsAdapter extends RecyclerView.Adapter
 
 private List<LabItem> DataSet;
 private static Context context;
+    private PatientProfileInvestigationLabsAdapter.PatientProfileLabsAdapterListener mPatientProfileLabsAdapterListener;
+    public interface PatientProfileLabsAdapterListener{
+        void onItemLabClicked(int id,int adapterPos);
+
+    }
 
 
-    public PatientProfileInvestigationLabsAdapter(Context cont, List<LabItem> dataSet)
+
+    public PatientProfileInvestigationLabsAdapter(Context cont, List<LabItem> dataSet,PatientProfileLabsAdapterListener listener)
     {
         context=cont;
         DataSet = dataSet;
+        this.mPatientProfileLabsAdapterListener=listener;
 
     }
 
@@ -52,6 +59,10 @@ private static Context context;
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
+                if(mPatientProfileLabsAdapterListener != null){
+                    LabItem clickedItem = DataSet.get(getAdapterPosition());
+                    mPatientProfileLabsAdapterListener.onItemLabClicked(clickedItem.getId(),getAdapterPosition());
+                }
 
             }
             });

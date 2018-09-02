@@ -24,6 +24,8 @@ import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigatio
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationRadiationsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileOperationsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
+import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
+import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
@@ -39,7 +41,7 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public  class PersonalFragment extends Fragment implements PatientPersonalView ,PatientProfileOperationsAdapter.PatientProfileAdapterListener,PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener{
+public  class PersonalFragment extends Fragment implements PatientPersonalView ,PatientProfileOperationsAdapter.PatientProfileAdapterListener,PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener,PatientProfileInvestigationLabsAdapter.PatientProfileLabsAdapterListener,PatientProfileExaminationAdapter.PatientProfileExaminationAdapterListener{
 
     private static final String TAG = "personal_tab_fragment";
 
@@ -78,6 +80,8 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     PatientPersonalPresenterImp presenter =new PatientPersonalPresenterImp(this);
     static OperationsItem operationsItem ;
     static RadiationItem radiationItem ;
+    static LabItem labItem ;
+    static ComplainItem complainItem ;
     static AllPatientInfoData allPatientInfoDataG;
     public PersonalFragment() {
     }
@@ -124,10 +128,10 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
         patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allPatientInfoData.getMedical_history());
         historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
         examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains());
+        patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains(),this);
         examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
         investigationLabRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(),allPatientInfoData.getLabs());
+        patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(),allPatientInfoData.getLabs(),this);
         investigationLabRecyclerView.setAdapter(patientProfileInvestigationLabsAdapter);
         investigationRadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(),allPatientInfoData.getRadiations(),this);
@@ -158,6 +162,19 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
         radiationItem=allPatientInfoDataG.getRadiations().get(adapterPos);
         EditItemActivity.start(getContext(),id,radiationItem);
       //  EditItemActivity.start(getContext(),id,operationsItem);
+    }
+    @Override
+    public void onItemLabClicked(int id,int adapterPos)
+    {
+        labItem=allPatientInfoDataG.getLabs().get(adapterPos);
+        EditItemActivity.start(getContext(),id,labItem);
+    }
+
+    @Override
+    public void onItemCompClicked(int id,int adapterPos)
+    {
+        complainItem=allPatientInfoDataG.getComplains().get(adapterPos);
+        EditItemActivity.start(getContext(),id,complainItem);
     }
 
 }

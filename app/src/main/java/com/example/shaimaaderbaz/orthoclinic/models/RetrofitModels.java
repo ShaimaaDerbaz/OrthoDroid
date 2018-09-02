@@ -142,6 +142,9 @@ public class RetrofitModels {
         @SerializedName("info")
         private String mAdditionalInfo;
 
+        public Complain( String mAdditionalInfo) {
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
         public Complain(int mId, String mAdditionalInfo) {
             this.mId = mId;
             this.mAdditionalInfo = mAdditionalInfo;
@@ -217,9 +220,14 @@ public class RetrofitModels {
         @SerializedName("info")
         private String mAdditionalInfo;
 
+        public Lab(String mAdditionalInfo) {
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
+
         public Lab (int mId, String mAdditionalInfo) {
             this.mId = mId;
             this.mAdditionalInfo = mAdditionalInfo;
+
         }
 
         public int getId() {

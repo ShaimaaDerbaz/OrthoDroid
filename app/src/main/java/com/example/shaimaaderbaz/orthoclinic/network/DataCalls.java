@@ -245,6 +245,46 @@ public class DataCalls {
         );
     }
 
+    public void updateLab(int lab_id,RetrofitModels.Lab lab, final BaseResponseCall baseResponseCall) {
+        long laboratory_id = lab_id;
+        orthoAPI.updateLab(laboratory_id,lab).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
+    public void updateComplain(int comp_id,RetrofitModels.Complain complain, final BaseResponseCall baseResponseCall) {
+        long complain_id = comp_id;
+        orthoAPI.updateComplain(complain_id,complain).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
     public void uploadMedia(List<String> paths, int ownerId, int objectId,
                             final BaseResponseCall baseResponseCall) {
         ArrayList<MultipartBody.Part> media = new ArrayList<>();
