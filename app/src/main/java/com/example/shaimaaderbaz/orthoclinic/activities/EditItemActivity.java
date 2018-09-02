@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditItemPresenterImp;
@@ -26,12 +27,15 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     private int mRadiationtId;
     private static LabItem labItem ;
     private static ComplainItem complainItem ;
+    private static MedicalHistoryItem medicalHistoryItem ;
     private int mLabId;
+    private int mHistoryId;
     private int mCompId;
     private static final String RADIATION_ID_KEY = "radiation_id";
     private static final String PATIENT_KEY = "patient_key";
     private static final String LAB_ID_KEY = "lab_id";
     private static final String COMPLAIN_ID_KEY = "complain_id";
+    private static final String HISTORY_ID_KEY = "history_id";
     EditItemPresenterImp presenter;
     @BindView(R.id.edit_field_name_text)
     TextView edit_field_name_text;
@@ -68,6 +72,13 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         context.startActivity(starter);
     }
 
+    public static void start(Context context, int historyId, MedicalHistoryItem medicalHistoryItemO) {
+        Intent starter = new Intent(context, EditItemActivity.class);
+        starter.putExtra(HISTORY_ID_KEY, historyId);
+        medicalHistoryItem=medicalHistoryItemO;
+        context.startActivity(starter);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +111,15 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             //throw new RuntimeException("INVALID LAB ID");
         }
+
+        if(getIntent().getIntExtra(HISTORY_ID_KEY,0) !=0 )
+        {
+            mHistoryId = getIntent().getIntExtra(HISTORY_ID_KEY,0);
+        }
+        else
+        {
+            //throw new RuntimeException("INVALID LAB ID");
+        }
         ButterKnife.bind(this);
         if(radiationItem !=null)
         {
@@ -125,6 +145,15 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
         }
 
+        if(medicalHistoryItem !=null)
+        {
+            edit_field_name_text.setText(medicalHistoryItem.getState_name());
+            edit_info_edit_text.setText(medicalHistoryItem.getInfo());
+            btnUploadImages.setVisibility(View.INVISIBLE);
+            btnUploadVedios.setVisibility(View.INVISIBLE);
+
+
+        }
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,6 +181,14 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     complainItem=null;
 
                 }
+                if(medicalHistoryItem !=null)
+                {
+                    String info = edit_info_edit_text.getText().toString();
+                    medicalHistoryItem.setInfo(info);
+                    presenter.EditItemMedicalHistoryToServer(mHistoryId,medicalHistoryItem);
+                    medicalHistoryItem=null;
+
+                }
             }}
         );
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -168,6 +205,10 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                 if(complainItem !=null)
                 {
                     presenter.deleteItemComplain(mCompId);
+                }
+                if(medicalHistoryItem !=null)
+                {
+                    presenter.deleteItemHistory(mHistoryId);
                 }
             }
         });

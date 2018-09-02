@@ -26,6 +26,7 @@ import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileOperationsAd
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PersonalItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
@@ -41,7 +42,12 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public  class PersonalFragment extends Fragment implements PatientPersonalView ,PatientProfileOperationsAdapter.PatientProfileAdapterListener,PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener,PatientProfileInvestigationLabsAdapter.PatientProfileLabsAdapterListener,PatientProfileExaminationAdapter.PatientProfileExaminationAdapterListener{
+public  class PersonalFragment extends Fragment implements PatientPersonalView ,
+        PatientProfileOperationsAdapter.PatientProfileAdapterListener,
+        PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener,
+        PatientProfileInvestigationLabsAdapter.PatientProfileLabsAdapterListener,
+        PatientProfileExaminationAdapter.PatientProfileExaminationAdapterListener,
+        PatientProfileHistoryAdapter.PatientProfileHistoryAdapterListener{
 
     private static final String TAG = "personal_tab_fragment";
 
@@ -82,6 +88,7 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     static RadiationItem radiationItem ;
     static LabItem labItem ;
     static ComplainItem complainItem ;
+    static MedicalHistoryItem medicalHistoryItem ;
     static AllPatientInfoData allPatientInfoDataG;
     public PersonalFragment() {
     }
@@ -125,7 +132,7 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
         weight_personal_text.setText(allPatientInfoData.getPatient().getWeight()+"");
         info_personal_text.setText(allPatientInfoData.getPatient().getInfo());
         historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allPatientInfoData.getMedical_history());
+        patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allPatientInfoData.getMedical_history(),this);
         historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
         examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains(),this);
@@ -175,6 +182,13 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     {
         complainItem=allPatientInfoDataG.getComplains().get(adapterPos);
         EditItemActivity.start(getContext(),id,complainItem);
+    }
+
+    @Override
+    public void onItemHistoryClicked(int id,int adapterPos)
+    {
+        medicalHistoryItem=allPatientInfoDataG.getMedical_history().get(adapterPos);
+        EditItemActivity.start(getContext(),id,medicalHistoryItem);
     }
 
 }

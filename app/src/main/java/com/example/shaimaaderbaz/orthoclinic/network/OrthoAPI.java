@@ -44,6 +44,12 @@ public interface OrthoAPI {
     @POST("/api/medical-history")
     Call<ResponseBody> addMedicalHistory(@Body RetrofitModels.AddMedicalHistoryRequest medicalHistoryRequest);
 
+    @PATCH("/api/medical-history/{history_id}")
+    Call<ResponseBody> updateMedicalHistory(@Path("history_id") long history_id,@Body RetrofitModels.MedicalHistory medicalRequest);
+
+    @DELETE("/api/medical-history/{history_id}")
+    Call<ResponseBody> deleteMedicalHistory(@Path("history_id") long history_id);
+
     @POST("/api/complains")
     Call<ResponseBody> addComplain(@Body RetrofitModels.AddComplainRequest complainRequest);
 
@@ -88,7 +94,5 @@ public interface OrthoAPI {
     Call<ResponseBody> uploadMedia(@Part("id") int id,
                                    @Part("owner") int ownerId,
                                    @Part() List<MultipartBody.Part> media);
-    //@Multipart
-   // @POST("/")
-   // Call<ResponseBody> postImage(@Part MultipartBody.Part image, @Part("name") RequestBody name);
+
 }

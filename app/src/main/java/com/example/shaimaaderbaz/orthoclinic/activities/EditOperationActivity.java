@@ -18,7 +18,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.fragments.PersonalFragment;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
+import com.example.shaimaaderbaz.orthoclinic.models.PatientProfile;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditOperationPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.EditOperationsView;
 import com.vansuita.pickimage.bean.PickResult;
@@ -56,6 +58,8 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     EditText follow_text;
     @BindView(R.id.btnEditOperation)
     Button btnEditOperation;
+    @BindView(R.id.btnDeleteOperation)
+    Button btnDeleteOperation ;
     @BindView(R.id.btnUploadImagesOp)
     Button btnUploadImagesOp;
     @BindView(R.id.btnUploadVediosOp)
@@ -63,6 +67,8 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
 
     @BindView(R.id.progress)
     ProgressBar mProgress;
+
+    Context mContext;
 
     public static void start(Context context, int patientId, OperationsItem operationsItemO) {
         Intent starter = new Intent(context, EditOperationActivity.class);
@@ -76,6 +82,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_operation);
+        mContext =this;
         presenter = new EditOperationPresenterImp(this);
         ButterKnife.bind(this);
         Bundle extras = getIntent().getExtras();
@@ -85,8 +92,6 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             throw new RuntimeException("INVALID PATIENT ID");
         }
         if (extras != null) {
-            // OperationsItem operationItem = extras.getParcelable("operationsItem");
-            //operationItem = extras.getParcelable(operationsItem);
             op_id = operationItem.getId();
             operation_name_text.setText(operationItem.getName());
             date_text.setText(operationItem.getDate());
@@ -116,6 +121,16 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
                 }
             }
         });
+
+        btnDeleteOperation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                presenter.deleteItemOperation(op_id);
+                //PatientProfileActivity.start(mContext,operationItem.getPatient_id());
+            }
+            }
+        );
         btnUploadImagesOp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

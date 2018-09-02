@@ -11,10 +11,9 @@ import java.util.List;
 
 public interface EditOperationPresenter {
 
-    void UploadVediosToServer(int patient_id, OperationsItem operationsItem);
-    void UploadImagesToServer(int patient_id, OperationsItem operationsItem);
+
     void EditItemToServer(int patient_id,int op_id, OperationsItem operationsItem);
-    void DeleteItemFromServer(PatientItem patientItem);
+    void deleteItemOperation(int mOperationId);
     void uploadMediaToServer(int objectId, List<String> filePaths);
 }
 

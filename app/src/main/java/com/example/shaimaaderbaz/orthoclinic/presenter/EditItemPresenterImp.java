@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
@@ -28,12 +29,6 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
         this.editItemsView=editItemsView;
     }
     // implement from Presenter
-    @Override
-    public void UploadVediosToServer(int patient_id, OperationsItem operationsItem)
-    {
-        DataCalls dataCalls =new DataCalls();
-//        dataCalls.addpatient(patientItem);
-    }
 
     @Override
     public void EditItemRadiationToServer(int rad_id, RadiationItem radiationItem)
@@ -53,12 +48,11 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
         DataCalls dataCalls =new DataCalls();
         dataCalls.updateComplain(comp_id,new RetrofitModels.Complain(complain.getInfo()),this);
     }
-
     @Override
-    public void DeleteItemFromServer(PatientItem patientItem)
+    public void EditItemMedicalHistoryToServer(int hist_id, MedicalHistoryItem medicalHistoryItem )
     {
         DataCalls dataCalls =new DataCalls();
-//        dataCalls.addpatient(patientItem);
+        dataCalls.updateMedicalHistory(hist_id,new RetrofitModels.MedicalHistory(medicalHistoryItem.getInfo()),this);
     }
 
     @Override
@@ -108,6 +102,13 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
             }
         });
     }
+    @Override
+    public void deleteItemHistory(int mHistoryId)
+    {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteComplain(mHistoryId,this);
+    }
+
 
     @Override
     public void success() {

@@ -32,14 +32,21 @@ import static android.content.ContentValues.TAG;
 
 public class PatientProfileHistoryAdapter extends RecyclerView.Adapter<PatientProfileHistoryAdapter.ViewHolder> {
 
-private List<MedicalHistoryItem> DataSet;
-private static Context context;
+    private List<MedicalHistoryItem> DataSet;
+    private static Context context;
+    private PatientProfileHistoryAdapter.PatientProfileHistoryAdapterListener mPatientProfileHistoryAdapterListener;
+    public interface PatientProfileHistoryAdapterListener{
+        void onItemHistoryClicked(int id,int adapterPos);
+
+    }
 
 
-    public PatientProfileHistoryAdapter(Context cont, List<MedicalHistoryItem> dataSet)
+
+    public PatientProfileHistoryAdapter(Context cont, List<MedicalHistoryItem> dataSet,PatientProfileHistoryAdapterListener listener)
     {
         context=cont;
         DataSet = dataSet;
+        this.mPatientProfileHistoryAdapterListener=listener;
 
     }
 
@@ -58,6 +65,10 @@ private static Context context;
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
+                if(mPatientProfileHistoryAdapterListener != null){
+                    MedicalHistoryItem clickedItem = DataSet.get(getAdapterPosition());
+                    mPatientProfileHistoryAdapterListener.onItemHistoryClicked(clickedItem.getId(),getAdapterPosition());
+                }
 
             }
             });

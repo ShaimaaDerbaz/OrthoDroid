@@ -23,19 +23,6 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
         this.editOperationsView=editOperationsView;
     }
     // implement from Presenter
-    @Override
-    public void UploadVediosToServer(int patient_id, OperationsItem operationsItem)
-    {
-        DataCalls dataCalls =new DataCalls();
-       // dataCalls.addpatient(patientItem);
-    }
-
-    @Override
-    public void UploadImagesToServer(int patient_id, OperationsItem operationsItem)
-    {
-        DataCalls dataCalls =new DataCalls();
-        // dataCalls.addpatient(patientItem);
-    }
 
     @Override
     public void EditItemToServer(int patient_id,int op_id, OperationsItem operationsItem)
@@ -49,10 +36,10 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
                 operationsItem.getFollow_up()),patient_id,op_id,this);
     }
     @Override
-    public void DeleteItemFromServer(PatientItem patientItem)
+    public void deleteItemOperation(int mOperationId)
     {
-        DataCalls dataCalls =new DataCalls();
-//        dataCalls.addpatient(patientItem);
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteComplain(mOperationId,this);
     }
 
     @Override

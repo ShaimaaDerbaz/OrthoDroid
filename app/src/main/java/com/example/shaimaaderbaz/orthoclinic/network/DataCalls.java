@@ -131,6 +131,26 @@ public class DataCalls {
 
     }
 
+    public void updateMedicalHistory(int hist_id,RetrofitModels.MedicalHistory medicalHistory, final BaseResponseCall baseResponseCall) {
+        long history_id = hist_id;
+        orthoAPI.updateMedicalHistory(history_id,medicalHistory).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
+
     public void addComplain(List<RetrofitModels.Complain> complains, int patientId, final BaseResponseCall baseResponseCall) {
         orthoAPI.addComplain(new RetrofitModels.AddComplainRequest(complains, patientId)).enqueue(new Callback<ResponseBody>() {
             @Override
@@ -356,6 +376,23 @@ public class DataCalls {
                     }
                 }
         );
+    }
+
+    public void deleteMedicalHistory(int historyId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.deleteMedicalHistory(historyId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful())
+                    baseResponseCall.success();
+                else
+                    baseResponseCall.error("Unkown Error");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+            }
+        });
     }
 
     public void uploadMedia(List<String> paths, int ownerId, int objectId,

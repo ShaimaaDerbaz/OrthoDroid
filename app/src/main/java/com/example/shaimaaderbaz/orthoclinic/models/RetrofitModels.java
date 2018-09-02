@@ -258,6 +258,10 @@ public class RetrofitModels {
             this.mAdditionalInfo = mAdditionalInfo;
         }
 
+        public MedicalHistory(String mAdditionalInfo) {
+            this.mAdditionalInfo = mAdditionalInfo;
+        }
+
         public int getId() {
             return mId;
         }
