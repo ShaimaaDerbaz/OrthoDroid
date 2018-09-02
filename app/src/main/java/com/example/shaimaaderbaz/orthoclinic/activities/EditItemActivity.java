@@ -105,7 +105,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(radiationItem.getName());
             edit_info_edit_text.setText(radiationItem.getInfo());
-            radiationItem=null;
+
 
         }
 
@@ -113,7 +113,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(labItem.getName());
             edit_info_edit_text.setText(labItem.getInfo());
-            labItem=null;
+
 
         }
 
@@ -121,7 +121,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(complainItem.getName());
             edit_info_edit_text.setText(complainItem.getInfo());
-            complainItem=null;
+
 
         }
 
@@ -133,6 +133,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     String info = edit_info_edit_text.getText().toString();
                     radiationItem.setInfo(info);
                     presenter.EditItemRadiationToServer(mRadiationtId,radiationItem);
+                    radiationItem=null;
 
                 }
                 if(labItem !=null)
@@ -140,6 +141,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     String info = edit_info_edit_text.getText().toString();
                     labItem.setInfo(info);
                     presenter.EditItemLabToServer(mLabId,labItem);
+                    labItem=null;
 
                 }
                 if(complainItem !=null)
@@ -147,6 +149,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     String info = edit_info_edit_text.getText().toString();
                     complainItem.setInfo(info);
                     presenter.EditItemComplainToServer(mCompId,complainItem);
+                    complainItem=null;
 
                 }
             }}
