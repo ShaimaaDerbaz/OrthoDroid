@@ -22,6 +22,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditItemPresenterImp;
+import com.example.shaimaaderbaz.orthoclinic.utils.Utils;
 import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
@@ -47,6 +48,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     private int mHistoryId;
     private int mCompId;
     private int obj_id;
+    private int owner;
     private static final String RADIATION_ID_KEY = "radiation_id";
     private static final String PATIENT_KEY = "patient_key";
     private static final String LAB_ID_KEY = "lab_id";
@@ -65,8 +67,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     Button btnUploadImages;
     @BindView(R.id.btnDelete)
     Button btnDelete;
-    @BindView(R.id.progress)
-    ProgressBar mProgress;
+   // @BindView(R.id.progress)
+   // ProgressBar mProgress;
 
     public static void start(Context context, int radiationId, RadiationItem radiationItemO) {
         Intent starter = new Intent(context, EditItemActivity.class);
@@ -143,6 +145,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(radiationItem.getName());
             edit_info_edit_text.setText(radiationItem.getInfo());
+            btnUploadImages.setVisibility(View.VISIBLE);
+            btnUploadVedios.setVisibility(View.VISIBLE);
 
 
         }
@@ -151,6 +155,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(labItem.getName());
             edit_info_edit_text.setText(labItem.getInfo());
+            btnUploadImages.setVisibility(View.VISIBLE);
+            btnUploadVedios.setVisibility(View.VISIBLE);
 
 
         }
@@ -159,6 +165,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(complainItem.getName());
             edit_info_edit_text.setText(complainItem.getInfo());
+            btnUploadImages.setVisibility(View.VISIBLE);
+            btnUploadVedios.setVisibility(View.VISIBLE);
 
 
         }
@@ -237,18 +245,21 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                 if(radiationItem !=null)
                 {
                     obj_id=mRadiationtId;
+                    owner= Utils.MediaConstants.RADIATION_MEDIA;
                     showPickDialog(true);
 
                 }
                 if(labItem !=null)
                 {
                     obj_id=mLabId;
+                    owner= Utils.MediaConstants.LAB_MEDIA;
                     showPickDialog(true);
 
                 }
                 if(complainItem !=null)
                 {
                     obj_id=mCompId;
+                    owner= Utils.MediaConstants.COMPLAIN_MEDIA;
                     showPickDialog(true);
                 }
 
@@ -312,14 +323,14 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     @Override
     public void setItemMediaSuccessful() {
         Toast.makeText(this,"Images Uploaded successfully",Toast.LENGTH_SHORT).show();
-        mProgress.setVisibility(View.GONE);
+        //mProgress.setVisibility(View.GONE);
         //TODO: Update Images List
     }
 
     @Override
     public void setItemMediaFailure() {
         Toast.makeText(this,"Can't upload images",Toast.LENGTH_SHORT).show();
-        mProgress.setVisibility(View.GONE);
+        //mProgress.setVisibility(View.GONE);
     }
 
     private void showPickDialog(boolean isPhoto) {
@@ -349,8 +360,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             paths.add(file.getPath());
         else
             paths.add(getRealPathFromURI(file));
-        presenter.uploadMediaToServer(obj_id,paths);
-        mProgress.setVisibility(View.VISIBLE);
+        presenter.uploadMediaToServer(obj_id,paths,owner);
+        //mProgress.setVisibility(View.VISIBLE);
     }
 
 }

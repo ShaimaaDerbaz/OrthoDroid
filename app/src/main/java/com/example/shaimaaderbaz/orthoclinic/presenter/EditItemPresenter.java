@@ -30,7 +30,7 @@ public interface EditItemPresenter {
 
     void deleteItemHistory(int mHistoryId);
 
-    void uploadMediaToServer(int objectId, List<String> filePaths);
+    void uploadMediaToServer(int objectId, List<String> filePaths,int owner);
 
 
 }
