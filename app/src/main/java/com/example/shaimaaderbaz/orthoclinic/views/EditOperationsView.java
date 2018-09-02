@@ -10,4 +10,6 @@ public interface EditOperationsView {
     void setOperationsUpdateFailure();
     void setOperationMediaSuccess();
     void setOperationMediaFailure();
+    void setItemDeleteSuccessful();
+    void setItemDeleteFailure();
 }

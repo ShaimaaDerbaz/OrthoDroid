@@ -42,7 +42,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     static OperationsItem operationItem;
     Integer op_id;
 
-    private int mPatientId;
+    private int mOperationId;
     private static final String PATIENT_KEY = "patient_key";
 
     EditOperationPresenterImp presenter;
@@ -87,7 +87,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         ButterKnife.bind(this);
         Bundle extras = getIntent().getExtras();
         if (getIntent().getIntExtra(PATIENT_ID_KEY, 0) != 0) {
-            mPatientId = getIntent().getIntExtra(PATIENT_ID_KEY, 0);
+            mOperationId = getIntent().getIntExtra(PATIENT_ID_KEY, 0);
         } else {
             throw new RuntimeException("INVALID PATIENT ID");
         }
@@ -116,7 +116,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
                 operationsItem.setFollow_up(followup);
 
                 if (!name.isEmpty()) {
-                    presenter.EditItemToServer(mPatientId, op_id, operationsItem);
+                    presenter.EditItemToServer(mOperationId, mOperationId, operationsItem);
                     mProgress.setVisibility(View.VISIBLE);
                 }
             }
@@ -126,7 +126,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             @Override
             public void onClick(View view) {
 
-                presenter.deleteItemOperation(op_id);
+                presenter.deleteItemOperation(mOperationId);
                 //PatientProfileActivity.start(mContext,operationItem.getPatient_id());
             }
             }
@@ -181,6 +181,19 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     @Override
     public void setOperationMediaFailure() {
         Toast.makeText(this,"Can't upload images",Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setItemDeleteSuccessful()
+    {
+        Toast.makeText(this,"Operation Deleted sucessfully",Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
+    }
+    @Override
+    public void setItemDeleteFailure()
+    {
+        Toast.makeText(this,"Can't Delete Operation ",Toast.LENGTH_SHORT).show();
         mProgress.setVisibility(View.GONE);
     }
 

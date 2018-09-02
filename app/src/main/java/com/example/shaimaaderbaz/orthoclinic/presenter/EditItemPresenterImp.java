@@ -109,7 +109,7 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
     public void deleteItemHistory(int mHistoryId)
     {
         DataCalls dataCalls = new DataCalls();
-        dataCalls.deleteComplain(mHistoryId,new BaseResponseCall() {
+        dataCalls.deleteMedicalHistory(mHistoryId,new BaseResponseCall() {
             @Override
             public void success() {
                 editItemsView.setItemDeleteSuccessful();

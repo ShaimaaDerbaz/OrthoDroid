@@ -39,7 +39,17 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
     public void deleteItemOperation(int mOperationId)
     {
         DataCalls dataCalls = new DataCalls();
-        dataCalls.deleteComplain(mOperationId,this);
+        dataCalls.deleteOperation(mOperationId,new BaseResponseCall() {
+            @Override
+            public void success() {
+                editOperationsView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                editOperationsView.setItemDeleteFailure();
+            }
+        });
     }
 
     @Override
