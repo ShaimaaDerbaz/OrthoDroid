@@ -96,8 +96,8 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_operation);
         List<MediaItem> mediaItems = null;
-        List<MediaItem> mediaItemsImages = null;
-        List<MediaItem> mediaItemsVedios = null;
+        List<MediaItem> mediaItemsImages = new ArrayList<MediaItem>();
+        List<MediaItem> mediaItemsVedios = new ArrayList<MediaItem>();
         mContext =this;
         presenter = new EditOperationPresenterImp(this);
         ButterKnife.bind(this);
