@@ -282,7 +282,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             recyclerViewItemUploadVedios.setLayoutManager(new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL,false));
             vedioItemAdapter = new VedioItemAdapter(mContext, mediaItems, this);
-            recyclerViewItemUploadVedios.setAdapter(imageItemAdapter);
+            recyclerViewItemUploadVedios.setAdapter(vedioItemAdapter);
         }
     }
 
