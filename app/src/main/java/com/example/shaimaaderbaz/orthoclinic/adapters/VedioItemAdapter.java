@@ -1,6 +1,8 @@
 package com.example.shaimaaderbaz.orthoclinic.adapters;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -91,6 +93,7 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
             String vedioUrl=DataSet.get(position).getUrl();
+            vedioUrl = ContentResolver.SCHEME_ANDROID_RESOURCE + "://"+context.getPackageName()+"/drawable/" + "videoim.png";
             Picasso.with(context).load(vedioUrl).resize(600,900).into(holder.iv_video);
         }
     }
