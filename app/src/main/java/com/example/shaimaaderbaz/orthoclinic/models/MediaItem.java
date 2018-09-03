@@ -18,6 +18,9 @@ public class MediaItem {
     @SerializedName("taken_on")
     private String takenOn;
 
+    @SerializedName("type")
+    private Integer type;
+
     public int getId() {
         return id;
     }
@@ -36,5 +39,13 @@ public class MediaItem {
 
     public String getTakenOn() {
         return takenOn;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

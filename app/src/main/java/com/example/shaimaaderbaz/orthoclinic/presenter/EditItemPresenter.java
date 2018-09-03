@@ -34,6 +34,7 @@ public interface EditItemPresenter {
     void uploadMediaToServer(int objectId, List<String> filePaths,int owner);
 
     void retreiveItemImages(List<MediaItem> mediaItems);
+    void retreiveItemVedios(List<MediaItem> mediaItems);
 
 
 

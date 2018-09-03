@@ -16,4 +16,5 @@ public interface EditItemsView {
     void setItemMediaFailure();
     void setItemMediaSuccessful();
     void showImages(List<MediaItem> mediaItems);
+    void showVedios(List <MediaItem> mediaItems);
 }

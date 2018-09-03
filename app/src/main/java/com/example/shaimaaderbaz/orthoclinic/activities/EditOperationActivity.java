@@ -11,6 +11,8 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.adapters.ImageItemAdapter;
+import com.example.shaimaaderbaz.orthoclinic.adapters.VedioItemAdapter;
 import com.example.shaimaaderbaz.orthoclinic.fragments.PersonalFragment;
+import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientProfile;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditOperationPresenterImp;
@@ -31,12 +36,13 @@ import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EditOperationActivity extends AppCompatActivity implements EditOperationsView,
-        IPickResult{
+        IPickResult,ImageItemAdapter.ImageItemAdapterListener,VedioItemAdapter.VedioItemAdapterListener{
     private static final String PATIENT_ID_KEY = "patient_id";
     private static final String operationsItem = "operationsItem";
     static OperationsItem operationItem;
@@ -45,6 +51,8 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     private int mOperationId;
     private static final String PATIENT_KEY = "patient_key";
 
+    ImageItemAdapter imageItemAdapter;
+    VedioItemAdapter vedioItemAdapter;
     EditOperationPresenterImp presenter;
     @BindView(R.id.operation_text)
     EditText operation_name_text;
@@ -68,6 +76,11 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     @BindView(R.id.progress)
     ProgressBar mProgress;
 
+    @BindView(R.id.recyclerViewItemUploadImages)
+    RecyclerView recyclerViewItemUploadImages;
+    @BindView(R.id.recyclerViewItemUploadVedios)
+    RecyclerView recyclerViewItemUploadVedios;
+
     Context mContext;
 
     public static void start(Context context, int patientId, OperationsItem operationsItemO) {
@@ -82,22 +95,41 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_operation);
+        List<MediaItem> mediaItems = null;
+        List<MediaItem> mediaItemsImages = null;
+        List<MediaItem> mediaItemsVedios = null;
         mContext =this;
         presenter = new EditOperationPresenterImp(this);
         ButterKnife.bind(this);
         Bundle extras = getIntent().getExtras();
-        if (getIntent().getIntExtra(PATIENT_ID_KEY, 0) != 0) {
+        if (getIntent().getIntExtra(PATIENT_ID_KEY, 0) != 0)
+        {
             mOperationId = getIntent().getIntExtra(PATIENT_ID_KEY, 0);
-        } else {
+        } else
+        {
             throw new RuntimeException("INVALID PATIENT ID");
         }
-        if (extras != null) {
+        if (extras != null)
+        {
             op_id = operationItem.getId();
             operation_name_text.setText(operationItem.getName());
             date_text.setText(operationItem.getDate());
             steps_text.setText(operationItem.getSteps());
             person_text.setText(operationItem.getPersons());
             follow_text.setText(operationItem.getFollow_up());
+            mediaItems = operationItem.getMediaItems();
+        }
+        for(int i=0;i<mediaItems.size();i++)
+        {
+            if (mediaItems.get(i).getType()==1)
+            {
+                mediaItemsImages.add(mediaItems.get(i));
+            }else if(mediaItems.get(i).getType()==2)
+            {
+                mediaItemsVedios.add(mediaItems.get(i));
+            }
+            showImages(mediaItemsImages);
+            showVedios(mediaItemsVedios);
         }
 
         btnEditOperation.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +228,39 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         Toast.makeText(this,"Can't Delete Operation ",Toast.LENGTH_SHORT).show();
         mProgress.setVisibility(View.GONE);
     }
+
+    @Override
+    public void showImages(List<MediaItem> mediaItems) {
+        if (mediaItems != null) {
+            recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,false));
+            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this);
+            recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
+        }
+    }
+    @Override
+    public void showVedios(List <MediaItem> mediaItems)
+    {
+        if (mediaItems != null) {
+            recyclerViewItemUploadVedios.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,false));
+            vedioItemAdapter = new VedioItemAdapter(mContext, mediaItems, this);
+            recyclerViewItemUploadVedios.setAdapter(imageItemAdapter);
+        }
+    }
+
+    @Override
+    public void onItemImageClicked(int id)
+    {
+
+    }
+
+    @Override
+    public void onItemVedioClicked(int id)
+    {
+
+    }
+
 
     private String getRealPathFromURI(Uri contentUri) {
         String[] proj = new String[1];

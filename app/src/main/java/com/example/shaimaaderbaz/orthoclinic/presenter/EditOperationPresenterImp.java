@@ -1,5 +1,6 @@
 package com.example.shaimaaderbaz.orthoclinic.presenter;
 
+import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
@@ -67,6 +68,17 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
                 editOperationsView.setOperationMediaFailure();
             }
         });
+    }
+
+    @Override
+    public void retreiveItemImages(List<MediaItem> mediaItems)
+    {
+        editOperationsView.showImages(mediaItems);
+    }
+    @Override
+    public void retreiveItemVedios(List<MediaItem> mediaItems)
+    {
+        editOperationsView.showVedios(mediaItems);
     }
 
     @Override

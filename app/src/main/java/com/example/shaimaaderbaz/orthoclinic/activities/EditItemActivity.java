@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.ImageItemAdapter;
+import com.example.shaimaaderbaz.orthoclinic.adapters.VedioItemAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
 import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
@@ -44,7 +45,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult,ImageItemAdapter.ImageItemAdapterListener{
+public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult,ImageItemAdapter.ImageItemAdapterListener,VedioItemAdapter.VedioItemAdapterListener{
     private static RadiationItem radiationItem ;
     private int mRadiationtId;
     private static LabItem labItem ;
@@ -64,6 +65,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     Context mContext;
 
     ImageItemAdapter imageItemAdapter;
+    VedioItemAdapter vedioItemAdapter;
     EditItemPresenterImp presenter;
     @BindView(R.id.edit_field_name_text)
     TextView edit_field_name_text;
@@ -80,6 +82,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     @BindView(R.id.recyclerViewItemUploadImages)
     RecyclerView recyclerViewItemUploadImages;
+    @BindView(R.id.recyclerViewItemUploadVedios)
+    RecyclerView recyclerViewItemUploadVedios;
    // @BindView(R.id.progress)
    // ProgressBar mProgress;
 
@@ -121,6 +125,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         Bundle extras = getIntent().getExtras();
         presenter =new EditItemPresenterImp(this);
         List<MediaItem> mediaItems = null;
+        List<MediaItem> mediaItemsImages = new ArrayList<MediaItem>();
+        List<MediaItem> mediaItemsVedios = new ArrayList<MediaItem>();
         if(getIntent().getIntExtra(RADIATION_ID_KEY,0) !=0 )
         {
             mRadiationtId = getIntent().getIntExtra(RADIATION_ID_KEY,0);
@@ -190,7 +196,19 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             btnUploadImages.setVisibility(View.INVISIBLE);
             btnUploadVedios.setVisibility(View.INVISIBLE);
         }
-        showImages(mediaItems);
+        for(int i=0;i<mediaItems.size();i++)
+        {
+            if (mediaItems.get(i).getType()==1)
+            {
+                mediaItemsImages.add(mediaItems.get(i));
+            }
+            else if(mediaItems.get(i).getType()==2)
+            {
+                mediaItemsVedios.add(mediaItems.get(i));
+            }
+            showImages(mediaItemsImages);
+            showVedios(mediaItemsVedios);
+        }
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -357,7 +375,23 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         }
     }
     @Override
+    public void showVedios(List <MediaItem> mediaItems)
+    {
+        if (mediaItems != null) {
+            recyclerViewItemUploadVedios.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,false));
+            vedioItemAdapter = new VedioItemAdapter(mContext, mediaItems, this);
+            recyclerViewItemUploadVedios.setAdapter(imageItemAdapter);
+        }
+    }
+    @Override
     public void onItemImageClicked(int id)
+    {
+
+    }
+
+    @Override
+    public void onItemVedioClicked(int id)
     {
 
     }
