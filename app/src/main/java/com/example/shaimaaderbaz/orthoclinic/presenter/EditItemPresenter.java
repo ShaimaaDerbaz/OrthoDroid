@@ -3,6 +3,7 @@ package com.example.shaimaaderbaz.orthoclinic.presenter;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
 import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
@@ -31,6 +32,9 @@ public interface EditItemPresenter {
     void deleteItemHistory(int mHistoryId);
 
     void uploadMediaToServer(int objectId, List<String> filePaths,int owner);
+
+    void retreiveItemImages(List<MediaItem> mediaItems);
+
 
 
 }

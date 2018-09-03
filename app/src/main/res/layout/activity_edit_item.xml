@@ -59,7 +59,7 @@
             android:id="@+id/linear_upload_image">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItemUploadImages"
-                android:scrollbars="vertical"
+                android:scrollbars="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -72,7 +72,7 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewItemUploadVedios"
-                android:scrollbars="vertical"
+                android:scrollbars="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.ExaminationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
 import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
@@ -136,6 +137,12 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
                         editItemsView.setItemMediaFailure();
                     }
                 });
+    }
+
+    @Override
+    public void retreiveItemImages(List<MediaItem> mediaItems)
+    {
+        editItemsView.showImages(mediaItems);
     }
 
 

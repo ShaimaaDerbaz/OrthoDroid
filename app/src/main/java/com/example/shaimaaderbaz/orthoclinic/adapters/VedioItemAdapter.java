@@ -79,7 +79,7 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
     public VedioItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.videoItem, parent, false);
+                .inflate(R.layout.video_item, parent, false);
 
         return  new VedioItemAdapter.ViewHolder(v);
     }

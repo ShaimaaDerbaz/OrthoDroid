@@ -7,11 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
-import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -81,7 +79,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
     public ImageItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.imageItem, parent, false);
+                .inflate(R.layout.image_item, parent, false);
 
         return  new ImageItemAdapter.ViewHolder(v);
     }

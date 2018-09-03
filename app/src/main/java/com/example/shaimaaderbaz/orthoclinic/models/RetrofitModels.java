@@ -142,6 +142,10 @@ public class RetrofitModels {
         @SerializedName("info")
         private String mAdditionalInfo;
 
+        @SerializedName("media")
+        private List<MediaItem> mediaItems;
+
+
         public Complain( String mAdditionalInfo) {
             this.mAdditionalInfo = mAdditionalInfo;
         }
@@ -159,6 +163,10 @@ public class RetrofitModels {
         }
         public String getAdditionalInfo() {
             return mAdditionalInfo;
+        }
+
+        public List<MediaItem> getMediaItems() {
+            return mediaItems;
         }
     }
 

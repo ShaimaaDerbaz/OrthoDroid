@@ -8,6 +8,9 @@ import android.provider.MediaStore;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.adapters.ImageItemAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.ComplainItem;
 import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
+import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
 import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
@@ -34,11 +39,12 @@ import com.vansuita.pickimage.listeners.IPickResult;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult{
+public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult,ImageItemAdapter.ImageItemAdapterListener{
     private static RadiationItem radiationItem ;
     private int mRadiationtId;
     private static LabItem labItem ;
@@ -54,6 +60,10 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     private static final String LAB_ID_KEY = "lab_id";
     private static final String COMPLAIN_ID_KEY = "complain_id";
     private static final String HISTORY_ID_KEY = "history_id";
+
+    Context mContext;
+
+    ImageItemAdapter imageItemAdapter;
     EditItemPresenterImp presenter;
     @BindView(R.id.edit_field_name_text)
     TextView edit_field_name_text;
@@ -67,6 +77,9 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     Button btnUploadImages;
     @BindView(R.id.btnDelete)
     Button btnDelete;
+
+    @BindView(R.id.recyclerViewItemUploadImages)
+    RecyclerView recyclerViewItemUploadImages;
    // @BindView(R.id.progress)
    // ProgressBar mProgress;
 
@@ -104,6 +117,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
+        mContext=this;
         Bundle extras = getIntent().getExtras();
         presenter =new EditItemPresenterImp(this);
         if(getIntent().getIntExtra(RADIATION_ID_KEY,0) !=0 )
@@ -165,6 +179,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         {
             edit_field_name_text.setText(complainItem.getName());
             edit_info_edit_text.setText(complainItem.getInfo());
+            presenter.retreiveItemImages(complainItem.getMediaItems());
             btnUploadImages.setVisibility(View.VISIBLE);
             btnUploadVedios.setVisibility(View.VISIBLE);
 
@@ -334,6 +349,19 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void setItemMediaFailure() {
         Toast.makeText(this,"Can't upload images",Toast.LENGTH_SHORT).show();
         //mProgress.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showImages(List<MediaItem> mediaItems) {
+        recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this));
+        imageItemAdapter = new ImageItemAdapter(mContext,mediaItems, this);
+        recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
+
+    }
+    @Override
+    public void onItemImageClicked(int id)
+    {
+
     }
 
     private void showPickDialog(boolean isPhoto) {
