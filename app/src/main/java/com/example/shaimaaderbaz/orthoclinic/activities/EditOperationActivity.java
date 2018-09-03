@@ -1,5 +1,6 @@
 package com.example.shaimaaderbaz.orthoclinic.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,16 +10,22 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.CursorLoader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.ImageItemAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.VedioItemAdapter;
@@ -35,6 +42,7 @@ import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +50,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EditOperationActivity extends AppCompatActivity implements EditOperationsView,
-        IPickResult,ImageItemAdapter.ImageItemAdapterListener,VedioItemAdapter.VedioItemAdapterListener{
+        IPickResult,ImageItemAdapter.ImageItemAdapterListener,VedioItemAdapter.VedioItemAdapterListener
+       ,ViewPagerEx.OnPageChangeListener{
     private static final String PATIENT_ID_KEY = "patient_id";
     private static final String operationsItem = "operationsItem";
     static OperationsItem operationItem;
@@ -90,14 +99,14 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         operationItem = operationsItemO;
         context.startActivity(starter);
     }
-
+    List<MediaItem> mediaItems = null;
+    List<MediaItem> mediaItemsImages = new ArrayList<MediaItem>();
+    List<MediaItem> mediaItemsVedios = new ArrayList<MediaItem>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_operation);
-        List<MediaItem> mediaItems = null;
-        List<MediaItem> mediaItemsImages = new ArrayList<MediaItem>();
-        List<MediaItem> mediaItemsVedios = new ArrayList<MediaItem>();
+
         mContext =this;
         presenter = new EditOperationPresenterImp(this);
         ButterKnife.bind(this);
@@ -191,6 +200,34 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             PickImageDialog.build(new PickSetup().setVideo(true)).show(this);
     }
 
+    AlertDialog mImagesDialog;
+
+    SliderLayout mSliderLayout;
+
+    private void showImagesDialog() {
+        if (mImagesDialog == null) {
+            @SuppressLint("InflateParams")
+            View view = LayoutInflater.from(this).inflate(R.layout.media_popup, null);
+            mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
+            for (MediaItem item : mediaItemsImages) {
+                TextSliderView textSliderView = new TextSliderView(this);
+                textSliderView.image(item.getUrl());
+                mSliderLayout.addSlider(textSliderView);
+            }
+            mSliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
+            mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+            mSliderLayout.setCustomAnimation(new DescriptionAnimation());
+            mSliderLayout.addOnPageChangeListener(this);
+
+            mImagesDialog = new AlertDialog.Builder(this)
+                    .setView(view)
+                    .create();
+            mImagesDialog.show();
+        } else
+            mImagesDialog.show();
+    }
+
+
     @Override
     public void setOperationsUpdateSucessfull() {
         Toast.makeText(this, "Operations Updated Sucessfully", Toast.LENGTH_SHORT).show();
@@ -252,13 +289,17 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     @Override
     public void onItemImageClicked(int id)
     {
-
+        showImagesDialog();
     }
 
     @Override
-    public void onItemVedioClicked(int id)
+    public void onItemVedioClicked(int id ,MediaItem mediaItem)
     {
-
+        String url=mediaItem.getUrl();
+        File file = new File(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "video/*");
+        startActivity(intent);
     }
 
 
@@ -294,5 +335,20 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             paths.add(getRealPathFromURI(file));
         presenter.uploadMediaToServer(op_id,paths);
         mProgress.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

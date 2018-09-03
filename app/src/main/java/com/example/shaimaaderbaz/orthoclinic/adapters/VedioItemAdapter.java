@@ -29,7 +29,7 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
     private static Context context;
     private VedioItemAdapter.VedioItemAdapterListener mVedioItemAdapterListener;
     public interface VedioItemAdapterListener{
-        void onItemVedioClicked(int adapterPos);
+        void onItemVedioClicked(int adapterPos,MediaItem clickedItem);
 
     }
 
@@ -56,7 +56,7 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
                 if(mVedioItemAdapterListener != null){
                     MediaItem clickedItem = DataSet.get(getAdapterPosition());
-                    mVedioItemAdapterListener.onItemVedioClicked(getAdapterPosition());
+                    mVedioItemAdapterListener.onItemVedioClicked(getAdapterPosition(),clickedItem);
                 }
 
             }

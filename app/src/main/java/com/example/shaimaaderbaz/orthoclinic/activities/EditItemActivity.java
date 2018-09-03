@@ -46,6 +46,7 @@ import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,6 +130,9 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     List<MediaItem> mediaItems = null;
 
+    List<MediaItem> mediaItemsImages = new ArrayList<MediaItem>();
+    List<MediaItem> mediaItemsVedios = new ArrayList<MediaItem>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,8 +141,6 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         Bundle extras = getIntent().getExtras();
         presenter = new EditItemPresenterImp(this);
 
-        List<MediaItem> mediaItemsImages = new ArrayList<MediaItem>();
-        List<MediaItem> mediaItemsVedios = new ArrayList<MediaItem>();
         if (getIntent().getIntExtra(RADIATION_ID_KEY, 0) != 0) {
             mRadiationtId = getIntent().getIntExtra(RADIATION_ID_KEY, 0);
         } else {
@@ -378,7 +380,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             @SuppressLint("InflateParams")
             View view = LayoutInflater.from(this).inflate(R.layout.media_popup, null);
             mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
-            for (MediaItem item : mediaItems) {
+            for (MediaItem item : mediaItemsImages) {
                 TextSliderView textSliderView = new TextSliderView(this);
                 textSliderView.image(item.getUrl());
                 mSliderLayout.addSlider(textSliderView);
@@ -397,7 +399,12 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     }
 
     @Override
-    public void onItemVedioClicked(int id) {
+    public void onItemVedioClicked(int id ,MediaItem clickedItem) {
+        String url=clickedItem.getUrl();
+        File file = new File(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "video/*");
+        startActivity(intent);
 
     }
 
