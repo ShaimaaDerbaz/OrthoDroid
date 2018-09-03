@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,232 +15,433 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:text="Name : "
                 android:textColor="@color/colorPrimary"
-                android:text="Name : "/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/name_personal_text"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
                 android:textColor="@color/colorGray"
-                android:text="test"/>
+                android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:text="ID : "
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="ID : "/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/id_personal_text"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
                 android:textColor="@color/colorGray"
-                android:text="test"/>
+                android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:text="Age : "
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="Age : "/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/age_personal_text"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
                 android:textColor="@color/colorGray"
-                android:text="test"/>
+                android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:text="Occupation : "
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="Occupation : "/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/occup_personal_text"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
                 android:textColor="@color/colorGray"
-                android:text="test"/>
+                android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:text="Weight : "
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="Weight : "/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/weight_personal_text"
-                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
                 android:textColor="@color/colorGray"
-                android:text="test"/>
+                android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:text="Info : "
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="Info : "/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/info_personal_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/info_personal_text"
-                android:textSize="18sp"
+                android:text="test"
                 android:textColor="@color/colorGray"
-                android:text="test"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
+
         <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        android:background="@color/colorGray" />
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@color/colorGray" />
+
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:visibility="gone"/>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="History : "
-                android:textSize="32sp"
-                android:textColor="@color/colorDarkGray"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewItemHistory"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            android:visibility="gone" />
 
-           </LinearLayout>
-        <LinearLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Examinations : "
-                android:textSize="32sp"
-                android:textColor="@color/colorDarkGray"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewItemExamination"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.florent37.expansionpanel.ExpansionHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expansion_headerIndicator="@+id/headerIndicator"
+                        app:expansion_layout="@+id/expansionLayout"
+                        app:expansion_toggleOnClick="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="History : "
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="32sp" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/headerIndicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center"
+                            android:layout_marginLeft="40dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+                    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+                    <com.github.florent37.expansionpanel.ExpansionLayout
+                        android:id="@+id/expansionLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerViewItemHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="vertical" />
+
+                    </com.github.florent37.expansionpanel.ExpansionLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.florent37.expansionpanel.ExpansionHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expansion_headerIndicator="@+id/headerIndicator2"
+                        app:expansion_layout="@+id/expansionLayout2"
+                        app:expansion_toggleOnClick="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Examination : "
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="32sp" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/headerIndicator2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center"
+                            android:layout_marginLeft="40dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+                    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+
+                    <com.github.florent37.expansionpanel.ExpansionLayout
+                        android:id="@+id/expansionLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerViewItemExamination"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="vertical" />
+                    </com.github.florent37.expansionpanel.ExpansionLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.florent37.expansionpanel.ExpansionHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expansion_headerIndicator="@+id/headerIndicator3"
+                        app:expansion_layout="@+id/expansionLayout3"
+                        app:expansion_toggleOnClick="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Investigation : "
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="32sp" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/headerIndicator3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center"
+                            android:layout_marginLeft="40dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+                    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+                    <com.github.florent37.expansionpanel.ExpansionLayout
+                        android:id="@+id/expansionLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="40dp">
+
+                            <com.github.florent37.expansionpanel.ExpansionHeader
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:expansion_headerIndicator="@+id/headerIndicator4"
+                                app:expansion_layout="@+id/expansionLayout4"
+                                app:expansion_toggleOnClick="true">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Labs : "
+                                    android:textColor="@color/colorDarkGray"
+                                    android:textSize="32sp" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/headerIndicator4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|center"
+                                    android:layout_marginLeft="60dp"
+                                    android:adjustViewBounds="true"
+                                    app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+                            </com.github.florent37.expansionpanel.ExpansionHeader>
+
+                            <com.github.florent37.expansionpanel.ExpansionLayout
+                                android:id="@+id/expansionLayout4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerViewItemInvestigationLabs"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scrollbars="vertical" />
+
+                            </com.github.florent37.expansionpanel.ExpansionLayout>
+
+                            <com.github.florent37.expansionpanel.ExpansionHeader
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:expansion_headerIndicator="@+id/headerIndicator5"
+                                app:expansion_layout="@+id/expansionLayout5"
+                                app:expansion_toggleOnClick="true">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Radiations : "
+                                    android:textColor="@color/colorDarkGray"
+                                    android:textSize="32sp" />
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:id="@+id/headerIndicator5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|center"
+                                    android:layout_marginLeft="60dp"
+                                    android:adjustViewBounds="true"
+                                    app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+                            </com.github.florent37.expansionpanel.ExpansionHeader>
+
+                            <com.github.florent37.expansionpanel.ExpansionLayout
+                                android:id="@+id/expansionLayout5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/recyclerViewItemInvestigationRads"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scrollbars="vertical" />
+
+                            </com.github.florent37.expansionpanel.ExpansionLayout>
+
+                        </LinearLayout>
+                    </com.github.florent37.expansionpanel.ExpansionLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.florent37.expansionpanel.ExpansionHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:expansion_headerIndicator="@+id/headerIndicator6"
+                        app:expansion_layout="@+id/expansionLayout6"
+                        app:expansion_toggleOnClick="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Operations : "
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="32sp" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/headerIndicator6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center"
+                            android:layout_marginLeft="40dp"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+                    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+                    <com.github.florent37.expansionpanel.ExpansionLayout
+                        android:id="@+id/expansionLayout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerViewItemOperations"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="vertical" />
+
+                    </com.github.florent37.expansionpanel.ExpansionLayout>
+
+
+                </LinearLayout>
             </LinearLayout>
-        <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Investigation : "
-                android:textSize="32sp"
-                android:textColor="@color/colorDarkGray"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Labs : "
-                android:textSize="32sp"
-                android:textColor="@color/colorDarkGray"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewItemInvestigationLabs"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Radiations : "
-                android:textSize="32sp"
-                android:textColor="@color/colorDarkGray"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewItemInvestigationRads"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        </ScrollView>
 
-
-        </LinearLayout>
-        <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Operations "
-                android:textSize="32sp"
-                android:textColor="@color/colorDarkGray"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewItemOperations"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-           </LinearLayout>
     </LinearLayout>
-</ScrollView>
-
-        </LinearLayout>
-
 
 
 </LinearLayout>

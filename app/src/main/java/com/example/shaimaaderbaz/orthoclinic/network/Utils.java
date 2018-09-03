@@ -5,10 +5,8 @@ package com.example.shaimaaderbaz.orthoclinic.network;
  */
 
 public class Utils {
-
-
+    
     public static final String BASE_URL = "http://576ae2fa.ngrok.io/";
-
 
     public static OrthoAPI getOrthoAPI() {
         return RetrofitClient.getClient(BASE_URL).create(OrthoAPI.class);
