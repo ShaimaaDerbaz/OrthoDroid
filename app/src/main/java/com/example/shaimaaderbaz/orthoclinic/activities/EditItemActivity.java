@@ -211,8 +211,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                                                radiationItem.setInfo(info);
                                                presenter.EditItemRadiationToServer(mRadiationtId, radiationItem);
                                                radiationItem = null;
-                                               btnUploadImages.setVisibility(View.VISIBLE);
-                                               btnUploadVedios.setVisibility(View.VISIBLE);
+                                               //btnUploadImages.setVisibility(View.VISIBLE);
+                                               //btnUploadVedios.setVisibility(View.VISIBLE);
 
                                            }
                                            if (labItem != null) {
