@@ -120,6 +120,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         mContext=this;
         Bundle extras = getIntent().getExtras();
         presenter =new EditItemPresenterImp(this);
+        List<MediaItem> mediaItems = null;
         if(getIntent().getIntExtra(RADIATION_ID_KEY,0) !=0 )
         {
             mRadiationtId = getIntent().getIntExtra(RADIATION_ID_KEY,0);
@@ -161,8 +162,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             edit_info_edit_text.setText(radiationItem.getInfo());
             btnUploadImages.setVisibility(View.VISIBLE);
             btnUploadVedios.setVisibility(View.VISIBLE);
-
-
+            mediaItems = radiationItem.getMediaItems();
         }
 
         if(labItem !=null)
@@ -171,19 +171,16 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             edit_info_edit_text.setText(labItem.getInfo());
             btnUploadImages.setVisibility(View.VISIBLE);
             btnUploadVedios.setVisibility(View.VISIBLE);
-
-
+            mediaItems = labItem.getMediaItems();
         }
 
         if(complainItem !=null)
         {
             edit_field_name_text.setText(complainItem.getName());
             edit_info_edit_text.setText(complainItem.getInfo());
-            presenter.retreiveItemImages(complainItem.getMediaItems());
             btnUploadImages.setVisibility(View.VISIBLE);
             btnUploadVedios.setVisibility(View.VISIBLE);
-
-
+            mediaItems = complainItem.getMediaItems();
         }
 
         if(medicalHistoryItem !=null)
@@ -192,9 +189,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             edit_info_edit_text.setText(medicalHistoryItem.getInfo());
             btnUploadImages.setVisibility(View.INVISIBLE);
             btnUploadVedios.setVisibility(View.INVISIBLE);
-
-
         }
+        showImages(mediaItems);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -353,10 +349,12 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     @Override
     public void showImages(List<MediaItem> mediaItems) {
-        recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this));
-        imageItemAdapter = new ImageItemAdapter(mContext,mediaItems, this);
-        recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
-
+        if (mediaItems != null) {
+            recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,false));
+            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this);
+            recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
+        }
     }
     @Override
     public void onItemImageClicked(int id)
