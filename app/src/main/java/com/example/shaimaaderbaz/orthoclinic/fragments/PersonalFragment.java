@@ -42,12 +42,12 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public  class PersonalFragment extends Fragment implements PatientPersonalView ,
+public class PersonalFragment extends Fragment implements PatientPersonalView,
         PatientProfileOperationsAdapter.PatientProfileAdapterListener,
         PatientProfileInvestigationRadiationsAdapter.PatientProfileRadiationsAdapterListener,
         PatientProfileInvestigationLabsAdapter.PatientProfileLabsAdapterListener,
         PatientProfileExaminationAdapter.PatientProfileExaminationAdapterListener,
-        PatientProfileHistoryAdapter.PatientProfileHistoryAdapterListener{
+        PatientProfileHistoryAdapter.PatientProfileHistoryAdapterListener {
 
     private static final String TAG = "personal_tab_fragment";
 
@@ -83,13 +83,14 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     PatientProfileInvestigationLabsAdapter patientProfileInvestigationLabsAdapter;
     PatientProfileInvestigationRadiationsAdapter patientProfileInvestigationRadiationsAdapter;
     PatientProfileOperationsAdapter patientProfileOperationsAdapter;
-    PatientPersonalPresenterImp presenter =new PatientPersonalPresenterImp(this);
-    static OperationsItem operationsItem ;
-    static RadiationItem radiationItem ;
-    static LabItem labItem ;
-    static ComplainItem complainItem ;
-    static MedicalHistoryItem medicalHistoryItem ;
+    PatientPersonalPresenterImp presenter = new PatientPersonalPresenterImp(this);
+    static OperationsItem operationsItem;
+    static RadiationItem radiationItem;
+    static LabItem labItem;
+    static ComplainItem complainItem;
+    static MedicalHistoryItem medicalHistoryItem;
     static AllPatientInfoData allPatientInfoDataG;
+
     public PersonalFragment() {
     }
 
@@ -107,7 +108,7 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments().getInt(PATIENT_KEY,0) != 0)
+        if (getArguments().getInt(PATIENT_KEY, 0) != 0)
             mPatientId = getArguments().getInt(PATIENT_KEY);
         else
             throw new RuntimeException("Invalid Patient ID");
@@ -117,36 +118,40 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_personal, container, false);
-        presenter =new PatientPersonalPresenterImp(this);
-        ButterKnife.bind(this,view);
+        presenter = new PatientPersonalPresenterImp(this);
+        ButterKnife.bind(this, view);
         return view;
     }
+
     @Override
-    public void showPatientInfo(AllPatientInfoData allPatientInfoData ,int patient_id)
-    {
+    public void showPatientInfo(AllPatientInfoData allPatientInfoData, int patient_id) {
         mProgress.setVisibility(View.GONE);
-        id_personal_text.setText(allPatientInfoData.getPatient().getId());
-        name_personal_text.setText(allPatientInfoData.getPatient().getPatientName());
-        occup_personal_text.setText(allPatientInfoData.getPatient().getOccup());
-        age_personal_text.setText(allPatientInfoData.getPatient().getAge()+"");
-        weight_personal_text.setText(allPatientInfoData.getPatient().getWeight()+"");
-        info_personal_text.setText(allPatientInfoData.getPatient().getInfo());
+        if (allPatientInfoData.getPatient().getId() != null)
+            id_personal_text.setText(allPatientInfoData.getPatient().getId());
+        if (allPatientInfoData.getPatient().getPatientName() != null)
+            name_personal_text.setText(allPatientInfoData.getPatient().getPatientName());
+        if (allPatientInfoData.getPatient().getOccup() != null)
+            occup_personal_text.setText(allPatientInfoData.getPatient().getOccup());
+        age_personal_text.setText(allPatientInfoData.getPatient().getAge() + "");
+        weight_personal_text.setText(allPatientInfoData.getPatient().getWeight() + "");
+        if (allPatientInfoData.getPatient().getInfo() != null)
+            info_personal_text.setText(allPatientInfoData.getPatient().getInfo());
         historyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(),allPatientInfoData.getMedical_history(),this);
+        patientProfileHistoryAdapter = new PatientProfileHistoryAdapter(getContext(), allPatientInfoData.getMedical_history(), this);
         historyRecyclerview.setAdapter(patientProfileHistoryAdapter);
         examinationRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(),allPatientInfoData.getComplains(),this);
+        patientProfileExaminationAdapter = new PatientProfileExaminationAdapter(getContext(), allPatientInfoData.getComplains(), this);
         examinationRecyclerview.setAdapter(patientProfileExaminationAdapter);
         investigationLabRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(),allPatientInfoData.getLabs(),this);
+        patientProfileInvestigationLabsAdapter = new PatientProfileInvestigationLabsAdapter(getContext(), allPatientInfoData.getLabs(), this);
         investigationLabRecyclerView.setAdapter(patientProfileInvestigationLabsAdapter);
         investigationRadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(),allPatientInfoData.getRadiations(),this);
+        patientProfileInvestigationRadiationsAdapter = new PatientProfileInvestigationRadiationsAdapter(getContext(), allPatientInfoData.getRadiations(), this);
         investigationRadsRecyclerView.setAdapter(patientProfileInvestigationRadiationsAdapter);
         operationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        patientProfileOperationsAdapter = new PatientProfileOperationsAdapter(getContext(),allPatientInfoData.getOperations(),this);
+        patientProfileOperationsAdapter = new PatientProfileOperationsAdapter(getContext(), allPatientInfoData.getOperations(), this);
         operationsRecyclerView.setAdapter(patientProfileOperationsAdapter);
-        allPatientInfoDataG=allPatientInfoData;
+        allPatientInfoDataG = allPatientInfoData;
 
     }
 
@@ -158,37 +163,34 @@ public  class PersonalFragment extends Fragment implements PatientPersonalView ,
     }
 
     @Override
-    public void onItemClicked(int id,int adapterPos)
-    {
-        operationsItem=allPatientInfoDataG.getOperations().get(adapterPos);
-        EditOperationActivity.start(getContext(),id,operationsItem);
-    }
-    @Override
-    public void onItemRadiationClicked(int id,int adapterPos)
-    {
-        radiationItem=allPatientInfoDataG.getRadiations().get(adapterPos);
-        EditItemActivity.start(getContext(),id,radiationItem);
-      //  EditItemActivity.start(getContext(),id,operationsItem);
-    }
-    @Override
-    public void onItemLabClicked(int id,int adapterPos)
-    {
-        labItem=allPatientInfoDataG.getLabs().get(adapterPos);
-        EditItemActivity.start(getContext(),id,labItem);
+    public void onItemClicked(int id, int adapterPos) {
+        operationsItem = allPatientInfoDataG.getOperations().get(adapterPos);
+        EditOperationActivity.start(getContext(), id, operationsItem);
     }
 
     @Override
-    public void onItemCompClicked(int id,int adapterPos)
-    {
-        complainItem=allPatientInfoDataG.getComplains().get(adapterPos);
-        EditItemActivity.start(getContext(),id,complainItem);
+    public void onItemRadiationClicked(int id, int adapterPos) {
+        radiationItem = allPatientInfoDataG.getRadiations().get(adapterPos);
+        EditItemActivity.start(getContext(), id, radiationItem);
+        //  EditItemActivity.start(getContext(),id,operationsItem);
     }
 
     @Override
-    public void onItemHistoryClicked(int id,int adapterPos)
-    {
-        medicalHistoryItem=allPatientInfoDataG.getMedical_history().get(adapterPos);
-        EditItemActivity.start(getContext(),id,medicalHistoryItem);
+    public void onItemLabClicked(int id, int adapterPos) {
+        labItem = allPatientInfoDataG.getLabs().get(adapterPos);
+        EditItemActivity.start(getContext(), id, labItem);
+    }
+
+    @Override
+    public void onItemCompClicked(int id, int adapterPos) {
+        complainItem = allPatientInfoDataG.getComplains().get(adapterPos);
+        EditItemActivity.start(getContext(), id, complainItem);
+    }
+
+    @Override
+    public void onItemHistoryClicked(int id, int adapterPos) {
+        medicalHistoryItem = allPatientInfoDataG.getMedical_history().get(adapterPos);
+        EditItemActivity.start(getContext(), id, medicalHistoryItem);
     }
 
 }

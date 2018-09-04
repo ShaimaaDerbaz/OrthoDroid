@@ -56,8 +56,7 @@ import butterknife.ButterKnife;
 public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult,
         ImageItemAdapter.ImageItemAdapterListener,
         VedioItemAdapter.VedioItemAdapterListener,
-        ViewPagerEx.OnPageChangeListener
-{
+        ViewPagerEx.OnPageChangeListener {
     private static RadiationItem radiationItem;
     private int mRadiationtId;
     private static LabItem labItem;
@@ -96,8 +95,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     RecyclerView recyclerViewItemUploadImages;
     @BindView(R.id.recyclerViewItemUploadVedios)
     RecyclerView recyclerViewItemUploadVedios;
-    // @BindView(R.id.progress)
-    // ProgressBar mProgress;
+    @BindView(R.id.progress)
+    ProgressBar mProgress;
 
     public static void start(Context context, int radiationId, RadiationItem radiationItemO) {
         Intent starter = new Intent(context, EditItemActivity.class);
@@ -194,14 +193,16 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             btnUploadImages.setVisibility(View.INVISIBLE);
             btnUploadVedios.setVisibility(View.INVISIBLE);
         }
-        for (int i = 0; i < mediaItems.size(); i++) {
-            if (mediaItems.get(i).getType() == 1) {
-                mediaItemsImages.add(mediaItems.get(i));
-            } else if (mediaItems.get(i).getType() == 2) {
-                mediaItemsVedios.add(mediaItems.get(i));
+        if (mediaItems != null) {
+            for (int i = 0; i < mediaItems.size(); i++) {
+                if (mediaItems.get(i).getType() == 1) {
+                    mediaItemsImages.add(mediaItems.get(i));
+                } else if (mediaItems.get(i).getType() == 2) {
+                    mediaItemsVedios.add(mediaItems.get(i));
+                }
+                showImages(mediaItemsImages);
+                showVedios(mediaItemsVedios);
             }
-            showImages(mediaItemsImages);
-            showVedios(mediaItemsVedios);
         }
         btnEdit.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -213,28 +214,28 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                                                radiationItem = null;
                                                //btnUploadImages.setVisibility(View.VISIBLE);
                                                //btnUploadVedios.setVisibility(View.VISIBLE);
-
+                                               mProgress.setVisibility(View.VISIBLE);
                                            }
                                            if (labItem != null) {
                                                String info = edit_info_edit_text.getText().toString();
                                                labItem.setInfo(info);
                                                presenter.EditItemLabToServer(mLabId, labItem);
                                                labItem = null;
-
+                                               mProgress.setVisibility(View.VISIBLE);
                                            }
                                            if (complainItem != null) {
                                                String info = edit_info_edit_text.getText().toString();
                                                complainItem.setInfo(info);
                                                presenter.EditItemComplainToServer(mCompId, complainItem);
                                                complainItem = null;
-
+                                               mProgress.setVisibility(View.VISIBLE);
                                            }
                                            if (medicalHistoryItem != null) {
                                                String info = edit_info_edit_text.getText().toString();
                                                medicalHistoryItem.setInfo(info);
                                                presenter.EditItemMedicalHistoryToServer(mHistoryId, medicalHistoryItem);
                                                medicalHistoryItem = null;
-
+                                               mProgress.setVisibility(View.VISIBLE);
                                            }
                                        }
                                    }
@@ -244,15 +245,19 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             public void onClick(View view) {
                 if (radiationItem != null) {
                     presenter.deleteItemRadiation(mRadiationtId);
+                    mProgress.setVisibility(View.VISIBLE);
                 }
                 if (labItem != null) {
                     presenter.deleteItemLab(mLabId);
+                    mProgress.setVisibility(View.VISIBLE);
                 }
                 if (complainItem != null) {
                     presenter.deleteItemComplain(mCompId);
+                    mProgress.setVisibility(View.VISIBLE);
                 }
                 if (medicalHistoryItem != null) {
                     presenter.deleteItemHistory(mHistoryId);
+                    mProgress.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -277,7 +282,6 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                     owner = Utils.MediaConstants.COMPLAIN_MEDIA;
                     showPickDialog(true);
                 }
-
             }
         });
 
@@ -314,36 +318,40 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     @Override
     public void setItemsUpdateSucessfull() {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(this, "Updated Sucessfully", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setItemsUpdateFailure() {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(this, "Can't Update  ", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setItemDeleteSuccessful() {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(this, "Item deleted successfully", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void setItemDeleteFailure() {
+        mProgress.setVisibility(View.GONE);
         Toast.makeText(this, "Can't delete item", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setItemMediaSuccessful() {
-        Toast.makeText(this, "Images Uploaded successfully", Toast.LENGTH_SHORT).show();
-        //mProgress.setVisibility(View.GONE);
+        Toast.makeText(this, "Media Uploaded successfully", Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
         //TODO: Update Images List
     }
 
     @Override
     public void setItemMediaFailure() {
-        Toast.makeText(this, "Can't upload images", Toast.LENGTH_SHORT).show();
-        //mProgress.setVisibility(View.GONE);
+        Toast.makeText(this, "Can't upload media", Toast.LENGTH_SHORT).show();
+        mProgress.setVisibility(View.GONE);
     }
 
     @Override
@@ -399,8 +407,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     }
 
     @Override
-    public void onItemVedioClicked(int id ,MediaItem clickedItem) {
-        String url=clickedItem.getUrl();
+    public void onItemVedioClicked(int id, MediaItem clickedItem) {
+        String url = clickedItem.getUrl();
         File file = new File(url);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(file), "video/*");
@@ -435,8 +443,12 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             paths.add(file.getPath());
         else
             paths.add(getRealPathFromURI(file));
-        presenter.uploadMediaToServer(obj_id, paths, owner);
-        //mProgress.setVisibility(View.VISIBLE);
+        if (paths.size() > 0) {
+            presenter.uploadMediaToServer(obj_id, paths, owner);
+            mProgress.setVisibility(View.VISIBLE);
+        } else
+            Toast.makeText(this, "Failed to encode video", Toast.LENGTH_SHORT)
+                    .show();
     }
 
     @Override
