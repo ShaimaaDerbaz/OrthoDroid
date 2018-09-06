@@ -137,9 +137,10 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
             {
                 mediaItemsVedios.add(mediaItems.get(i));
             }
-            showImages(mediaItemsImages);
-            showVedios(mediaItemsVedios);
         }
+
+        showImages(mediaItemsImages);
+        showVedios(mediaItemsVedios);
 
         btnEditOperation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,10 +296,9 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     @Override
     public void onItemVedioClicked(int id ,MediaItem mediaItem)
     {
-        String url=mediaItem.getUrl();
-        File file = new File(url);
+        String url = mediaItem.getUrl();
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "video/*");
+        intent.setDataAndType(Uri.parse(url), "video/*");
         startActivity(intent);
     }
 
@@ -331,8 +331,13 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         Uri file = pickResult.getUri();
         if (pickResult.getPickType() == EPickType.CAMERA)
             paths.add(file.getPath());
-        else
-            paths.add(getRealPathFromURI(file));
+        else {
+            try {
+                paths.add(getRealPathFromURI(file));
+            } catch (Exception exc) {
+                Toast.makeText(this,"Can't Upload Video",Toast.LENGTH_SHORT).show();
+            }
+        }
         presenter.uploadMediaToServer(op_id,paths);
         mProgress.setVisibility(View.VISIBLE);
     }

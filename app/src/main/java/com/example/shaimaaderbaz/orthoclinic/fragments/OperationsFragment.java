@@ -1,6 +1,8 @@
 package com.example.shaimaaderbaz.orthoclinic.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,14 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
-import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
-import com.example.shaimaaderbaz.orthoclinic.presenter.AddPatientPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.presenter.OperationsPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.OperationsView;
 
@@ -29,13 +31,13 @@ import butterknife.ButterKnife;
  * Created by Shaimaa Derbaz on 7/30/2018.
  */
 
-public class OperationsFragment extends Fragment implements OperationsView{
+public class OperationsFragment extends Fragment implements OperationsView {
     OperationsPresenterImp presenter;
     Context context;
     @BindView(R.id.operation_text)
     EditText operation_name_text;
     @BindView(R.id.date_text)
-    EditText date_text;
+    TextView date_text;
     @BindView(R.id.steps_text)
     EditText steps_text;
     @BindView(R.id.person_text)
@@ -54,7 +56,7 @@ public class OperationsFragment extends Fragment implements OperationsView{
     private int mPatientId;
     private static final String PATIENT_KEY = "patient_key";
 
-    int PICK_PHOTO_FOR_AVATAR =1;
+    int PICK_PHOTO_FOR_AVATAR = 1;
     Uri actualUri;
 
     public static OperationsFragment newInstance(int patientID) {
@@ -68,7 +70,7 @@ public class OperationsFragment extends Fragment implements OperationsView{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments().getInt(PATIENT_KEY,0) != 0)
+        if (getArguments().getInt(PATIENT_KEY, 0) != 0)
             mPatientId = getArguments().getInt(PATIENT_KEY);
         else
             throw new RuntimeException("Invalid Patient ID");
@@ -79,13 +81,11 @@ public class OperationsFragment extends Fragment implements OperationsView{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_profile_operations, container, false);
         presenter = new OperationsPresenterImp(this);
-        context=getContext();
-        ButterKnife.bind(this,view);
-        select_image.setOnClickListener(new View.OnClickListener()
-        {
+        context = getContext();
+        ButterKnife.bind(this, view);
+        select_image.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 /*Intent intent = new Intent();
                 intent.setType("image/*"); //set type for files (image type)
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -93,26 +93,46 @@ public class OperationsFragment extends Fragment implements OperationsView{
                 pickImage();
             }
         });
-
-        btnAddOperation.setOnClickListener(new View.OnClickListener()
-        {
+        View pickerView = LayoutInflater.from(getContext()).inflate(R.layout.date_picker,
+                null, false);
+        final DatePicker datePicker = pickerView.findViewById(R.id.dialog_date_datePicker);
+        Button chooseDate = pickerView.findViewById(R.id.choose_date);
+        final AlertDialog datePickerDialog = new AlertDialog.Builder(getContext())
+                .setView(pickerView)
+                .create();
+        chooseDate.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                date_text.setText(datePicker.getYear()+"-"+
+                datePicker.getMonth()+"-"+
+                datePicker.getDayOfMonth());
+                datePickerDialog.hide();
+            }
+        });
+        date_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialog.show();
+            }
+        });
+        btnAddOperation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OperationsItem operationsItem = new OperationsItem();
-                String name=operation_name_text.getText().toString();
-                String date=date_text.getText().toString();
-                String steps=steps_text.getText().toString();
-                String persons=person_text.getText().toString();
-                String followup=follow_text.getText().toString();
+                String name = operation_name_text.getText().toString();
+                String date = date_text.getText().toString();
+                String steps = steps_text.getText().toString();
+                String persons = person_text.getText().toString();
+                String followup = follow_text.getText().toString();
                 operationsItem.setName(name);
                 operationsItem.setDate(date);
                 operationsItem.setSteps(steps);
                 operationsItem.setPersons(persons);
                 operationsItem.setFollow_up(followup);
 
-                if(!name.isEmpty())
-                {
-                    presenter.addOperationsToServer(operationsItem,mPatientId);
+                if (!name.isEmpty()) {
+                    presenter.addOperationsToServer(operationsItem, mPatientId);
                     mProgress.setVisibility(View.VISIBLE);
                 }
             }
@@ -122,14 +142,13 @@ public class OperationsFragment extends Fragment implements OperationsView{
     }
 
     @Override
-    public void setOperationsCreateSucessfull ()
-    {
+    public void setOperationsCreateSucessfull() {
         mProgress.setVisibility(View.GONE);
         Toast.makeText(context, "Operations Added Sucessfully", Toast.LENGTH_SHORT).show();
     }
+
     @Override
-    public void setOperationsCreateFailure ()
-    {
+    public void setOperationsCreateFailure() {
         mProgress.setVisibility(View.GONE);
         Toast.makeText(context, "Op Name or Date or Persons not Added, please try again", Toast.LENGTH_SHORT).show();
     }

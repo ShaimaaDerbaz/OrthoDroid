@@ -16,15 +16,16 @@
     <string name="smoking">Smoking</string>
     <string name="pregnancy">Pregnancy</string>
     <string name="lactation">Lactation</string>
+
     <string name="add_history">Add History</string>
 
     <!--Complains Strings-->
     <string name="trauma">Trauma</string>
     <string name="knee">Knee</string>
-    <string name="shoulder">/shoulder</string>
+    <string name="shoulder">Shoulder</string>
     <string name="sqine">sQine</string>
     <string name="pelvis">Pelvis</string>
-    <string name="anke">Anke Foot</string>
+    <string name="anke">Ankle Foot</string>
     <string name="elbow">Elbow</string>
     <string name="wrist">Wrist</string>
 
@@ -38,7 +39,7 @@
     <string name="scanogram">Scanogram</string>
     <string name="ct">C.T</string>
     <string name="mri">M.R.I</string>
-    <string name="dexa">DEXA</string>
+    <string name="dexa">Dexa</string>
     <string name="bonescan">Bone Scan</string>
 
     <!-- TODO: Remove or change this placeholder text -->

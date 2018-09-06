@@ -40,8 +40,10 @@
         <activity
             android:name=".activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.EditItemActivity" />
-        <activity android:name=".activities.EditOperationActivity"></activity>
+        <activity android:name=".activities.EditItemActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.EditOperationActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

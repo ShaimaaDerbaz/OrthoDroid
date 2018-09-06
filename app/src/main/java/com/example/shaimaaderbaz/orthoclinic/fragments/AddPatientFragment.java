@@ -1,6 +1,7 @@
 package com.example.shaimaaderbaz.orthoclinic.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
@@ -39,6 +41,10 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
     EditText patientInfoEt;
     @BindView(R.id.btnCreateProfile)
     Button btnCreateProfile;
+    @BindView(R.id.progress)
+    ProgressBar mProgressBar;
+
+    AddPatientFragmentListener mAddPatientFragmentListener;
 
     public AddPatientFragment() {
         // Required empty public constructor
@@ -57,6 +63,13 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof AddPatientFragmentListener)
+            mAddPatientFragmentListener = (AddPatientFragmentListener) context;
     }
 
     @Override
@@ -94,6 +107,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
                 if(!patientName.isEmpty() && patientItem.getAge() != null)
                 {
                     presenter.addPatientToServer(patientItem);
+                    mProgressBar.setVisibility(View.VISIBLE);
 
                 }else{
                     setPatientCreateFailure();
@@ -106,12 +120,19 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
     @Override
     public void setPatientCreateSucessfull()
     {
+        mProgressBar.setVisibility(View.GONE);
         Toast.makeText(getContext(), "Patient Added Sucessfully", Toast.LENGTH_SHORT).show();
+        if(mAddPatientFragmentListener != null)
+            mAddPatientFragmentListener.onPatientAdded();
     }
     @Override
     public void setPatientCreateFailure()
     {
+        mProgressBar.setVisibility(View.GONE);
         Toast.makeText(getContext(), "Failed to add patient", Toast.LENGTH_SHORT).show();
     }
 
+    public interface AddPatientFragmentListener {
+        void onPatientAdded();
+    }
 }

@@ -200,9 +200,9 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
                 } else if (mediaItems.get(i).getType() == 2) {
                     mediaItemsVedios.add(mediaItems.get(i));
                 }
-                showImages(mediaItemsImages);
-                showVedios(mediaItemsVedios);
             }
+            showImages(mediaItemsImages);
+            showVedios(mediaItemsVedios);
         }
         btnEdit.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -409,9 +409,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     @Override
     public void onItemVedioClicked(int id, MediaItem clickedItem) {
         String url = clickedItem.getUrl();
-        File file = new File(url);
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "video/*");
+        intent.setDataAndType(Uri.parse(url), "video/*");
         startActivity(intent);
 
     }
@@ -423,7 +422,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             PickImageDialog.build(new PickSetup().setVideo(true)).show(this);
     }
 
-    private String getRealPathFromURI(Uri contentUri) {
+    private String getRealPathFromURI(Uri contentUri) throws Exception {
         String[] proj = new String[1];
         proj[0] = MediaStore.Images.Media.DATA;
         CursorLoader loader = new CursorLoader(this, contentUri, proj, null, null, null);
@@ -441,8 +440,13 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         Uri file = pickResult.getUri();
         if (pickResult.getPickType() == EPickType.CAMERA)
             paths.add(file.getPath());
-        else
-            paths.add(getRealPathFromURI(file));
+        else {
+            try {
+                paths.add(getRealPathFromURI(file));
+            } catch (Exception exc) {
+                Toast.makeText(this,"Can't Upload Video",Toast.LENGTH_SHORT).show();
+            }
+        }
         if (paths.size() > 0) {
             presenter.uploadMediaToServer(obj_id, paths, owner);
             mProgress.setVisibility(View.VISIBLE);

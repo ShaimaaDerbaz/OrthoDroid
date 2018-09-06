@@ -92,9 +92,7 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
     {
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
-            String vedioUrl=DataSet.get(position).getUrl();
-            vedioUrl = ContentResolver.SCHEME_ANDROID_RESOURCE + "://"+context.getPackageName()+"/drawable/" + "videoim.png";
-            Picasso.with(context).load(vedioUrl).resize(600,900).into(holder.iv_video);
+            Picasso.with(context).load(R.drawable.videoim).resize(120,120).into(holder.iv_video);
         }
     }
 

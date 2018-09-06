@@ -91,7 +91,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
             String imageUrl=DataSet.get(position).getUrl();
-            Picasso.with(context).load(imageUrl).into(holder.iv_image);
+            Picasso.with(context).load(imageUrl).resize(120,120).into(holder.iv_image);
         }
     }
 

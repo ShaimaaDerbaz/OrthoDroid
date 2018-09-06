@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.fragments.AddPatientFragment;
+import com.example.shaimaaderbaz.orthoclinic.fragments.AddPatientFragment.AddPatientFragmentListener;
 import com.example.shaimaaderbaz.orthoclinic.fragments.ContactUsFragment;
 import com.example.shaimaaderbaz.orthoclinic.fragments.PatientsListFragment;
 
@@ -24,7 +25,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        AddPatientFragmentListener {
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
@@ -41,16 +43,16 @@ public class HomeActivity extends AppCompatActivity
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        replaceFragment(AddPatientFragment.newInstance(),false);
+        replaceFragment(PatientsListFragment.newInstance(),false);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(PatientsListFragment.newInstance(),false);
+                replaceFragment(AddPatientFragment.newInstance(),false);
             }
         });
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -59,7 +61,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -100,5 +102,10 @@ public class HomeActivity extends AppCompatActivity
             ft.addToBackStack(null);
         ft.replace(R.id.fragment_container, fragment)
                 .commitAllowingStateLoss(); //TODO: check
+    }
+
+    @Override
+    public void onPatientAdded() {
+        replaceFragment(PatientsListFragment.newInstance(),false);
     }
 }

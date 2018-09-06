@@ -68,17 +68,17 @@
                 android:layout_margin="5dp"
                 android:paddingLeft="5dp"
                 >
-                <EditText
+                <TextView
                     android:id="@+id/date_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="date"
                     android:textColorHint="@color/colorGray"
                     android:textColor="@color/colorGray"
                     android:background="#fff"
                     android:layout_weight="9"
                     android:layout_margin="16dp"
                     android:textSize="14sp"
+                    android:text="date"
                     android:layout_gravity="center"
                     />
             </LinearLayout>
