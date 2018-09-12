@@ -20,7 +20,7 @@ import java.util.HashMap;
  * Created by Shaimaa Derbaz on 8/5/2018.
  */
 
-public class InvestigationPresenterImp implements InvestigationPresenter ,InvestigationInteractor.OnAddInvestigationFinishedListener ,BaseResponseCall {
+public class InvestigationPresenterImp implements InvestigationPresenter ,BaseResponseCall {
 
     private InvestigationView investigationView;
     private Context mContext;
@@ -115,12 +115,6 @@ public class InvestigationPresenterImp implements InvestigationPresenter ,Invest
 
     }
     //implement from Interactor
-    @Override
-    public void onInvestigationCreateSucessfull(Context context)
-    {
-        investigationView.setInvestigationCreateSucessfull(context);
-    }
-
     @Override
     public void success() {
         investigationView.setInvestigationCreateSucessfull(mContext);

@@ -13,8 +13,7 @@ import com.example.shaimaaderbaz.orthoclinic.views.OperationsView;
  */
 
 public class OperationsPresenterImp implements OperationsPresenter,
-        OperationsInteractor.OnAddOperationsFinishedListener,
-        BaseResponseCall{
+               BaseResponseCall{
 
     private OperationsView operationsView;
     public OperationsPresenterImp(OperationsView operationsView)
@@ -35,16 +34,6 @@ public class OperationsPresenterImp implements OperationsPresenter,
     }
 
     //implement from Interactor
-    @Override
-    public void onOperationsCreateSucessfull()
-    {
-        operationsView.setOperationsCreateSucessfull();
-    }
-    @Override
-    public void onOperationsCreateFailure()
-    {
-        operationsView.setOperationsCreateFailure();
-    }
 
     @Override
     public void success() {
