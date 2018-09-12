@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.shaimaaderbaz.orthoclinic.models.AllPatientData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.network.AllPatientsCall;
+import com.example.shaimaaderbaz.orthoclinic.network.BaseResponseCall;
 import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
@@ -63,6 +64,8 @@ public class PatientListPresenterImp implements PatientListPresenter ,PatientLis
         }
         patientListView.showSearchResult(filterdNames);
     }
+
+
     //implement from Interactor
     @Override
     public void onPatientRetreivesSucessfull(Context context ,List<PatientItem> allPatientData)

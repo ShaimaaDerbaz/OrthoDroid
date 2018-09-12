@@ -70,16 +70,6 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
         });
     }
 
-    @Override
-    public void retreiveItemImages(List<MediaItem> mediaItems)
-    {
-        editOperationsView.showImages(mediaItems);
-    }
-    @Override
-    public void retreiveItemVedios(List<MediaItem> mediaItems)
-    {
-        editOperationsView.showVedios(mediaItems);
-    }
 
     @Override
     public void success() {

@@ -6,6 +6,7 @@ import com.example.shaimaaderbaz.orthoclinic.models.AllPatientInfoData;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.network.AllPatientsCall;
 import com.example.shaimaaderbaz.orthoclinic.network.AllPatientsInfoCall;
+import com.example.shaimaaderbaz.orthoclinic.network.BaseResponseCall;
 import com.example.shaimaaderbaz.orthoclinic.network.DataCalls;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientPersonalView;
@@ -41,6 +42,22 @@ public class PatientPersonalPresenterImp implements PatientPersonalPresenter  {
         //DataCalls
         DataCalls dataCalls=new DataCalls();
         dataCalls.getAllpatientInfo(presenterCallback,patient_id);
+    }
+
+    @Override
+    public void deleteItemPatient(int patientId) {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deletePatient(patientId, new BaseResponseCall() {
+            @Override
+            public void success() {
+                patientPersonalView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                patientPersonalView.setItemDeleteFailure();
+            }
+        });
     }
 
 }

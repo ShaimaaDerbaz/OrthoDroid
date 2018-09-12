@@ -11,5 +11,7 @@ import java.util.List;
 
 public interface PatientPersonalView {
     void showPatientInfo(AllPatientInfoData allPatientInfoData ,int patient_id);
+    void setItemDeleteSuccessful();
+    void setItemDeleteFailure();
 
 }

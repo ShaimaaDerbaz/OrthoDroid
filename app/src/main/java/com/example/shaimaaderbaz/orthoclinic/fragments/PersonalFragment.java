@@ -12,12 +12,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.activities.EditItemActivity;
 import com.example.shaimaaderbaz.orthoclinic.activities.EditOperationActivity;
+import com.example.shaimaaderbaz.orthoclinic.activities.HomeActivity;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileExaminationAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileHistoryAdapter;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientProfileInvestigationLabsAdapter;
@@ -76,6 +79,8 @@ public class PersonalFragment extends Fragment implements PatientPersonalView,
     TextView info_personal_text;
     @BindView(R.id.progress)
     ProgressBar mProgress;
+    @BindView(R.id.btnDeletePatient)
+    Button btnDeletePatient;
 
 
     PatientProfileHistoryAdapter patientProfileHistoryAdapter;
@@ -120,6 +125,15 @@ public class PersonalFragment extends Fragment implements PatientPersonalView,
         View view = inflater.inflate(R.layout.fragment_patient_profile_personal, container, false);
         presenter = new PatientPersonalPresenterImp(this);
         ButterKnife.bind(this, view);
+        btnDeletePatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                presenter.deleteItemPatient(mPatientId);
+                HomeActivity.start(getContext());
+            }
+        }
+        );
         return view;
     }
 
@@ -153,6 +167,19 @@ public class PersonalFragment extends Fragment implements PatientPersonalView,
         operationsRecyclerView.setAdapter(patientProfileOperationsAdapter);
         allPatientInfoDataG = allPatientInfoData;
 
+    }
+    @Override
+    public void setItemDeleteSuccessful()
+    {
+        mProgress.setVisibility(View.GONE);
+        Toast.makeText(getContext(), "Item deleted successfully", Toast.LENGTH_SHORT).show();
+       // finish();
+
+    }
+    public void setItemDeleteFailure()
+    {
+        mProgress.setVisibility(View.GONE);
+        Toast.makeText(getContext(), "Can't delete patient", Toast.LENGTH_SHORT).show();
     }
 
     @Override

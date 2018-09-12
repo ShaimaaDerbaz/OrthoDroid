@@ -77,6 +77,23 @@ public class DataCalls {
         });
     }
 
+    public void deletePatient(int patientId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.deletePatient(patientId).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful())
+                    baseResponseCall.success();
+                else
+                    baseResponseCall.error("Unkown Error");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                baseResponseCall.error(t.getMessage());
+            }
+        });
+    }
+
     public void getAllData(final AllDataCall presenterCallback) {
         orthoAPI.getAllData().enqueue(new Callback<RetrofitModels.AllDataResponse>() {
             @Override

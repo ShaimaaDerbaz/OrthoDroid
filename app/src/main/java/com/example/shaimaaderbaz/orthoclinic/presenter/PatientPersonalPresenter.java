@@ -7,6 +7,7 @@ package com.example.shaimaaderbaz.orthoclinic.presenter;
 public interface PatientPersonalPresenter {
 
     void retreivePatientInfoFromServer(int patient_id);
+    void deleteItemPatient(int mOperationId);
 }
 
 

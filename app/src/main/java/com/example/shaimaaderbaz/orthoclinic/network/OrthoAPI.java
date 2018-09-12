@@ -41,6 +41,9 @@ public interface OrthoAPI {
     @GET("/api/patients/{patient_id}")
     Call<AllPatientInfoData> getAllPatientInfo(@Path("patient_id") long patient_id);
 
+    @DELETE("/api/patients/{patient_id}")
+    Call<ResponseBody> deletePatient(@Path("patient_id") long patient_id);
+
     @POST("/api/medical-history")
     Call<ResponseBody> addMedicalHistory(@Body RetrofitModels.AddMedicalHistoryRequest medicalHistoryRequest);
 
