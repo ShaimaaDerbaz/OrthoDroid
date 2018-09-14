@@ -469,6 +469,4 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void onPageScrollStateChanged(int state) {
 
     }
-
-    
 }
