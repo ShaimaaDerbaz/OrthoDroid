@@ -11,6 +11,9 @@ public class PatientItem {
     @SerializedName("id")
     @Expose
     String id ;
+    @SerializedName("p_id")
+    @Expose
+    String p_id ;
     @SerializedName("name")
     @Expose
     String patientName ;
@@ -110,5 +113,13 @@ public class PatientItem {
 
     public void setUpdated_date(String updated_date) {
         this.updated_date = updated_date;
+    }
+
+    public String getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(String p_id) {
+        this.p_id = p_id;
     }
 }

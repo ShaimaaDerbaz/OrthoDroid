@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text=" Lap :"
+                    android:text=" Lab :"
                     android:textStyle="bold"
                     android:textSize="24sp"
                     android:textColor="@color/colorPrimaryDark"/>
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="C.L.S"
+                android:text="C.&amp;.S"
                 android:textColor="@color/colorGray"/>
 
             <LinearLayout
@@ -135,7 +135,7 @@
                     android:id="@+id/cls_text1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="C.L.S info."
+                    android:hint="C&amp;S info."
                     android:textColorHint="@color/colorGray"
                     android:textColor="@color/colorGray"
                     android:background="#fff"

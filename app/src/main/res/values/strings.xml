@@ -11,7 +11,7 @@
     <string name="retry">Retry</string>
 
     <!--History Strings-->
-    <string name="ch">CH</string>
+    <string name="ch">Chronic</string>
     <string name="gastritis">Gastritis</string>
     <string name="smoking">Smoking</string>
     <string name="pregnancy">Pregnancy</string>
@@ -23,15 +23,15 @@
     <string name="trauma">Trauma</string>
     <string name="knee">Knee</string>
     <string name="shoulder">Shoulder</string>
-    <string name="sqine">sQine</string>
+    <string name="sqine">Spine</string>
     <string name="pelvis">Pelvis</string>
-    <string name="anke">Ankle Foot</string>
+    <string name="anke">Ankle &amp; Foot</string>
     <string name="elbow">Elbow</string>
     <string name="wrist">Wrist</string>
 
     <!--Labs Strings-->
     <string name="chemistry">Chemistry</string>
-    <string name="cls">C.L.S</string>
+    <string name="cls">C.&amp;.S</string>
     <string name="cytology">Cytology</string>
 
     <!--Radiations Strings-->

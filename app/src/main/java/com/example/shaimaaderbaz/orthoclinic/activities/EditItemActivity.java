@@ -205,40 +205,40 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             showVedios(mediaItemsVedios);
         }
         btnEdit.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                           if (radiationItem != null) {
-                                               String info = edit_info_edit_text.getText().toString();
-                                               radiationItem.setInfo(info);
-                                               presenter.EditItemRadiationToServer(mRadiationtId, radiationItem);
-                                               radiationItem = null;
-                                               //btnUploadImages.setVisibility(View.VISIBLE);
-                                               //btnUploadVedios.setVisibility(View.VISIBLE);
-                                               mProgress.setVisibility(View.VISIBLE);
-                                           }
-                                           if (labItem != null) {
-                                               String info = edit_info_edit_text.getText().toString();
-                                               labItem.setInfo(info);
-                                               presenter.EditItemLabToServer(mLabId, labItem);
-                                               labItem = null;
-                                               mProgress.setVisibility(View.VISIBLE);
-                                           }
-                                           if (complainItem != null) {
-                                               String info = edit_info_edit_text.getText().toString();
-                                               complainItem.setInfo(info);
-                                               presenter.EditItemComplainToServer(mCompId, complainItem);
-                                               complainItem = null;
-                                               mProgress.setVisibility(View.VISIBLE);
-                                           }
-                                           if (medicalHistoryItem != null) {
-                                               String info = edit_info_edit_text.getText().toString();
-                                               medicalHistoryItem.setInfo(info);
-                                               presenter.EditItemMedicalHistoryToServer(mHistoryId, medicalHistoryItem);
-                                               medicalHistoryItem = null;
-                                               mProgress.setVisibility(View.VISIBLE);
-                                           }
-                                       }
-                                   }
+            @Override
+            public void onClick(View view) {
+                if (radiationItem != null) {
+                    String info = edit_info_edit_text.getText().toString();
+                    radiationItem.setInfo(info);
+                    presenter.EditItemRadiationToServer(mRadiationtId, radiationItem);
+                    radiationItem = null;
+                    //btnUploadImages.setVisibility(View.VISIBLE);
+                    //btnUploadVedios.setVisibility(View.VISIBLE);
+                    mProgress.setVisibility(View.VISIBLE);
+                }
+                if (labItem != null) {
+                    String info = edit_info_edit_text.getText().toString();
+                    labItem.setInfo(info);
+                    presenter.EditItemLabToServer(mLabId, labItem);
+                    labItem = null;
+                    mProgress.setVisibility(View.VISIBLE);
+                }
+                if (complainItem != null) {
+                    String info = edit_info_edit_text.getText().toString();
+                    complainItem.setInfo(info);
+                    presenter.EditItemComplainToServer(mCompId, complainItem);
+                    complainItem = null;
+                    mProgress.setVisibility(View.VISIBLE);
+                }
+                if (medicalHistoryItem != null) {
+                    String info = edit_info_edit_text.getText().toString();
+                    medicalHistoryItem.setInfo(info);
+                    presenter.EditItemMedicalHistoryToServer(mHistoryId, medicalHistoryItem);
+                    medicalHistoryItem = null;
+                    mProgress.setVisibility(View.VISIBLE);
+                }
+            }
+        }
         );
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -469,4 +469,6 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    
 }

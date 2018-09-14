@@ -39,6 +39,8 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
     EditText patientWeightEt;
     @BindView(R.id.etPatientInfo)
     EditText patientInfoEt;
+    @BindView(R.id.etPatientId)
+    EditText etPatientId;
     @BindView(R.id.btnCreateProfile)
     Button btnCreateProfile;
     @BindView(R.id.progress)
@@ -85,6 +87,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
                 PatientItem patientItem = new PatientItem();
                 String patientAge=patientAgeEt.getText().toString();
                 String patientName=patientNameEt.getText().toString();
+                String patientId=etPatientId.getText().toString();
                 String occupation=occupationEt.getText().toString();
                 String patientWeight=patientWeightEt.getText().toString();
                 String patientInfo=patientInfoEt.getText().toString();
@@ -104,6 +107,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
                     patientItem.setWeight(null);
                 }
                 patientItem.setInfo(patientInfo);
+                patientItem.setP_id(patientId);
                 if(!patientName.isEmpty() && patientItem.getAge() != null)
                 {
                     presenter.addPatientToServer(patientItem);

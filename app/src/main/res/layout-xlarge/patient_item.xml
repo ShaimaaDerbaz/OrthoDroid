@@ -24,7 +24,7 @@
             android:gravity="center"
             android:layout_marginLeft="12dp"
             android:text="0000000000"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorWhite"
             android:textAlignment="center"
             android:background="@drawable/id_background" />
 

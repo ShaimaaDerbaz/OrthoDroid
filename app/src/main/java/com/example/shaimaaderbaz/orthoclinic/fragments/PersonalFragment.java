@@ -4,9 +4,12 @@ package com.example.shaimaaderbaz.orthoclinic.fragments;
  * Created by Shaimaa Derbaz on 7/29/2018.
  */
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -129,8 +132,10 @@ public class PersonalFragment extends Fragment implements PatientPersonalView,
             @Override
             public void onClick(View view) {
 
-                presenter.deleteItemPatient(mPatientId);
-                HomeActivity.start(getContext());
+                //presenter.deleteItemPatient(mPatientId);
+                //HomeActivity.start(getContext());
+                AlertDialog diaBox =AskOption(getContext());
+                diaBox.show();
             }
         }
         );
@@ -140,8 +145,8 @@ public class PersonalFragment extends Fragment implements PatientPersonalView,
     @Override
     public void showPatientInfo(AllPatientInfoData allPatientInfoData, int patient_id) {
         mProgress.setVisibility(View.GONE);
-        if (allPatientInfoData.getPatient().getId() != null)
-            id_personal_text.setText(allPatientInfoData.getPatient().getId());
+        if (allPatientInfoData.getPatient().getP_id() != null)
+            id_personal_text.setText(allPatientInfoData.getPatient().getP_id());
         if (allPatientInfoData.getPatient().getPatientName() != null)
             name_personal_text.setText(allPatientInfoData.getPatient().getPatientName());
         if (allPatientInfoData.getPatient().getOccup() != null)
@@ -218,6 +223,47 @@ public class PersonalFragment extends Fragment implements PatientPersonalView,
     public void onItemHistoryClicked(int id, int adapterPos) {
         medicalHistoryItem = allPatientInfoDataG.getMedical_history().get(adapterPos);
         EditItemActivity.start(getContext(), id, medicalHistoryItem);
+    }
+
+    private AlertDialog AskOption(Context mContext)
+    {
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(mContext)
+                //set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Are you Sure You want to delete this Item ? ")
+                .setIcon(R.mipmap.ic_launcher2)
+
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        try
+                        {
+                            presenter.deleteItemPatient(mPatientId);
+                            HomeActivity.start(getContext());
+
+                        }
+
+                        catch (Exception e)
+                        {
+                            System.out.println("");
+                        }
+
+                    }
+
+                })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // mSwipeRefreshLayout.setRefreshing(false);
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
     }
 
 }

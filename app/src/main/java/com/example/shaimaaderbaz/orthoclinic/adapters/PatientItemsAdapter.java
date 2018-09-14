@@ -130,7 +130,7 @@ public class PatientItemsAdapter extends RecyclerView.Adapter<PatientItemsAdapte
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
             holder.getPatientName().setText(DataSet.get(position).getPatientName());
-            holder.getPatientId().setText(DataSet.get(position).getId());
+            holder.getPatientId().setText(DataSet.get(position).getP_id());
             holder.getAge().setText(DataSet.get(position).getAge()+"");
             holder.getInfo().setText(DataSet.get(position).getInfo());
             holder.getDate().setText(DataSet.get(position).getCreatedDate().substring(0,10));
