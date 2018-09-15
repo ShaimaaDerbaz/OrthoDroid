@@ -108,7 +108,7 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
                 }
                 patientItem.setInfo(patientInfo);
                 patientItem.setP_id(patientId);
-                if(!patientName.isEmpty() && patientItem.getAge() != null)
+                if(!patientName.isEmpty() && patientItem.getAge() != null &&!patientItem.getP_id().isEmpty())
                 {
                     presenter.addPatientToServer(patientItem);
                     mProgressBar.setVisibility(View.VISIBLE);
