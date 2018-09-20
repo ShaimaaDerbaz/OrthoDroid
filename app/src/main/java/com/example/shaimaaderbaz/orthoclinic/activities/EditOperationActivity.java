@@ -302,6 +302,12 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         startActivity(intent);
     }
 
+    @Override
+    public void onItemImageClickedLong(int adapterPos)
+    {
+
+    }
+
 
     private String getRealPathFromURI(Uri contentUri) {
         String[] proj = new String[1];

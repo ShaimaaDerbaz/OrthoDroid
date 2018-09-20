@@ -378,6 +378,20 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void onItemImageClicked(int id) {
         showImagesDialog();
     }
+    @Override
+    public void onItemImageClickedLong(int adapterPos)
+    {
+
+    }
+
+    @Override
+    public void onItemVedioClicked(int id, MediaItem clickedItem) {
+        String url = clickedItem.getUrl();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.parse(url), "video/*");
+        startActivity(intent);
+
+    }
 
     AlertDialog mImagesDialog;
 
@@ -406,14 +420,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             mImagesDialog.show();
     }
 
-    @Override
-    public void onItemVedioClicked(int id, MediaItem clickedItem) {
-        String url = clickedItem.getUrl();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse(url), "video/*");
-        startActivity(intent);
 
-    }
 
     private void showPickDialog(boolean isPhoto) {
         if (isPhoto)

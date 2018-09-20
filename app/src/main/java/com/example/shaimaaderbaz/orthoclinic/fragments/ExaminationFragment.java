@@ -201,7 +201,7 @@ public class ExaminationFragment extends Fragment implements ExaminationView{
                 examinationItem.setSqine(sqine);
                 examinationItem.setSqineInfo(sqineInfo);
                 examinationItem.setPelvis(pelvis);
-                examinationItem.setSqineInfo(pelvisInfo);
+                examinationItem.setPelvisInfo(pelvisInfo);
                 examinationItem.setAnkefoot(anke);
                 examinationItem.setAnkefootInfo(ankeInfo);
                 examinationItem.setElbow(elbow);

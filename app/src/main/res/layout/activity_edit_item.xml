@@ -135,7 +135,7 @@
             android:layout_weight="1"
             android:paddingRight="5dp"
             android:background="@drawable/button_background"
-            android:text="Edit"
+            android:text="Update"
             android:textSize="20sp"
             android:textColor="#ffff"
             android:layout_gravity="center"
