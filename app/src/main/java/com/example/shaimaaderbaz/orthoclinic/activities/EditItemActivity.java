@@ -11,22 +11,14 @@ import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.ImageItemAdapter;
@@ -36,17 +28,14 @@ import com.example.shaimaaderbaz.orthoclinic.models.LabItem;
 import com.example.shaimaaderbaz.orthoclinic.models.MediaItem;
 import com.example.shaimaaderbaz.orthoclinic.models.MedicalHistoryItem;
 import com.example.shaimaaderbaz.orthoclinic.models.RadiationItem;
-import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditItemPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.utils.Utils;
 import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
-import com.example.shaimaaderbaz.orthoclinic.views.TouchImageView;
-import com.squareup.picasso.Picasso;
+import com.stfalcon.frescoimageviewer.ImageViewer;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.enums.EPickType;
-import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
 
 
@@ -403,33 +392,15 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     }
 
-    AlertDialog mImagesDialog;
-
-    SliderLayout mSliderLayout;
-
     private void showImagesDialog() {
-        if (mImagesDialog == null) {
-            @SuppressLint("InflateParams")
-            View view = LayoutInflater.from(this).inflate(R.layout.media_popup, null);
-            mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
-            for (MediaItem item : mediaItemsImages) {
-                TextSliderView textSliderView = new TextSliderView(this);
-                //Picasso.with(mContext).load(item.getUrl()).placeholder(R.drawable.placeholder).into(iv_image);
-                textSliderView.image(item.getUrl());
-                mSliderLayout.addSlider(textSliderView);
-            }
-            mSliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
-            mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-            mSliderLayout.setCustomAnimation(new DescriptionAnimation());
-            mSliderLayout.addOnPageChangeListener(this);
-
-
-            mImagesDialog = new AlertDialog.Builder(this)
-                    .setView(view)
-                    .create();
-            mImagesDialog.show();
-        } else
-            mImagesDialog.show();
+        new ImageViewer.Builder<>(this, mediaItems)
+                .setFormatter(new ImageViewer.Formatter<MediaItem>() {
+                    @Override
+                    public String format(MediaItem mediaItem) {
+                        return mediaItem.getUrl();
+                    }
+                })
+                .show();
     }
 
 

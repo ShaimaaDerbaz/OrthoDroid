@@ -45,9 +45,8 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
 
     public  class ViewHolder extends RecyclerView.ViewHolder
     {
-        @BindView(R.id.iv_image)ImageView iv_image;
-       //@BindView(R.id.iv_image)TouchImageView iv_image;
 
+       @BindView(R.id.iv_image) ImageView iv_image;
 
         public ViewHolder(View v)
         {
