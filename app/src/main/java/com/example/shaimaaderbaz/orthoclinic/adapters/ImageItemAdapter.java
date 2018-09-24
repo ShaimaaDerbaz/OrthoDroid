@@ -31,7 +31,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
     private ImageItemAdapter.ImageItemAdapterListener mImageItemAdapterListener;
     public interface ImageItemAdapterListener{
         void onItemImageClicked( int adapterPos);
-        void onItemImageClickedLong(int adapterPos);
+        void onItemImageClickedLong(int adapterPos,int mediaId);
 
     }
 
@@ -45,8 +45,8 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
 
     public  class ViewHolder extends RecyclerView.ViewHolder
     {
-        //@BindView(R.id.iv_image)ImageView iv_image;
-       @BindView(R.id.iv_image)TouchImageView iv_image;
+        @BindView(R.id.iv_image)ImageView iv_image;
+       //@BindView(R.id.iv_image)TouchImageView iv_image;
 
 
         public ViewHolder(View v)
@@ -70,7 +70,8 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
                 @Override
                 public boolean onLongClick(View v) {
                     // TODO Auto-generated method stub
-                    mImageItemAdapterListener.onItemImageClickedLong(getAdapterPosition());
+                    MediaItem clickedItem = DataSet.get(getAdapterPosition());
+                    mImageItemAdapterListener.onItemImageClickedLong(getAdapterPosition(),clickedItem.getId());
                     return true;
                 }
             });
@@ -79,11 +80,11 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
 
         }
 
-        public TouchImageView getIv_image() {
+        public ImageView getIv_image() {
             return iv_image;
         }
 
-        public void setIv_image(TouchImageView iv_image) {
+        public void setIv_image(ImageView iv_image) {
             this.iv_image = iv_image;
         }
     }
@@ -104,9 +105,8 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
         if (DataSet.get(position) != null) {
             Log.d("", "Element " + position + " set.");
             String imageUrl=DataSet.get(position).getUrl();
-            //Picasso.with(context).load(imageUrl).resize(120,120).into(holder.iv_image);
-            holder.iv_image=new TouchImageView(context);
-            Picasso.with(context).load(imageUrl).placeholder(R.drawable.placeholder).into(holder.iv_image);
+            Picasso.with(context).load(imageUrl).resize(120,120).into(holder.iv_image);
+            //Picasso.with(context).load(imageUrl).placeholder(R.drawable.placeholder).into(holder.iv_image);
         }
     }
 

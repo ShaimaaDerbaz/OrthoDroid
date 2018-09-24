@@ -98,4 +98,7 @@ public interface OrthoAPI {
                                    @Part("owner") int ownerId,
                                    @Part() List<MultipartBody.Part> media);
 
+    @DELETE("/api/media/{media_id}")
+    Call<ResponseBody> deleteMedia(@Path("media_id") long media_id);
+
 }

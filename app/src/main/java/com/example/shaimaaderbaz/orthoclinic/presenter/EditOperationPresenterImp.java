@@ -70,6 +70,23 @@ public class EditOperationPresenterImp implements EditOperationPresenter ,BaseRe
         });
     }
 
+    @Override
+    public void deleteMediaItem(int mediaId) {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteMedia(mediaId, new BaseResponseCall() {
+            @Override
+            public void success() {
+                editOperationsView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                editOperationsView.setItemDeleteFailure();
+            }
+        });
+    }
+
+
 
     @Override
     public void success() {

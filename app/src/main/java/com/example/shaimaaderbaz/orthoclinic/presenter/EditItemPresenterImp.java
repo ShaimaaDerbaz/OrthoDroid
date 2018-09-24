@@ -122,6 +122,23 @@ public class EditItemPresenterImp implements EditItemPresenter ,BaseResponseCall
             }
         });
     }
+
+    @Override
+    public void deleteMediaItem(int mediaId)
+    {
+        DataCalls dataCalls = new DataCalls();
+        dataCalls.deleteMedia(mediaId,new BaseResponseCall() {
+            @Override
+            public void success() {
+                editItemsView.setItemDeleteSuccessful();
+            }
+
+            @Override
+            public void error(String message) {
+                editItemsView.setItemDeleteFailure();
+            }
+        });
+    }
     @Override
     public void uploadMediaToServer(int objectId, List<String> filePaths,int owner) {
         DataCalls dataCalls = new DataCalls();

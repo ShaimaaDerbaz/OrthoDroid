@@ -438,4 +438,23 @@ public class DataCalls {
             }
         });
     }
+
+    public void deleteMedia(int mediaId, final BaseResponseCall baseResponseCall) {
+        orthoAPI.deleteMedia(mediaId).enqueue(
+                new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            baseResponseCall.success();
+                        } else
+                            baseResponseCall.error("Unkown Error");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        baseResponseCall.error(t.getMessage());
+                    }
+                }
+        );
+    }
 }

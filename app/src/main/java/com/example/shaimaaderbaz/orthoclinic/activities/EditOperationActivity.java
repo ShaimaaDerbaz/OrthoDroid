@@ -3,6 +3,7 @@ package com.example.shaimaaderbaz.orthoclinic.activities;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -303,9 +304,15 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     }
 
     @Override
-    public void onItemImageClickedLong(int adapterPos)
+    public void onItemImageClickedLong(int adapterPos,int mediaId)
     {
+        AskOption(mContext,adapterPos,mediaId,false);
+    }
 
+    @Override
+    public void onItemVedioClickedLong(int adapterPos,int mediaId)
+    {
+        AskOption(mContext,adapterPos,mediaId,true);
     }
 
 
@@ -360,6 +367,60 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    private AlertDialog AskOption(final Context mContext,final int adapterPos, final int mediaId,final boolean mediaFlag)
+    {
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(mContext)
+                //set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Are you Sure You want to delete this Item ? ")
+                .setIcon(R.mipmap.ic_launcher2)
+
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        try
+                        {
+                            // complainItem.getMediaItems().
+                            presenter.deleteMediaItem(mediaId);
+                            if(mediaFlag==false) //image flage
+                            {
+                                mediaItemsImages.remove(adapterPos);
+                                imageItemAdapter.notifyItemRemoved(adapterPos);
+                                imageItemAdapter.notifyItemRangeChanged(adapterPos,mediaItemsImages.size());
+                            }
+                            else // vedio
+                            {
+                                mediaItemsVedios.remove(adapterPos);
+                                vedioItemAdapter.notifyItemRemoved(adapterPos);
+                                vedioItemAdapter.notifyItemRangeChanged(adapterPos,mediaItemsVedios.size());
+                            }
+                            //HomeActivity.start(mContext);
+
+                        }
+
+                        catch (Exception e)
+                        {
+                            System.out.println("");
+                        }
+
+                    }
+
+                })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // mSwipeRefreshLayout.setRefreshing(false);
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
 
     }
 }

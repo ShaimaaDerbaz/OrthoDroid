@@ -2,6 +2,7 @@ package com.example.shaimaaderbaz.orthoclinic.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,6 +40,8 @@ import com.example.shaimaaderbaz.orthoclinic.models.RetrofitModels;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditItemPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.utils.Utils;
 import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
+import com.example.shaimaaderbaz.orthoclinic.views.TouchImageView;
+import com.squareup.picasso.Picasso;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
@@ -97,7 +101,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     RecyclerView recyclerViewItemUploadVedios;
     @BindView(R.id.progress)
     ProgressBar mProgress;
-
+   // @BindView(R.id.iv_image)ImageView iv_image;
     public static void start(Context context, int radiationId, RadiationItem radiationItemO) {
         Intent starter = new Intent(context, EditItemActivity.class);
         starter.putExtra(RADIATION_ID_KEY, radiationId);
@@ -378,12 +382,18 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void onItemImageClicked(int id) {
         showImagesDialog();
     }
-    @Override
-    public void onItemImageClickedLong(int adapterPos)
-    {
 
+    @Override
+    public void onItemImageClickedLong(int adapterPos,int mediaId)
+    {
+        AskOption(mContext,adapterPos,mediaId,false);
     }
 
+    @Override
+    public void onItemVedioClickedLong(int adapterPos,int mediaId)
+    {
+        AskOption(mContext,adapterPos,mediaId,true);
+    }
     @Override
     public void onItemVedioClicked(int id, MediaItem clickedItem) {
         String url = clickedItem.getUrl();
@@ -404,6 +414,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
             for (MediaItem item : mediaItemsImages) {
                 TextSliderView textSliderView = new TextSliderView(this);
+                //Picasso.with(mContext).load(item.getUrl()).placeholder(R.drawable.placeholder).into(iv_image);
                 textSliderView.image(item.getUrl());
                 mSliderLayout.addSlider(textSliderView);
             }
@@ -412,6 +423,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             mSliderLayout.setCustomAnimation(new DescriptionAnimation());
             mSliderLayout.addOnPageChangeListener(this);
 
+
             mImagesDialog = new AlertDialog.Builder(this)
                     .setView(view)
                     .create();
@@ -419,7 +431,6 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         } else
             mImagesDialog.show();
     }
-
 
 
     private void showPickDialog(boolean isPhoto) {
@@ -474,6 +485,60 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    private AlertDialog AskOption(final Context mContext,final int adapterPos, final int mediaId,final boolean mediaFlag)
+    {
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(mContext)
+                //set message, title, and icon
+                .setTitle("Delete")
+                .setMessage("Are you Sure You want to delete this Item ? ")
+                .setIcon(R.mipmap.ic_launcher2)
+
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                        try
+                        {
+                           // complainItem.getMediaItems().
+                            presenter.deleteMediaItem(mediaId);
+                            if(mediaFlag==false) //image flage
+                            {
+                            mediaItemsImages.remove(adapterPos);
+                            imageItemAdapter.notifyItemRemoved(adapterPos);
+                            imageItemAdapter.notifyItemRangeChanged(adapterPos,mediaItemsImages.size());
+                            }
+                            else // vedio
+                            {
+                                mediaItemsVedios.remove(adapterPos);
+                                vedioItemAdapter.notifyItemRemoved(adapterPos);
+                                vedioItemAdapter.notifyItemRangeChanged(adapterPos,mediaItemsVedios.size());
+                            }
+                            //HomeActivity.start(mContext);
+
+                        }
+
+                        catch (Exception e)
+                        {
+                            System.out.println("");
+                        }
+
+                    }
+
+                })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // mSwipeRefreshLayout.setRefreshing(false);
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
 
     }
 }

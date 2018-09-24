@@ -31,6 +31,8 @@ public interface EditItemPresenter {
 
     void deleteItemHistory(int mHistoryId);
 
+    void deleteMediaItem(int mediaId);
+
     void uploadMediaToServer(int objectId, List<String> filePaths,int owner);
 
 }

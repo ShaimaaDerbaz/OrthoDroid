@@ -32,6 +32,7 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
     private VedioItemAdapter.VedioItemAdapterListener mVedioItemAdapterListener;
     public interface VedioItemAdapterListener{
         void onItemVedioClicked(int adapterPos,MediaItem clickedItem);
+        void onItemVedioClickedLong(int adapterPos,int mediaId);
 
     }
 
@@ -63,6 +64,17 @@ public class VedioItemAdapter extends RecyclerView.Adapter<VedioItemAdapter.View
 
             }
             });
+
+            v.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    // TODO Auto-generated method stub
+                    MediaItem clickedItem = DataSet.get(getAdapterPosition());
+                    mVedioItemAdapterListener.onItemVedioClickedLong(getAdapterPosition(),clickedItem.getId());
+                    return true;
+                }
+            });
+
 
             ButterKnife.bind(this,v);
 
