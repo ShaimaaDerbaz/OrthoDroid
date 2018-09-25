@@ -48,6 +48,7 @@ import butterknife.ButterKnife;
 
 public class EditItemActivity extends AppCompatActivity implements EditItemsView, IPickResult,
         ImageItemAdapter.ImageItemAdapterListener,
+        ImageItemAdapter.ImageLongItemAdapterListener,
         VedioItemAdapter.VedioItemAdapterListener,
         ViewPagerEx.OnPageChangeListener {
     private static RadiationItem radiationItem;
@@ -352,7 +353,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         if (mediaItems != null) {
             recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL, false));
-            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this);
+            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this,this);
             recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
         }
     }
@@ -375,13 +376,15 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     @Override
     public void onItemImageClickedLong(int adapterPos,int mediaId)
     {
-        AskOption(mContext,adapterPos,mediaId,false);
+        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,false);
+        alertDialog.show();
     }
 
     @Override
     public void onItemVedioClickedLong(int adapterPos,int mediaId)
     {
-        AskOption(mContext,adapterPos,mediaId,true);
+        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,true);
+        alertDialog.show();
     }
     @Override
     public void onItemVedioClicked(int id, MediaItem clickedItem) {

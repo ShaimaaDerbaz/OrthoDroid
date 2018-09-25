@@ -29,17 +29,22 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
     private List<MediaItem> DataSet;
     private static Context context;
     private ImageItemAdapter.ImageItemAdapterListener mImageItemAdapterListener;
+    private ImageItemAdapter.ImageLongItemAdapterListener mImageLongItemAdapterListener;
     public interface ImageItemAdapterListener{
         void onItemImageClicked( int adapterPos);
+
+    }
+    public interface ImageLongItemAdapterListener{
         void onItemImageClickedLong(int adapterPos,int mediaId);
 
     }
 
-    public ImageItemAdapter(Context cont, List<MediaItem> dataSet, ImageItemAdapterListener listener)
+    public ImageItemAdapter(Context cont, List<MediaItem> dataSet, ImageItemAdapterListener listener,ImageLongItemAdapterListener listenerLong)
     {
         context=cont;
         DataSet = dataSet;
         this.mImageItemAdapterListener=listener;
+        this.mImageLongItemAdapterListener=listenerLong;
 
     }
 
@@ -52,7 +57,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
         {
 
              super(v);
-
+           // v.isClickable();
             v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,8 +75,8 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
                 public boolean onLongClick(View v) {
                     // TODO Auto-generated method stub
                     MediaItem clickedItem = DataSet.get(getAdapterPosition());
-                    mImageItemAdapterListener.onItemImageClickedLong(getAdapterPosition(),clickedItem.getId());
-                    return true;
+                    mImageLongItemAdapterListener.onItemImageClickedLong(getAdapterPosition(),clickedItem.getId());
+                    return false;
                 }
             });
 
@@ -102,6 +107,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
     public void onBindViewHolder(final ImageItemAdapter.ViewHolder holder, int position)
     {
         if (DataSet.get(position) != null) {
+           // holder.iv_image.setLongClickable(true);
             Log.d("", "Element " + position + " set.");
             String imageUrl=DataSet.get(position).getUrl();
             Picasso.with(context).load(imageUrl).resize(120,120).into(holder.iv_image);

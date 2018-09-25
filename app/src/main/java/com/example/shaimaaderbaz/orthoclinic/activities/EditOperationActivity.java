@@ -51,7 +51,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EditOperationActivity extends AppCompatActivity implements EditOperationsView,
-        IPickResult,ImageItemAdapter.ImageItemAdapterListener,VedioItemAdapter.VedioItemAdapterListener
+        IPickResult,ImageItemAdapter.ImageItemAdapterListener,ImageItemAdapter.ImageLongItemAdapterListener,VedioItemAdapter.VedioItemAdapterListener
        ,ViewPagerEx.OnPageChangeListener{
     private static final String PATIENT_ID_KEY = "patient_id";
     private static final String operationsItem = "operationsItem";
@@ -273,7 +273,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         if (mediaItems != null) {
             recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL,false));
-            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this);
+            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this,this);
             recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
         }
     }
@@ -306,13 +306,15 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     @Override
     public void onItemImageClickedLong(int adapterPos,int mediaId)
     {
-        AskOption(mContext,adapterPos,mediaId,false);
+        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,false);
+        alertDialog.show();
     }
 
     @Override
     public void onItemVedioClickedLong(int adapterPos,int mediaId)
     {
-        AskOption(mContext,adapterPos,mediaId,true);
+        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,true);
+        alertDialog.show();
     }
 
 
