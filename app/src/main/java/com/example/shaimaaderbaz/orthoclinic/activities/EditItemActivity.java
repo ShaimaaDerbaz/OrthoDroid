@@ -339,13 +339,33 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     public void setItemMediaSuccessful() {
         Toast.makeText(this, "Media Uploaded successfully", Toast.LENGTH_SHORT).show();
         mProgress.setVisibility(View.GONE);
+
         //TODO: Update Images List
+        if (radiationItem != null) {
+            //EditItemActivity.start(mContext,radiationItem.getId(),radiationItem);
+            PatientProfileActivity.start(mContext,radiationItem.getPatient_id());
+        }
+        if (labItem != null) {
+           // EditItemActivity.start(mContext,labItem.getId(),labItem);
+            PatientProfileActivity.start(mContext,labItem.getPatient_id());
+        }
+        if (complainItem != null) {
+            //EditItemActivity.start(mContext,complainItem.getId(),complainItem);
+            PatientProfileActivity.start(mContext,complainItem.getPatient_id());
+
+        }
+        if (medicalHistoryItem != null) {
+            //EditItemActivity.start(mContext,medicalHistoryItem.getId(),medicalHistoryItem);
+            PatientProfileActivity.start(mContext,medicalHistoryItem.getPatient_id());
+
+        }
     }
 
     @Override
     public void setItemMediaFailure() {
         Toast.makeText(this, "Can't upload media", Toast.LENGTH_SHORT).show();
         mProgress.setVisibility(View.GONE);
+
     }
 
     @Override
@@ -353,7 +373,19 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         if (mediaItems != null) {
             recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL, false));
-            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this,this);
+            /*imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, new ImageItemAdapter.ImageItemAdapterListener() {
+                @Override
+                public void onItemImageClicked(int id) {
+                    showImagesDialog();
+                }}
+                ,new ImageItemAdapter.ImageLongItemAdapterListener() {
+                    @Override
+                    public void onItemImageClickedLong(int adapterPos,int mediaId)
+                    {
+                        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,false);
+                        alertDialog.show();
+                    }});// this*/
+            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems,this,this);
             recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
         }
     }
@@ -369,8 +401,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     }
 
     @Override
-    public void onItemImageClicked(int id) {
-        showImagesDialog();
+    public void onItemImageClicked(int id,MediaItem clickedItem) {
+        showImagesDialog(clickedItem);
     }
 
     @Override
@@ -395,12 +427,12 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     }
 
-    private void showImagesDialog() {
+    private void showImagesDialog(final MediaItem clickedItem) {
         new ImageViewer.Builder<>(this, mediaItems)
                 .setFormatter(new ImageViewer.Formatter<MediaItem>() {
                     @Override
                     public String format(MediaItem mediaItem) {
-                        return mediaItem.getUrl();
+                        return clickedItem.getUrl();
                     }
                 })
                 .show();
@@ -442,9 +474,12 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         if (paths.size() > 0) {
             presenter.uploadMediaToServer(obj_id, paths, owner);
             mProgress.setVisibility(View.VISIBLE);
+
         } else
             Toast.makeText(this, "Failed to encode video", Toast.LENGTH_SHORT)
                     .show();
+
+
     }
 
     @Override

@@ -289,7 +289,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     }
 
     @Override
-    public void onItemImageClicked(int id)
+    public void onItemImageClicked(int id,MediaItem clickedItem)
     {
         showImagesDialog();
     }

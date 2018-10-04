@@ -31,7 +31,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
     private ImageItemAdapter.ImageItemAdapterListener mImageItemAdapterListener;
     private ImageItemAdapter.ImageLongItemAdapterListener mImageLongItemAdapterListener;
     public interface ImageItemAdapterListener{
-        void onItemImageClicked( int adapterPos);
+        void onItemImageClicked( int adapterPos,MediaItem clickedItem);
 
     }
     public interface ImageLongItemAdapterListener{
@@ -64,7 +64,7 @@ public class ImageItemAdapter extends RecyclerView.Adapter<ImageItemAdapter.View
                 Log.d(TAG, "Element " + getPosition() + " clicked.");
                 if(mImageItemAdapterListener != null){
                     MediaItem clickedItem = DataSet.get(getAdapterPosition());
-                    mImageItemAdapterListener.onItemImageClicked(getAdapterPosition());
+                    mImageItemAdapterListener.onItemImageClicked(getAdapterPosition() ,clickedItem);
                 }
 
             }
