@@ -169,11 +169,12 @@
         <Button
             android:id="@+id/btnCreateProfile"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_background"
             android:gravity="center"
+            android:textAlignment="center"
             android:padding="10dp"
             android:text="Create Profile"
             android:textColor="#ffff"

@@ -92,7 +92,7 @@
         <Button
             android:id="@+id/btnUploadImages"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:paddingRight="5dp"
             android:background="@drawable/button_background"
@@ -107,7 +107,7 @@
         <Button
             android:id="@+id/btnUploadVedios"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:paddingRight="5dp"
             android:background="@drawable/button_background"
@@ -131,7 +131,7 @@
         <Button
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:paddingRight="5dp"
             android:background="@drawable/button_background"
@@ -146,7 +146,7 @@
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:text="Delete"

@@ -27,6 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittextstyl"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -53,6 +54,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittextstyl"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -79,6 +81,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittextstyl"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -105,6 +108,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittextstyl"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -130,6 +134,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittextstyl"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -155,6 +160,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
+            android:gravity="center_vertical"
             android:background="@drawable/edittextstyl"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -183,7 +189,7 @@
             android:layout_height="1dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:background="@color/colorGray" />
+            android:background="@color/colorPrimaryDark" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -214,14 +220,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="History : "
-                            android:textColor="@color/colorDarkGray"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="32sp" />
 
                         <android.support.v7.widget.AppCompatImageView
                             android:id="@+id/headerIndicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical|center"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginLeft="40dp"
                             android:adjustViewBounds="true"
                             app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
@@ -244,6 +250,12 @@
 
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -261,14 +273,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Examination : "
-                            android:textColor="@color/colorDarkGray"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="32sp" />
 
                         <android.support.v7.widget.AppCompatImageView
                             android:id="@+id/headerIndicator2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical|center"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginLeft="40dp"
                             android:adjustViewBounds="true"
                             app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
@@ -291,6 +303,12 @@
 
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -308,14 +326,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Investigation : "
-                            android:textColor="@color/colorDarkGray"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="32sp" />
 
                         <android.support.v7.widget.AppCompatImageView
                             android:id="@+id/headerIndicator3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical|center"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginLeft="40dp"
                             android:adjustViewBounds="true"
                             app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
@@ -345,7 +363,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Labs : "
-                                    android:textColor="@color/colorDarkGray"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:textSize="32sp" />
 
                                 <android.support.v7.widget.AppCompatImageView
@@ -384,7 +402,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Radiations : "
-                                    android:textColor="@color/colorDarkGray"
+                                    android:textColor="@color/colorPrimaryDark"
                                     android:textSize="32sp" />
 
                                 <android.support.v7.widget.AppCompatImageView
@@ -417,6 +435,12 @@
 
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -434,14 +458,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Operations : "
-                            android:textColor="@color/colorDarkGray"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="32sp" />
 
                         <android.support.v7.widget.AppCompatImageView
                             android:id="@+id/headerIndicator6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical|center"
+                            android:layout_gravity="center_vertical|right"
                             android:layout_marginLeft="40dp"
                             android:adjustViewBounds="true"
                             app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
@@ -464,6 +488,12 @@
 
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryDark" />
             </LinearLayout>
 
 
@@ -471,7 +501,7 @@
     </ScrollView>
     <Button
         android:id="@+id/btnDeletePatient"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/button_background"
