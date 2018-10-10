@@ -18,35 +18,39 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Base application theme.
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <- Customize your theme here. -->
-   <!-- </style>-->
 
-    <style name="CustomActionBarTheme" parent="@style/AppTheme">
-        <item name="actionBarStyle">@style/CustomActionBar</item>
+     Base application theme. -->
+    <style name="AppTheme2" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here.-->
+        <item name="colorPrimary">@color/colorPrimary
+        </item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomActionBarTheme" parent="@style/AppTheme2">
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+    </style>
 
     <!-- ActionBar styles -->
     <style name="CustomActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="background">@drawable/actionbar_layer_list</item>
-        <!--<item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
-    </style>
+    <!-- <item name="titleTextStyle">@style/CustomActionBarTextStyle</item>-->
+ </style>
 
-    <!--<style name="AppTheme.EditActionBar">
-        <item name="EditActionBar">
-            <shape android:shape="rectangle">
-                <solid android:color="@color/colorWhite"/>
-                <stroke android:width="1dip" android:color="@color/colorPrimaryDark" />
-                <corners
-                    android:topLeftRadius="20dp"
-                    android:bottomLeftRadius="20dp"
-                    android:topRightRadius="20dp"
-                    android:bottomRightRadius="20dp">
-                </corners>
-            </shape>
-        </item>
-    </style>-->
+ <!--<style name="AppTheme.EditActionBar">
+     <item name="EditActionBar">
+         <shape android:shape="rectangle">
+             <solid android:color="@color/colorWhite"/>
+             <stroke android:width="1dip" android:color="@color/colorPrimaryDark" />
+             <corners
+                 android:topLeftRadius="20dp"
+                 android:bottomLeftRadius="20dp"
+                 android:topRightRadius="20dp"
+                 android:bottomRightRadius="20dp">
+             </corners>
+         </shape>
+     </item>
+ </style>-->
 
 </resources>

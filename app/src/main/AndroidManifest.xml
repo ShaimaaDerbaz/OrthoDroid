@@ -41,7 +41,7 @@
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_patient_list"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/CustomActionBar"
             />
         <activity android:name=".activities.EditItemActivity"
             android:windowSoftInputMode="stateHidden"/>
