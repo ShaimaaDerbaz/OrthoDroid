@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.activities.HomeActivity;
+import com.example.shaimaaderbaz.orthoclinic.activities.PatientProfileActivity;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
 import com.example.shaimaaderbaz.orthoclinic.presenter.AddPatientPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.AddPatientView;
@@ -78,6 +80,8 @@ public class AddPatientFragment extends Fragment implements AddPatientView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_patient,container,false);
+        ((HomeActivity) getActivity())
+                .setActionBarTitle("Add Patient");
         ButterKnife.bind(this,view);
         presenter = new AddPatientPresenterImp(this);
         btnCreateProfile.setOnClickListener(new View.OnClickListener()

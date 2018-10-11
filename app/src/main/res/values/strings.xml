@@ -7,6 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_patient_profile">Patient Profile</string>
     <string name="title_activity_patient_list">Patients</string>
+    <string name="title_activity_edit">Edit</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="connection_error">Failed to connect, please check your internet connection</string>
     <string name="retry">Retry</string>

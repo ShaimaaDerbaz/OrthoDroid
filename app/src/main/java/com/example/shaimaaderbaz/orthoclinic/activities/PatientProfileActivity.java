@@ -40,6 +40,9 @@ public class PatientProfileActivity extends AppCompatActivity implements TabHost
         starter.putExtra(PATIENT_ID_KEY,patientId);
         context.startActivity(starter);
     }
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -35,6 +35,9 @@ public class HomeActivity extends AppCompatActivity
         Intent starter = new Intent(context, HomeActivity.class);
         context.startActivity(starter);
     }
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

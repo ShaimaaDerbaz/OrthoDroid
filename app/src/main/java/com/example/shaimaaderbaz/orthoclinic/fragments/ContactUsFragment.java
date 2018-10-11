@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shaimaaderbaz.orthoclinic.R;
+import com.example.shaimaaderbaz.orthoclinic.activities.HomeActivity;
 
 import butterknife.ButterKnife;
 
@@ -47,6 +48,8 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_contact_us,container,false);
+        ((HomeActivity) getActivity())
+                .setActionBarTitle("Contact Us");
         ButterKnife.bind(this,view);
         return view;
     }

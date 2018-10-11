@@ -44,8 +44,10 @@
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".activities.EditItemActivity"
+            android:label="@string/title_activity_edit"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activities.EditOperationActivity"
+            android:label="@string/title_activity_edit"
             android:windowSoftInputMode="stateHidden"/>
     </application>
 
