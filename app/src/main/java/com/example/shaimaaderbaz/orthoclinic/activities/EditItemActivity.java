@@ -373,18 +373,6 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         if (mediaItems != null) {
             recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL, false));
-            /*imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, new ImageItemAdapter.ImageItemAdapterListener() {
-                @Override
-                public void onItemImageClicked(int id) {
-                    showImagesDialog();
-                }}
-                ,new ImageItemAdapter.ImageLongItemAdapterListener() {
-                    @Override
-                    public void onItemImageClickedLong(int adapterPos,int mediaId)
-                    {
-                        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,false);
-                        alertDialog.show();
-                    }});// this*/
             imageItemAdapter = new ImageItemAdapter(mContext, mediaItems,this,this);
             recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
         }
