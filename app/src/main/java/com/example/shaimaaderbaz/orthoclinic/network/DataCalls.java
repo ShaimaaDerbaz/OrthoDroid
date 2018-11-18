@@ -29,21 +29,23 @@ import retrofit2.Response;
 
 public class DataCalls {
     private OrthoAPI orthoAPI;
+    List<PatientItem> allPatients;
 
     public DataCalls() {
         orthoAPI = Utils.getOrthoAPI();
     }
 
-    public void getAllpatients(final AllPatientsCall presenterCallback) {
+   /* public void getAllpatients(final AllPatientsCall presenterCallback)
+    {
 
         Call<AllPatientData> call = orthoAPI.getAllPatients();
-
         call.enqueue(new Callback<AllPatientData>() {
             @Override
             public void onResponse(Call<AllPatientData> call, Response<AllPatientData> response) {
                 if (response.body() != null) {
                     List<PatientItem> allPatientData = response.body().getPatients();
                     presenterCallback.success(allPatientData);
+
                 } else
                     presenterCallback.error("Unknown Error");
 
@@ -54,6 +56,31 @@ public class DataCalls {
                 presenterCallback.error(t.getMessage());
             }
         });
+    }*/
+
+    public List<PatientItem> getAllpatients(final AllPatientsCall presenterCallback) {
+
+        Call<AllPatientData> call = orthoAPI.getAllPatients();
+
+        call.enqueue(new Callback<AllPatientData>() {
+            @Override
+            public void onResponse(Call<AllPatientData> call, Response<AllPatientData> response) {
+                if (response.body() != null) {
+                    List<PatientItem> allPatientData = response.body().getPatients();
+                    presenterCallback.success(allPatientData);
+                    allPatients=allPatientData;
+
+                } else
+                    presenterCallback.error("Unknown Error");
+
+            }
+
+            @Override
+            public void onFailure(Call<AllPatientData> call, Throwable t) {
+                presenterCallback.error(t.getMessage());
+            }
+        });
+        return allPatients;
     }
 
     public void addpatient(final PatientItem patientItem, final BaseResponseCall presenterCall) {

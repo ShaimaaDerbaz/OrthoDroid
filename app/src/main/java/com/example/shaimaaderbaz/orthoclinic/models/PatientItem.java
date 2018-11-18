@@ -36,6 +36,9 @@ public class PatientItem {
     @Expose
     Integer weight;
 
+    String local_id;
+    Integer flag;
+
 
     public PatientItem() {
 
@@ -121,5 +124,29 @@ public class PatientItem {
 
     public void setP_id(String p_id) {
         this.p_id = p_id;
+    }
+
+    public String getCreated_date() {
+        return created_date;
+    }
+
+    public void setCreated_date(String created_date) {
+        this.created_date = created_date;
+    }
+
+    public String getLocal_id() {
+        return local_id;
+    }
+
+    public void setLocal_id(String local_id) {
+        this.local_id = local_id;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

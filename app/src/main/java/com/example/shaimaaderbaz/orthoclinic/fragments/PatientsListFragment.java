@@ -1,6 +1,7 @@
 package com.example.shaimaaderbaz.orthoclinic.fragments;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,9 +17,12 @@ import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.activities.PatientProfileActivity;
 import com.example.shaimaaderbaz.orthoclinic.adapters.PatientItemsAdapter;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientItem;
+import com.example.shaimaaderbaz.orthoclinic.network.Utils;
 import com.example.shaimaaderbaz.orthoclinic.presenter.PatientListPresenterImp;
+import com.example.shaimaaderbaz.orthoclinic.utils.NetworkConnect;
 import com.example.shaimaaderbaz.orthoclinic.views.PatientListView;
 
+import java.io.IOException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -68,7 +72,32 @@ public class PatientsListFragment extends Fragment implements PatientListView,
         ButterKnife.bind(this,view);
 
         presenter = new PatientListPresenterImp(this);
-        presenter.retreivePatientsFromServer();
+     /*   try
+        {
+            if(NetworkConnect.isConnected()==true)
+            {
+                List <PatientItem> patientItems=presenter.retreiveLocalPatientsFromDatabase(this.getContext());
+                if(patientItems.size()!=0)
+                {
+                    presenter.addPatientsFromLocalToServer(patientItems,this.getContext());
+                    //after this delete all local or edit local to be server
+                }*/
+                List<PatientItem> allPatient=presenter.retreivePatientsFromServer();
+               // presenter.addPatientsFromServerToLocal(allPatient,this.getContext());
+           /* }
+            else
+            {
+                presenter.retreiveLocalPatientsFromDatabase(this.getContext());
+            }
+        }
+        catch(IOException e )
+        {
+
+        }
+        catch (InterruptedException ee )
+        {
+
+        }*/
 
         searchPatients.addTextChangedListener(new TextWatcher()
         {
