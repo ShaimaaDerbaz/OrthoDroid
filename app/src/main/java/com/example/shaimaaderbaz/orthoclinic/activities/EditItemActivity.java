@@ -1,17 +1,16 @@
 package com.example.shaimaaderbaz.orthoclinic.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.shaimaaderbaz.orthoclinic.R;
 import com.example.shaimaaderbaz.orthoclinic.adapters.ImageItemAdapter;
@@ -35,17 +35,12 @@ import com.example.shaimaaderbaz.orthoclinic.utils.Utils;
 import com.example.shaimaaderbaz.orthoclinic.views.EditItemsView;
 import com.stfalcon.frescoimageviewer.ImageViewer;
 import com.vansuita.pickimage.bean.PickResult;
-import com.vansuita.pickimage.bundle.PickSetup;
-import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickResult;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
-import com.zhihu.matisse.engine.impl.GlideEngine;
-import com.zhihu.matisse.filter.Filter;
+import com.zhihu.matisse.engine.impl.PicassoEngine;
 
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +52,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         ImageItemAdapter.ImageLongItemAdapterListener,
         VedioItemAdapter.VedioItemAdapterListener,
         ViewPagerEx.OnPageChangeListener {
+    private static final int REQUEST_CODE_CHOOSE = 5;
     private static RadiationItem radiationItem;
     private int mRadiationtId;
     private static LabItem labItem;
@@ -97,7 +93,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     RecyclerView recyclerViewItemUploadVedios;
     @BindView(R.id.progress)
     ProgressBar mProgress;
-   // @BindView(R.id.iv_image)ImageView iv_image;
+
+    // @BindView(R.id.iv_image)ImageView iv_image;
     public static void start(Context context, int radiationId, RadiationItem radiationItemO) {
         Intent starter = new Intent(context, EditItemActivity.class);
         starter.putExtra(RADIATION_ID_KEY, radiationId);
@@ -205,40 +202,40 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             showVedios(mediaItemsVedios);
         }
         btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (radiationItem != null) {
-                    String info = edit_info_edit_text.getText().toString();
-                    radiationItem.setInfo(info);
-                    presenter.EditItemRadiationToServer(mRadiationtId, radiationItem);
-                    radiationItem = null;
-                    //btnUploadImages.setVisibility(View.VISIBLE);
-                    //btnUploadVedios.setVisibility(View.VISIBLE);
-                    mProgress.setVisibility(View.VISIBLE);
-                }
-                if (labItem != null) {
-                    String info = edit_info_edit_text.getText().toString();
-                    labItem.setInfo(info);
-                    presenter.EditItemLabToServer(mLabId, labItem);
-                    labItem = null;
-                    mProgress.setVisibility(View.VISIBLE);
-                }
-                if (complainItem != null) {
-                    String info = edit_info_edit_text.getText().toString();
-                    complainItem.setInfo(info);
-                    presenter.EditItemComplainToServer(mCompId, complainItem);
-                    complainItem = null;
-                    mProgress.setVisibility(View.VISIBLE);
-                }
-                if (medicalHistoryItem != null) {
-                    String info = edit_info_edit_text.getText().toString();
-                    medicalHistoryItem.setInfo(info);
-                    presenter.EditItemMedicalHistoryToServer(mHistoryId, medicalHistoryItem);
-                    medicalHistoryItem = null;
-                    mProgress.setVisibility(View.VISIBLE);
-                }
-            }
-        }
+                                       @Override
+                                       public void onClick(View view) {
+                                           if (radiationItem != null) {
+                                               String info = edit_info_edit_text.getText().toString();
+                                               radiationItem.setInfo(info);
+                                               presenter.EditItemRadiationToServer(mRadiationtId, radiationItem);
+                                               radiationItem = null;
+                                               //btnUploadImages.setVisibility(View.VISIBLE);
+                                               //btnUploadVedios.setVisibility(View.VISIBLE);
+                                               mProgress.setVisibility(View.VISIBLE);
+                                           }
+                                           if (labItem != null) {
+                                               String info = edit_info_edit_text.getText().toString();
+                                               labItem.setInfo(info);
+                                               presenter.EditItemLabToServer(mLabId, labItem);
+                                               labItem = null;
+                                               mProgress.setVisibility(View.VISIBLE);
+                                           }
+                                           if (complainItem != null) {
+                                               String info = edit_info_edit_text.getText().toString();
+                                               complainItem.setInfo(info);
+                                               presenter.EditItemComplainToServer(mCompId, complainItem);
+                                               complainItem = null;
+                                               mProgress.setVisibility(View.VISIBLE);
+                                           }
+                                           if (medicalHistoryItem != null) {
+                                               String info = edit_info_edit_text.getText().toString();
+                                               medicalHistoryItem.setInfo(info);
+                                               presenter.EditItemMedicalHistoryToServer(mHistoryId, medicalHistoryItem);
+                                               medicalHistoryItem = null;
+                                               mProgress.setVisibility(View.VISIBLE);
+                                           }
+                                       }
+                                   }
         );
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -349,20 +346,20 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         //TODO: Update Images List
         if (radiationItem != null) {
             //EditItemActivity.start(mContext,radiationItem.getId(),radiationItem);
-            PatientProfileActivity.start(mContext,radiationItem.getPatient_id());
+            PatientProfileActivity.start(mContext, radiationItem.getPatient_id());
         }
         if (labItem != null) {
-           // EditItemActivity.start(mContext,labItem.getId(),labItem);
-            PatientProfileActivity.start(mContext,labItem.getPatient_id());
+            // EditItemActivity.start(mContext,labItem.getId(),labItem);
+            PatientProfileActivity.start(mContext, labItem.getPatient_id());
         }
         if (complainItem != null) {
             //EditItemActivity.start(mContext,complainItem.getId(),complainItem);
-            PatientProfileActivity.start(mContext,complainItem.getPatient_id());
+            PatientProfileActivity.start(mContext, complainItem.getPatient_id());
 
         }
         if (medicalHistoryItem != null) {
             //EditItemActivity.start(mContext,medicalHistoryItem.getId(),medicalHistoryItem);
-            PatientProfileActivity.start(mContext,medicalHistoryItem.getPatient_id());
+            PatientProfileActivity.start(mContext, medicalHistoryItem.getPatient_id());
 
         }
     }
@@ -379,7 +376,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         if (mediaItems != null) {
             recyclerViewItemUploadImages.setLayoutManager(new LinearLayoutManager(this,
                     LinearLayoutManager.HORIZONTAL, false));
-            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems,this,this);
+            imageItemAdapter = new ImageItemAdapter(mContext, mediaItems, this, this);
             recyclerViewItemUploadImages.setAdapter(imageItemAdapter);
         }
     }
@@ -395,23 +392,22 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
     }
 
     @Override
-    public void onItemImageClicked(int id,MediaItem clickedItem) {
+    public void onItemImageClicked(int id, MediaItem clickedItem) {
         showImagesDialog(clickedItem);
     }
 
     @Override
-    public void onItemImageClickedLong(int adapterPos,int mediaId)
-    {
-        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,false);
+    public void onItemImageClickedLong(int adapterPos, int mediaId) {
+        AlertDialog alertDialog = AskOption(mContext, adapterPos, mediaId, false);
         alertDialog.show();
     }
 
     @Override
-    public void onItemVedioClickedLong(int adapterPos,int mediaId)
-    {
-        AlertDialog alertDialog=AskOption(mContext,adapterPos,mediaId,true);
+    public void onItemVedioClickedLong(int adapterPos, int mediaId) {
+        AlertDialog alertDialog = AskOption(mContext, adapterPos, mediaId, true);
         alertDialog.show();
     }
+
     @Override
     public void onItemVedioClicked(int id, MediaItem clickedItem) {
         String url = clickedItem.getUrl();
@@ -439,14 +435,12 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         else
             PickImageDialog.build(new PickSetup().setVideo(true)).show(this);*/
         Matisse.from(EditItemActivity.this)
-                .choose(MimeType.allOf())
+                .choose(MimeType.ofAll())
                 .countable(true)
                 .maxSelectable(9)
-                .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
-                .gridExpectedSize(getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
                 .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
                 .thumbnailScale(0.85f)
-                .imageEngine(new GlideEngine())
+                .imageEngine(new PicassoEngine())
                 .forResult(REQUEST_CODE_CHOOSE);
     }
 
@@ -472,7 +466,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             try {
                 paths.add(getRealPathFromURI(file));
             } catch (Exception exc) {
-                Toast.makeText(this,"Can't Upload Video",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Can't Upload Video", Toast.LENGTH_SHORT).show();
             }
         }
         if (paths.size() > 0) {
@@ -501,9 +495,8 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     }
 
-    private AlertDialog AskOption(final Context mContext,final int adapterPos, final int mediaId,final boolean mediaFlag)
-    {
-        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(mContext)
+    private AlertDialog AskOption(final Context mContext, final int adapterPos, final int mediaId, final boolean mediaFlag) {
+        AlertDialog myQuittingDialogBox = new AlertDialog.Builder(mContext)
                 //set message, title, and icon
                 .setTitle("Delete")
                 .setMessage("Are you Sure You want to delete this Item ? ")
@@ -513,28 +506,23 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
                     public void onClick(DialogInterface dialog, int whichButton) {
                         dialog.dismiss();
-                        try
-                        {
-                           // complainItem.getMediaItems().
+                        try {
+                            // complainItem.getMediaItems().
                             presenter.deleteMediaItem(mediaId);
-                            if(mediaFlag==false) //image flage
+                            if (mediaFlag == false) //image flage
                             {
-                            mediaItemsImages.remove(adapterPos);
-                            imageItemAdapter.notifyItemRemoved(adapterPos);
-                            imageItemAdapter.notifyItemRangeChanged(adapterPos,mediaItemsImages.size());
-                            }
-                            else // vedio
+                                mediaItemsImages.remove(adapterPos);
+                                imageItemAdapter.notifyItemRemoved(adapterPos);
+                                imageItemAdapter.notifyItemRangeChanged(adapterPos, mediaItemsImages.size());
+                            } else // vedio
                             {
                                 mediaItemsVedios.remove(adapterPos);
                                 vedioItemAdapter.notifyItemRemoved(adapterPos);
-                                vedioItemAdapter.notifyItemRangeChanged(adapterPos,mediaItemsVedios.size());
+                                vedioItemAdapter.notifyItemRangeChanged(adapterPos, mediaItemsVedios.size());
                             }
                             //HomeActivity.start(mContext);
 
-                        }
-
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             System.out.println("");
                         }
 
@@ -555,7 +543,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     }
 
-   // R.style.Matisse_Zhihu ligth mood
+    // R.style.Matisse_Zhihu ligth mood
     List<Uri> mSelected;
 
     @Override
@@ -563,6 +551,22 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             mSelected = Matisse.obtainResult(data);
+            ArrayList<String> paths = new ArrayList<>();
+            for (Uri file : mSelected) {
+                try {
+                    paths.add(getRealPathFromURI(file));
+                }catch (Exception exc) {
+                    Toast.makeText(this,"Failed to encode file",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            if (paths.size() > 0) {
+                presenter.uploadMediaToServer(obj_id, paths, owner);
+                mProgress.setVisibility(View.VISIBLE);
+
+            } else
+                Toast.makeText(this, "Failed to encode video", Toast.LENGTH_SHORT)
+                        .show();
             Log.d("Matisse", "mSelected: " + mSelected);
         }
     }

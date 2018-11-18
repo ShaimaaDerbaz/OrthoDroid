@@ -27,6 +27,10 @@ allprojects {
         flatDir {
             dirs 'libs'
         }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 }
 
