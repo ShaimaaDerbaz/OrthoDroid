@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -36,12 +38,16 @@ import com.example.shaimaaderbaz.orthoclinic.models.OperationsItem;
 import com.example.shaimaaderbaz.orthoclinic.models.PatientProfile;
 import com.example.shaimaaderbaz.orthoclinic.presenter.EditOperationPresenterImp;
 import com.example.shaimaaderbaz.orthoclinic.views.EditOperationsView;
+import com.stfalcon.frescoimageviewer.ImageViewer;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.PicassoEngine;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -60,6 +66,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
 
     private int mOperationId;
     private static final String PATIENT_KEY = "patient_key";
+    private static final int REQUEST_CODE_CHOOSE = 5;
 
     ImageItemAdapter imageItemAdapter;
     VedioItemAdapter vedioItemAdapter;
@@ -196,18 +203,38 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         });
     }
     private void showPickDialog(boolean isPhoto) {
-        if (isPhoto)
+       /* if (isPhoto)
             PickImageDialog.build(new PickSetup()).show(this);
         else
-            PickImageDialog.build(new PickSetup().setVideo(true)).show(this);
+            PickImageDialog.build(new PickSetup().setVideo(true)).show(this);*/
+        Matisse.from(EditOperationActivity.this)
+                .choose(MimeType.ofAll())
+                .countable(true)
+                .maxSelectable(9)
+                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                .thumbnailScale(0.85f)
+                .imageEngine(new PicassoEngine())
+                .forResult(REQUEST_CODE_CHOOSE);
     }
 
     AlertDialog mImagesDialog;
 
     SliderLayout mSliderLayout;
 
-    private void showImagesDialog() {
-        if (mImagesDialog == null) {
+    private void showImagesDialog(int id)
+    {
+        String[] mediaItemsUrl=new String[mediaItems.size()];
+        for(int i=0;i<mediaItems.size();i++)
+        {
+            // mediaItemsUrl.add(i,mediaItems.get(i).getUrl());
+            MediaItem m =mediaItems.get(i);
+            String url=m.getUrl();
+            mediaItemsUrl[i]=url;
+        }
+        new ImageViewer.Builder(this, mediaItemsUrl)
+                .setStartPosition(id)
+                .show();
+       /* if (mImagesDialog == null) {
             @SuppressLint("InflateParams")
             View view = LayoutInflater.from(this).inflate(R.layout.media_popup, null);
             mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
@@ -226,7 +253,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
                     .create();
             mImagesDialog.show();
         } else
-            mImagesDialog.show();
+            mImagesDialog.show();*/
     }
 
 
@@ -291,7 +318,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
     @Override
     public void onItemImageClicked(int id,MediaItem clickedItem)
     {
-        showImagesDialog();
+        showImagesDialog(id);
     }
 
     @Override
@@ -330,7 +357,7 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         return result;
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 //        if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
@@ -338,6 +365,34 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
 //            paths.add(getRealPathFromURI(data.getData()));
 //            presenter.uploadMediaToServer(op_id,paths);
 //        }
+    }*/
+
+    List<Uri> mSelected;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
+            mSelected = Matisse.obtainResult(data);
+            ArrayList<String> paths = new ArrayList<>();
+            for (Uri file : mSelected) {
+                try {
+                    paths.add(getRealPathFromURI(file));
+                }catch (Exception exc) {
+                    Toast.makeText(this,"Failed to encode file",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            if (paths.size() > 0) {
+               // presenter.uploadMediaToServer(obj_id, paths, owner);
+                presenter.uploadMediaToServer(op_id, paths);
+                mProgress.setVisibility(View.VISIBLE);
+
+            } else
+                Toast.makeText(this, "Failed to encode video", Toast.LENGTH_SHORT)
+                        .show();
+            Log.d("Matisse", "mSelected: " + mSelected);
+        }
     }
 
     @Override
@@ -425,4 +480,6 @@ public class EditOperationActivity extends AppCompatActivity implements EditOper
         return myQuittingDialogBox;
 
     }
+
+
 }

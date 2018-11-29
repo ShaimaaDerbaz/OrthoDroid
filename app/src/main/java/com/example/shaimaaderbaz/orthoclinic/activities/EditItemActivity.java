@@ -202,7 +202,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
             showVedios(mediaItemsVedios);
         }
         btnEdit.setOnClickListener(new View.OnClickListener() {
-                                       @Override
+            @Override
                                        public void onClick(View view) {
                                            if (radiationItem != null) {
                                                String info = edit_info_edit_text.getText().toString();
@@ -393,7 +393,7 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     @Override
     public void onItemImageClicked(int id, MediaItem clickedItem) {
-        showImagesDialog(clickedItem);
+        showImagesDialog(clickedItem,id);
     }
 
     @Override
@@ -417,15 +417,29 @@ public class EditItemActivity extends AppCompatActivity implements EditItemsView
 
     }
 
-    private void showImagesDialog(final MediaItem clickedItem) {
-        new ImageViewer.Builder<>(this, mediaItems)
-                .setFormatter(new ImageViewer.Formatter<MediaItem>() {
+    private void showImagesDialog(final MediaItem clickedItem,int id) {
+        String[] mediaItemsUrl=new String[mediaItems.size()];
+        for(int i=0;i<mediaItems.size();i++)
+        {
+           // mediaItemsUrl.add(i,mediaItems.get(i).getUrl());
+            MediaItem m =mediaItems.get(i);
+            String url=m.getUrl();
+            mediaItemsUrl[i]=url;
+        }
+        new ImageViewer.Builder(this, mediaItemsUrl)
+                .setStartPosition(id)
+                .show();
+        /*new ImageViewer.Builder<>(this, mediaItems).setFormatter(new ImageViewer.Formatter<MediaItem>() {
                     @Override
                     public String format(MediaItem mediaItem) {
-                        return clickedItem.getUrl();
+                      return clickedItem.getUrl();
                     }
                 })
-                .show();
+                .show();*/
+
+       /* new ImageViewer.Builder(this, mediaItems)
+                .setStartPosition(id)
+                .show();*/
     }
 
 
